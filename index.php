@@ -1,6 +1,6 @@
 <?php
 
-require_once('economic.php');
+require_once('Economic.php');
 header('Content-type: text/html; charset="utf-8"');
 
 function SQL($dbname,$query) {
