@@ -18,11 +18,12 @@
   "devDependencies": {
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
+    "babel-plugin-react-html-attrs": "^2.0.0",
     "html-loader": "^0.4.5"
   },
   "scripts": {
     "dev": "webpack -d --watch",
-    "build" : "webpack -p"
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
