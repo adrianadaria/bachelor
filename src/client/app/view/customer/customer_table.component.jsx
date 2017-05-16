@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ProductTableRowComponent from './product_table_row.component.jsx';
+import CustomerTableRowComponent from './customer_table_row.component.jsx';
 
-class ProductTableComponent extends React.Component {
+class CustomerTableComponent extends React.Component {
 
     constructor(props, context) {
         super(props, context);
@@ -10,15 +10,15 @@ class ProductTableComponent extends React.Component {
 
     render() {
 
-        let rows = this.props.products.map(function(product, i) {
+        let rows = this.props.customers.map(function(customer, i) {
             return (
-                <ProductTableRowComponent key={i} product={product} changeProductMode={this.props.changeProductMode} />
+                <CustomerTableRowComponent key={i} customer={customer} changeCustomerMode={this.props.changeCustomerMode} />
             );
         }.bind(this));
 
         return (
             !rows.length
-                ? <div className='alert alert-danger'>No products found.</div>
+                ? <div className='alert alert-danger'>No customers found.</div>
                 :
                 <table className='table table-bordered table-hover'>
                     <thead>
@@ -37,4 +37,4 @@ class ProductTableComponent extends React.Component {
     }
 }
 
-export default ProductTableComponent;
+export default CustomerTableComponent;

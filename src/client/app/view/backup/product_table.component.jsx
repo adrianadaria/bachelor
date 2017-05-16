@@ -12,7 +12,7 @@ class ProductTableComponent extends React.Component {
 
         let rows = this.props.products.map(function(product, i) {
             return (
-                <ProductTableRowComponent key={i} product={product} changeProductMode={this.props.changeProductMode} />
+                <ProductTableRowComponent key={i} product={product} changeAppMode={this.props.changeAppMode} />
             );
         }.bind(this));
 

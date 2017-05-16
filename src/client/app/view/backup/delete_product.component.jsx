@@ -43,7 +43,7 @@ class DeleteProductComponent extends React.Component {
                         <div className='panel-footer clearfix'>
                             <div className='text-align-center'>
                                 <button onClick={this.onDelete} className='btn btn-danger m-r-1em'>Yes</button>
-                                <button onClick={() => this.props.changeProductMode('read')} className='btn btn-primary'>No
+                                <button onClick={() => this.props.changeAppMode('read')} className='btn btn-primary'>No
                                 </button>
                             </div>
                         </div>

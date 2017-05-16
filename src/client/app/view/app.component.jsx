@@ -1,12 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
+import HomePageComponent from './home_page.component.jsx';
 
-// product imports
+// navigation imports
 import ReadProductsComponent   from './product/read_products.component.jsx';
-import ReadOneProductComponent from './product/read_one_product.component.jsx';
-import CreateProductComponent  from './product/create_product.component.jsx';
-import UpdateProductComponent  from './product/update_product.component.jsx';
-import DeleteProductComponent  from './product/delete_product.component.jsx';
+import ReadCustomersComponent from './customer/read_customers.component.jsx';
+import ReadInvoicesComponent from './invoice/read_invoices.component.jsx';
 
 class AppComponent extends React.Component {
 	
@@ -15,7 +14,7 @@ class AppComponent extends React.Component {
 		super(props, context);
 
 		this.state = {
-			currentMode: 'read',
+			currentMode: 'home',
 			productId: null
 		}
 
@@ -36,32 +35,35 @@ class AppComponent extends React.Component {
     }
 
 	render() {
-		
-		let modeComponent = <ReadProductsComponent changeAppMode = {this.changeAppMode} />;
+		let modeComponent = <HomePageComponent changeAppMode = {this.changeAppMode} />;
 			
 		switch(this.state.currentMode) {
+			case 'home':
+				break;
 			case 'read':
+				modeComponent = <ReadProductsComponent changeAppMode = {this.changeAppMode} />;
 				break;
-			case 'readOne':
-				modeComponent = 
-					<ReadOneProductComponent productId = {this.state.productId} changeAppMode = {this.changeAppMode} />;
+			case 'customer':
+				modeComponent = <ReadCustomersComponent />;
 				break;
-			case 'create':
-				modeComponent = <CreateProductComponent changeAppMode = {this.changeAppMode} />;
-				break;
-			case 'update':
-				modeComponent = 
-					<UpdateProductComponent productId = {this.state.productId} changeAppMode = {this.changeAppMode} />;
-				break;
-			case 'delete':
-				modeComponent =
-					<DeleteProductComponent productId = {this.state.productId} changeAppMode = {this.changeAppMode} />;
+			case 'invoice':
+				modeComponent = <ReadInvoicesComponent />;
 				break;
 			default:
 				break;
 		}
 		
-			return modeComponent;
+			return (
+				<div>
+					<div>
+						<a href='#' onClick={() => this.changeAppMode('home')}
+						   className='btn btn-info m-r-1em' style={{marginTop:10+'px', marginBottom:10+'px'}} >
+							HomePage(LOGO)
+						</a>
+					</div>
+					{modeComponent}
+				</div>
+			);
 	}
 }
 

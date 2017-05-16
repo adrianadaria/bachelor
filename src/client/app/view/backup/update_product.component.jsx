@@ -9,12 +9,13 @@ class UpdateProductComponent extends React.Component {
         this.state = {
             id: 0,
             name: '',
+            description: '',
             price: 0.00,
             successCreation: null
         };
 
-        this.onNumberChange = this.onNumberChange.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
+        this.onDescriptionChange = this.onDescriptionChange.bind(this);
         this.onPriceChange = this.onPriceChange.bind(this);
         this.onSave = this.onSave.bind(this);
     }
@@ -22,28 +23,28 @@ class UpdateProductComponent extends React.Component {
     componentDidMount() {
         // read one product data
         var productId = this.props.productId;
-        /*this.serverRequestProd = $.get("http://localhost/api/product/read_one.php?id=" + productId,
+        this.serverRequestProd = $.get("http://localhost/api/product/read_one.php?id=" + productId,
             (product) => {
                 this.setState({id: product.id});
                 this.setState({name: product.name});
                 this.setState({description: product.description});
                 this.setState({price: product.price});
-            });*/
+            });
 
         $('.page-header h1').text('Update product');
     }
 
     componentWillUnmount() {
-        //this.serverRequestProd.abort();
+        this.serverRequestProd.abort();
     }
 
     // handle name change
-    onNumberChange(e){
-        this.setState({id: e.target.value});
-    }
-    // handle description change
     onNameChange(e){
         this.setState({name: e.target.value});
+    }
+    // handle description change
+    onDescriptionChange(e){
+        this.setState({description: e.target.value});
     }
     // handle price change
     onPriceChange(e){
@@ -56,6 +57,7 @@ class UpdateProductComponent extends React.Component {
         let form_data = {
             id: this.state.id,
             name: this.state.name,
+            description: this.state.description,
             price: this.state.price
         };
         // submit form data to api
@@ -91,7 +93,7 @@ class UpdateProductComponent extends React.Component {
                 }
 
                 <a href='#'
-                   onClick={() => this.props.changeProductMode('read')} className='btn btn-primary margin-bottom-1em'>
+                   onClick={() => this.props.changeAppMode('read')} className='btn btn-primary margin-bottom-1em'>
                     Read Products
                 </a>
 
@@ -99,17 +101,17 @@ class UpdateProductComponent extends React.Component {
                     <table className='table table-bordered table-hover'>
                         <tbody>
                             <tr>
-                                <td>Number</td>
+                                <td>Name</td>
                                 <td>
-                                    <input type='number' step="0.01" className='form-control' value={this.state.id}
-                                        required onChange={this.onNumberChange} />
+                                    <input type='text' className='form-control' value={this.state.name}
+                                        required onChange={this.onNameChange} />
                                 </td>
                             </tr>
                             <tr>
-                                <td>Name</td>
+                                <td>Description</td>
                                 <td>
-                                <textarea type='text' className='form-control' value={this.state.name}
-                                    required onChange={this.onNameChange}></textarea>
+                                <textarea type='text' className='form-control' value={this.state.description}
+                                    required onChange={this.onDescriptionChange}></textarea>
                                 </td>
                             </tr>
                             <tr>

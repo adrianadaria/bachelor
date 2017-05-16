@@ -14,15 +14,15 @@ class ProductTableRowComponent extends React.Component {
                 <td>{this.props.product.SalesPrice} kr</td>
                 <td>
                     <a href='#'
-                       onClick={() => this.props.changeProductMode('readOne', this.props.product.Number)}
+                       onClick={() => this.props.changeAppMode('readOne', this.props.product.Number)}
                        className='btn btn-info m-r-1em'> Read One
                     </a>
                     <a href='#'
-                       onClick={() => this.props.changeProductMode('update', this.props.product.Number)}
+                       onClick={() => this.props.changeAppMode('update', this.props.product.Number)}
                        className='btn btn-primary m-r-1em'> Edit
                     </a>
                     <a
-                        onClick={() => this.props.changeProductMode('delete', this.props.product.Number)}
+                        onClick={() => this.props.changeAppMode('delete', this.props.product.Number)}
                         className='btn btn-danger'> Delete
                     </a>
                 </td>

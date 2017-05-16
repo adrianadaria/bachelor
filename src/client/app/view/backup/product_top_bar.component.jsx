@@ -10,7 +10,7 @@ class ProductTopBarComponent extends React.Component {
         return (
             <div>
                 <a href='#'
-                   onClick={() => this.props.changeProductMode('create')}
+                   onClick={() => this.props.changeAppMode('create')}
                    className='btn btn-primary margin-bottom-1em'> Create product
                 </a>
             </div>
