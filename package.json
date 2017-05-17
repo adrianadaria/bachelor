@@ -20,11 +20,17 @@
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
     "babel-plugin-react-html-attrs": "^2.0.0",
-    "html-loader": "^0.4.5"
+    "css-loader": "^0.28.1",
+    "html-loader": "^0.4.5",
+    "sass-loader": "^6.0.5",
+    "style-loader": "^0.17.0"
   },
   "scripts": {
     "dev": "webpack -d --watch",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "test": "npm run scss-compile",
+    "scss-compile": "node-sass -r src/client/app/view/sass -o src/client/app/view/css",
+    "watch": "npm run scss-compile"
   },
   "repository": {
     "type": "git",
