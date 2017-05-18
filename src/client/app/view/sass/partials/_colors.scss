@@ -1,0 +1,39 @@
+$red: #f1664c;
+$light-blue: #8dd4dc;
+$purple: #8f75b4;
+$green: #66c088;
+$yellow: #ffc80b;
+$dark-blue: #5572b7;
+$size: 30px;
+
+.circle{
+	height: $size;
+	width: $size;
+	border-radius: 50px;
+	display: inline-block;
+	margin-left: 15px;
+}
+.red {
+	@extend .circle;
+	background-color: $red;
+}
+.light-blue {
+	@extend .circle;
+	background-color: $light-blue;
+}
+.purple {
+	@extend .circle;
+	background-color: $purple;
+}
+.green {
+	@extend .circle;
+	background-color: $green;
+}
+.yellow {
+	@extend .circle;
+	background-color: $yellow;
+}
+.dark-blue {
+	@extend .circle;
+	background-color: $dark-blue;
+}

@@ -54,18 +54,16 @@ class AppComponent extends React.Component {
 				break;
 		}
 		
-			return (
-<div>
-	<div>
-		<a href='#' onClick={() => this.props.changeAppMode('home')}>
-			<div className="nav-header">
-				<h1>Logo</h1>
-			</div>
-		</a>
-	</div>
-	{modeComponent}
-</div>
-			);
+	return (
+		<div className="container">
+				<a href='#'  onClick={() => this.props.changeAppMode('home')}>
+					<div className="nav-header">
+						<h1>Logo</h1>
+					</div>
+				</a>
+			{modeComponent}
+		</div>
+		);
 	}
 }
 

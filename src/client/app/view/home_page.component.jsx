@@ -1,5 +1,6 @@
 import React from 'react';
-import $ from 'jquery';
+import ReactDOM from 'react-dom';
+//import $ from 'jquery';
 import style from './sass/home_page.scss';
 
 //import ProductTopBarComponent from './product/product_top_bar.component.jsx';
@@ -10,68 +11,57 @@ class HomePageComponent extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-      $('.page-header h1').text('E-conomic API Early Release');
-  }
-
   render() {
     return (
-        <div className="container">
-            <div>
-              <a href='#' onClick={() => this.props.changeAppMode('read')}>
-                <div className="box-product">
-                  <div className="box-text">
-                    <h1>Products</h1>
-                  </div>
-                </div>
-              </a>
+<div className="container">
+
+          <a href='#' onClick={() => this.props.changeAppMode('read')}>
+            <div className="shadow box box-product">
+              <div className="title">
+                <h1>Products</h1><div className="circle red"/>
+              </div>
             </div>
-            <div>
-              <a href='#' onClick={() => this.props.changeAppMode('customer')}>
-                <div className="box-customer">
-                  <div className="box-text">
-                    <h1>Customers</h1>
-                  </div>
-                </div>
-              </a>
+          </a>
+          <a href='#' onClick={() => this.props.changeAppMode('customer')}>
+            <div className="box box-customer">
+              <div className="title">
+                <h1>Customers</h1><div className="circle light-blue"/>
+              </div>
             </div>
-            <div>
-              <a href='#' onClick={() => this.props.changeAppMode('invoice')}>
-                <div className="box-invoice">
-                  <div className="box-text">
-                    <h1>Invoices</h1>
-                  </div>
-                </div>
-              </a>
+          </a>
+          <a href='#' onClick={() => this.props.changeAppMode('invoice')}>
+            <div className="shadow box box-invoice">
+              <div className="title">
+              <h1>Invoices</h1><div className="circle purple"/>
+              </div>
             </div>
-            <div>
-              <a href='#' onClick={() => this.props.changeAppMode('account')}>
-                <div className="box-account">
-                  <div className="box-text">
-                    <h1>Accounts</h1>
-                  </div>
-                </div>
-              </a>
+          </a>
+
+
+          <a href='#' onClick={() => this.props.changeAppMode('account')}>
+            <div className="box box-account">
+              <div className="title">
+                <h1>Accounts</h1><div className="circle green"/>
+              </div>
             </div>
-            <div>
-              <a href='#' onClick={() => this.props.changeAppMode('group')}>
-                <div className="box-group">
-                  <div className="box-text">
-                    <h1>Groups</h1>
-                  </div>
-                </div>
-              </a>
+          </a>
+          <a href='#' onClick={() => this.props.changeAppMode('group')}>
+            <div className="shadow box box-group">
+              <div className="title">
+                <h1>Groups</h1><div className="circle yellow"/>
+              </div>
             </div>
-            <div>
-              <a href='#' onClick={() => this.props.changeAppMode('order')}>
-                <div className="box-order">
-                  <div className="box-text">
-                    <h1>Orders</h1>
-                  </div>
-                </div>
-              </a>
+          </a>
+          <a href='#' onClick={() => this.props.changeAppMode('order')}>
+            <div className="box box-order">
+              <div className="title">
+                <h1>Orders</h1><div className="circle dark-blue"/>
+              </div>
             </div>
-        </div>
+          </a>
+
+</div>
+
     );
   }
 
