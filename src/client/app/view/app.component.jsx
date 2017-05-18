@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import HomePageComponent from './home_page.component.jsx';
+import style from './sass/home_page.scss';
 
 // navigation imports
 import ReadProductsComponent   from './product/read_products.component.jsx';
@@ -54,15 +55,16 @@ class AppComponent extends React.Component {
 		}
 		
 			return (
-				<div>
-					<div>
-						<a href='#' onClick={() => this.changeAppMode('home')}
-						   className='btn btn-info m-r-1em' style={{marginTop:10+'px', marginBottom:10+'px'}} >
-							HomePage(LOGO)
-						</a>
-					</div>
-					{modeComponent}
-				</div>
+<div>
+	<div>
+		<a href='#' onClick={() => this.props.changeAppMode('home')}>
+			<div className="nav-header">
+				<h1>Logo</h1>
+			</div>
+		</a>
+	</div>
+	{modeComponent}
+</div>
 			);
 	}
 }

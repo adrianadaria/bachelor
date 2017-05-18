@@ -1,7 +1,66 @@
-$font-stack:    Helvetica, sans-serif;
+$font-stack: Open Sans, sans-serif;
+$font-size: 14px;
 $primary-color: #000;
 
 body {
-  font: 100% $font-stack;
+  font: $font-stack;
   color: $primary-color;
+}
+h1 {
+	font-size: 18px;
+}
+.container {
+	display: inline-block;
+	vertical-align: middle;
+	width: 100%;
+}
+.box {
+  background-color: #ccc;
+  color: $primary-color;
+  width: 33%;
+  height: 350px;
+  float:left;
+}
+.nav-header {
+    background-color: white;
+    width: 100%;
+    height: 70px;
+}
+.box-product {
+  @extend .box;
+    background-color: red;
+}
+.box-customer {
+  @extend .box;
+    background-color: yellow;
+}
+.box-invoice {
+  @extend .box;
+    background-color: green;
+}
+.box-account {
+  @extend .box;
+    background-color: pink;
+}
+.box-group {
+  @extend .box;
+    background-color: brown;
+}
+.box-order {
+  @extend .box;
+    background-color: purple;
+}
+
+
+@media only screen and (max-width: 640px) {
+	.box {
+	  width: 50%;
+	  height: 150px;
+	}
+}
+
+@media (min-width:640px) and (max-width: 960px) {
+	.box {
+	  height: 250px;
+	}
 }
