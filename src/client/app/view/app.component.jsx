@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import HomePageComponent from './home_page.component.jsx';
 import style from './sass/home_page.scss';
 
+
 // navigation imports
 import ReadProductsComponent   from './product/read_products.component.jsx';
 import ReadCustomersComponent from './customer/read_customers.component.jsx';
@@ -56,12 +57,16 @@ class AppComponent extends React.Component {
 		
 	return (
 		<div className="container">
-				<a href='#'  onClick={() => this.props.changeAppMode('home')}>
-					<div className="nav-header">
-						<h1>Logo</h1>
-					</div>
-				</a>
+				
+				<div className="nav-header">
+					<a href='#'  onClick={() => this.props.changeAppMode('home')}>
+						<img src="http://localhost/BACHELOR/bachelor/src/client/app/view/img/logo_small.png" alt="home"/>
+					</a>
+				</div>
 			{modeComponent}
+			<div className="footer">
+				<h4>Copyrights 2017 - THRIFT</h4>
+			</div>
 		</div>
 		);
 	}

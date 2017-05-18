@@ -22,6 +22,12 @@ h1 {
 	font-weight: $bold-weight-text;
 	display: inline;
 }
+h4 {
+	font-size: 14px;
+	color: $grey;
+	font-weight: 600;
+	text-align: center;
+}
 .container {
 	display: inline-block;
 	vertical-align: middle;
@@ -52,27 +58,27 @@ h1 {
 
 .box-product:hover {
   @extend .box;
-    background-color: #8BBD3F;
+    background-color: $red;
 }
 .box-customer:hover {
   @extend .box;
-    background-color: #FCC711;
+    background-color: $light-blue;
 }
 .box-invoice:hover {
   @extend .box;
-    background-color: #EB6225;
+    background-color: $purple;
 }
 .box-account:hover {
   @extend .box;
-    background-color: #1A96BB;
+    background-color: $green;
 }
 .box-group:hover {
   @extend .box;
-    background-color: #414F9B;
+    background-color: $yellow;
 }
 .box-order:hover {
   @extend .box;
-    background-color: #C3197F;
+    background-color: $dark-blue;
 }
 
 
