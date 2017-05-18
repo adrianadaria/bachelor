@@ -1,6 +1,7 @@
 $font-stack: Open Sans, sans-serif;
 $font-size: 14px;
 $primary-color: #000;
+$secondrary-color: #fff;
 
 body {
   font: $font-stack;
@@ -8,6 +9,8 @@ body {
 }
 h1 {
 	font-size: 18px;
+	text-transform: uppercase;
+	color: $primary-color;
 }
 .container {
 	display: inline-block;
@@ -25,6 +28,9 @@ h1 {
     background-color: white;
     width: 100%;
     height: 70px;
+}
+.box-text {
+	text-align: center;
 }
 .box-product {
   @extend .box;
