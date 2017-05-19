@@ -7,9 +7,10 @@ class ReadOneProductComponent extends React.Component {
         super(props);
 
         this.state = {
-            id: 0,
+            number: 0,
             name: '',
-            price: 0.00
+            group: 0,
+            price: 0
         };
 
         this.onSave = this.onSave.bind(this);
@@ -17,22 +18,22 @@ class ReadOneProductComponent extends React.Component {
 
     // on mount, read product data and them as this component's state
     componentDidMount() {
-        let productId = this.props.productId;
+        let productNo = this.props.productNo;
 
-        /*this.serverRequestProd = $.get("http://localhost/api/product/read_one.php?id=" + productId,
+        this.serverRequestProd = $.get("http://localhost/api/product/read_one.php?number=" + productNo,
              (product) => {
-                this.setState({id: product.id});
+                this.setState({number: product.number});
                 this.setState({name: product.name});
-                this.setState({description: product.description});
+                this.setState({group: product.group});
                 this.setState({price: product.price});
-             });*/
+             });
 
         $('.page-header h1').text('Read Product');
     }
 
     // on unmount, kill categories fetching in case the request is still pending
     componentWillUnmount() {
-        //this.serverRequestProd.abort();
+        this.serverRequestProd.abort();
     }
 
     onSave() {}
@@ -48,7 +49,7 @@ class ReadOneProductComponent extends React.Component {
                         <tbody>
                         <tr>
                             <td>Number</td>
-                            <td>{this.state.id}</td>
+                            <td>{this.state.number}</td>
                         </tr>
                         <tr>
                             <td>Name</td>
@@ -57,6 +58,10 @@ class ReadOneProductComponent extends React.Component {
                         <tr>
                             <td>Price (DKK)</td>
                             <td>{parseFloat(this.state.price).toFixed(2)} kr</td>
+                        </tr>
+                        <tr>
+                            <td>Group</td>
+                            <td>{this.state.group}</td>
                         </tr>
                         </tbody>
                     </table>

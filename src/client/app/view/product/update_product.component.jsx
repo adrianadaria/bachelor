@@ -7,44 +7,51 @@ class UpdateProductComponent extends React.Component {
         super(props);
 
         this.state = {
-            id: 0,
+            number: 0,
             name: '',
-            price: 0.00,
+            group: 0,
+            price: 0,
             successCreation: null
         };
 
         this.onNumberChange = this.onNumberChange.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
         this.onPriceChange = this.onPriceChange.bind(this);
+        this.onGroupChange = this.onGroupChange.bind(this);
         this.onSave = this.onSave.bind(this);
     }
 
     componentDidMount() {
         // read one product data
-        var productId = this.props.productId;
-        /*this.serverRequestProd = $.get("http://localhost/api/product/read_one.php?id=" + productId,
+        var productNo = this.props.productNo;
+        this.serverRequestProd = $.get("http://localhost/api/product/read_one.php?number=" + productNo,
             (product) => {
-                this.setState({id: product.id});
+                this.setState({number: product.number});
                 this.setState({name: product.name});
-                this.setState({description: product.description});
+                this.setState({group: product.group});
                 this.setState({price: product.price});
-            });*/
+            });
 
         $('.page-header h1').text('Update product');
     }
 
     componentWillUnmount() {
-        //this.serverRequestProd.abort();
+        this.serverRequestProd.abort();
     }
 
     // handle name change
     onNumberChange(e){
-        this.setState({id: e.target.value});
+        this.setState({number: e.target.value});
     }
     // handle description change
     onNameChange(e){
         this.setState({name: e.target.value});
     }
+
+    onGroupChange(e){
+        this.setState({group: e.target.value});
+    }
+
     // handle price change
     onPriceChange(e){
         this.setState({price: e.target.value});
@@ -54,8 +61,9 @@ class UpdateProductComponent extends React.Component {
     onSave(e){
         // data in the form
         let form_data = {
-            id: this.state.id,
+            number: this.state.number,
             name: this.state.name,
+            group: this.state.group,
             price: this.state.price
         };
         // submit form data to api
@@ -66,6 +74,9 @@ class UpdateProductComponent extends React.Component {
             data : JSON.stringify(form_data),
             success : (response) => {
                 this.setState({successUpdate: response['message']});
+                setTimeout(() => {
+                    this.props.changeProductMode('read');
+                }, 1500);
             },
             error: (xhr, resp, text) => {
                 // show error to console
@@ -101,7 +112,7 @@ class UpdateProductComponent extends React.Component {
                             <tr>
                                 <td>Number</td>
                                 <td>
-                                    <input type='number' step="0.01" className='form-control' value={this.state.id}
+                                    <input type='text' className='form-control' value={this.state.number}
                                         required onChange={this.onNumberChange} />
                                 </td>
                             </tr>
@@ -117,6 +128,13 @@ class UpdateProductComponent extends React.Component {
                                 <td>
                                     <input type='number' step="0.01" className='form-control' value={this.state.price}
                                         required onChange={this.onPriceChange}/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Group</td>
+                                <td>
+                                    <input type='number' step="0.01" className='form-control' value={this.state.group}
+                                           required onChange={this.onGroupChange}/>
                                 </td>
                             </tr>
                             <tr>

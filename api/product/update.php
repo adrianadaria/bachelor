@@ -7,7 +7,13 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
  
 include_once '../config/database.php';
+include_once '../config/Economic.php';
 include_once '../objects/product.php';
+ 
+$agreementGrantToken = "SI3xOLaIzbSWH1embrkNYSWWIKBK09bd8efEvZRvKwo1";
+$appSecretToken = "7tVtBFEIEBPre0Fq3NWlNds54AXF76xA4NIe8vMsKx41";
+
+$ec = new Economic($agreementGrantToken, $appSecretToken); 
  
 // get database connection
 $database = new Database();
@@ -20,16 +26,17 @@ $product = new Product($db);
 $data = json_decode(file_get_contents("php://input"));
  
 // set ID property of product to be edited
-$product->id = $data->id;
+$product->number = $data->number;
  
 // set product property values
 $product->name = $data->name;
+$product->group = $data->group;
 $product->price = $data->price;
-$product->description = $data->description;
- 
+
 // update the product
-if($product->update()) {
-    echo '{';
+if($ec->updateProduct($product->number, $product->name, $product->group, $product->price)) {
+    $product->update();
+	echo '{';
         echo '"message": "Product was updated."';
     echo '}';
 } else {

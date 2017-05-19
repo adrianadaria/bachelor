@@ -6,6 +6,7 @@ header("Content-Type: application/json; charset=UTF-8");
 // include database and object files
 include_once '../config/Database.php';
 include_once '../objects/Product.php';
+include_once '../config/Economic.php';
  
 // instantiate database and product object
 $database = new Database();
@@ -31,9 +32,9 @@ if($num > 0) {
         extract($row);
  
         $product_item = array(
-            "id" => $id,
+            "number" => $number,
             "name" => $name,
-            "description" => html_entity_decode($description),
+            "group" => $group, //html_entity_decode($description),
             "price" => $price
         );
  
