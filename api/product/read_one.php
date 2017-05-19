@@ -6,7 +6,7 @@ header("Access-Control-Allow-Credentials: true");
 header('Content-Type: application/json');
  
 include_once '../config/database.php';
-include_once '../objects/product.php';
+include_once '../objects/Product.php';
  
 // get database connection
 $database = new Database();
@@ -16,16 +16,16 @@ $db = $database->getConnection();
 $product = new Product($db);
  
 // set ID property of product to be edited
-$product->id = isset($_GET['id']) ? $_GET['id'] : die();
+$product->number = isset($_GET['number']) ? $_GET['number'] : die();
  
 // read the details of product to be edited
 $product->readOne();
  
 // create array
 $product_arr = array(
-    "id" =>  $product->id,
+    "number" => $product->number,
     "name" => $product->name,
-    "description" => $product->description,
+    "group" => $product->group,
     "price" => $product->price
 );
  

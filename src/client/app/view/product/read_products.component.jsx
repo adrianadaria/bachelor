@@ -16,7 +16,7 @@ class ReadProductsComponent extends React.Component {
 
         this.state = {
             currentMode: 'read',
-            productId: null,
+            productNo: null,
             products: []
         }
 
@@ -27,7 +27,7 @@ class ReadProductsComponent extends React.Component {
     componentDidMount() {
         this.serverRequest = $.get("http://localhost/api/product/read.php", (products) => {
                 this.setState({
-                    products: products
+                    products: products.records
                 });
         });
     }
@@ -37,11 +37,11 @@ class ReadProductsComponent extends React.Component {
         this.serverRequest.abort();
     }
 
-    changeProductMode(newMode, productId) {
+    changeProductMode(newMode, productNo) {
         this.setState({currentMode: newMode});
 
-        if(productId !== undefined) {
-            this.setState({productId: productId});
+        if(productNo !== undefined) {
+            this.setState({productNo: productNo});
         }
     }
 
@@ -56,7 +56,7 @@ class ReadProductsComponent extends React.Component {
                 break;
             case 'readOne':
                 modeComponent =
-                    <ReadOneProductComponent productId={this.state.productId} changeProductMode={this.changeProductMode}/>;
+                    <ReadOneProductComponent productNo={this.state.productNo} changeProductMode={this.changeProductMode}/>;
                 topBar = null;
                 break;
             case 'create':
@@ -65,12 +65,12 @@ class ReadProductsComponent extends React.Component {
                 break;
             case 'update':
                 modeComponent =
-                    <UpdateProductComponent productId={this.state.productId} changeProductMode={this.changeProductMode}/>;
+                    <UpdateProductComponent productNo={this.state.productNo} changeProductMode={this.changeProductMode}/>;
                 topBar = null;
                 break;
             case 'delete':
                 modeComponent =
-                    <DeleteProductComponent productId={this.state.productId} changeProductMode={this.changeProductMode}/>;
+                    <DeleteProductComponent productNo={this.state.productNo} changeProductMode={this.changeProductMode}/>;
                 topBar = null;
                 break;
             default:

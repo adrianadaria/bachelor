@@ -7,14 +7,16 @@ class CreateProductComponent extends React.Component {
         super(props);
 
         this.state = {
+            number: '',
             name: '',
-            description: '',
+            group: 0,
             price: 0.00,
             successCreation: null
         };
 
+        this.onNumberChange = this.onNumberChange.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
-        this.onDescriptionChange = this.onDescriptionChange.bind(this);
+        this.onGroupChange = this.onGroupChange.bind(this);
         this.onPriceChange = this.onPriceChange.bind(this);
         this.onSave = this.onSave.bind(this);
     }
@@ -23,14 +25,18 @@ class CreateProductComponent extends React.Component {
         $('.page-header h1').text('Create product');
     }
 
+    onNumberChange(e) {
+        this.setState({number: e.target.value});
+    }
+
     // handle name change
     onNameChange(e) {
         this.setState({name: e.target.value});
     }
 
     // handle description change
-    onDescriptionChange(e) {
-        this.setState({description: e.target.value});
+    onGroupChange(e) {
+        this.setState({group: e.target.value});
     }
 
     // handle price change
@@ -41,8 +47,9 @@ class CreateProductComponent extends React.Component {
     onSave(e) {
         // data in the form
         let form_data = {
+            number: this.state.number,
             name: this.state.name,
-            description: this.state.description,
+            group: this.state.group,
             price: this.state.price
         };
         // submit form data to api
@@ -55,8 +62,9 @@ class CreateProductComponent extends React.Component {
                 // api message
                 this.setState({successCreation: response['message']});
                 // empty form
+                this.setState({number: ""});
                 this.setState({name: ""});
-                this.setState({description: ""});
+                this.setState({group: ""});
                 this.setState({price: ""});
             },
             error: (xhr, resp, text) => {
@@ -94,13 +102,20 @@ class CreateProductComponent extends React.Component {
                         : null
                 }
 
-                <a href='#' onClick={() => this.props.changeAppMode('read')}
+                <a href='#' onClick={() => this.props.changeProductMode('read')}
                    className='btn btn-primary margin-bottom-1em'> Read Products
                 </a>
 
                 <form onSubmit={this.onSave}>
                     <table className='table table-bordered table-hover'>
                         <tbody>
+                            <tr>
+                                <td>Number</td>
+                                <td>
+                                    <input type='text' className='form-control' value={this.state.number}
+                                           required onChange={this.onNumberChange} />
+                                </td>
+                            </tr>
                             <tr>
                                 <td>Name</td>
                                 <td>
@@ -109,18 +124,18 @@ class CreateProductComponent extends React.Component {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Description</td>
+                                <td>Price (DKK)</td>
                                 <td>
-                                    <textarea type='text' className='form-control' value={this.state.description}
-                                            required onChange={this.onDescriptionChange}>
+                                    <textarea type='number' step="0.01" className='form-control' value={this.state.price}
+                                            required onChange={this.onPriceChange}>
                                     </textarea>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Price (DKK)</td>
+                                <td>Group</td>
                                 <td>
-                                    <input type='number' step='0.01' className='form-control' value={this.state.price}
-                                           required onChange={this.onPriceChange} />
+                                    <input type='number' step='0' className='form-control' value={this.state.group}
+                                           required onChange={this.onGroupChange} />
                                 </td>
                             </tr>
                             <tr>

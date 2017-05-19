@@ -7,7 +7,13 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
  
 include_once '../config/database.php';
+include_once '../config/Economic.php';
 include_once '../objects/product.php';
+ 
+$agreementGrantToken = "SI3xOLaIzbSWH1embrkNYSWWIKBK09bd8efEvZRvKwo1";
+$appSecretToken = "7tVtBFEIEBPre0Fq3NWlNds54AXF76xA4NIe8vMsKx41";
+
+$ec = new Economic($agreementGrantToken, $appSecretToken);  
  
 // get database connection
 $database = new Database();
@@ -20,10 +26,11 @@ $product = new Product($db);
 $data = json_decode(file_get_contents("php://input"));
  
 // set product id to be deleted
-$product->id = $data->id;
+$product->number = $data->number;
  
-// delete the product
-if($product->delete()) {
+// delete the product && $ec->deleteProduct($product->number)
+if($ec->deleteProduct($product->number)) {
+	$product->delete();
     echo '{';
         echo '"message": "Product was deleted."';
     echo '}';

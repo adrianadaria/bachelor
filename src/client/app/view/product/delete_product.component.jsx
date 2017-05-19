@@ -16,19 +16,23 @@ class DeleteProductComponent extends React.Component {
     // handle single row deletion
     onDelete(e) {
         // product to delete
-        let productId = this.props.productId;
+        let productNo = this.props.productNo;
         // submit form data to api
+        let data = {
+          number: productNo
+        };
         $.ajax({
             url: "http://localhost/api/product/delete.php",
             type : "POST",
             contentType : 'application/json',
-            data : JSON.stringify({'id' : productId}),
+            data : JSON.stringify(data),
             success : (response) => {
-                this.props.changeAppMode('read');
+                this.props.changeProductMode('read');
             },
             error: (xhr, resp, text) => {
                 // show error in console
                 console.log(xhr, resp, text);
+                console.warn(xhr.responseText);
             }
         });
     }

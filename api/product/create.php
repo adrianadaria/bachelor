@@ -7,10 +7,16 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
  
 include_once '../config/database.php';
+include_once '../config/Economic.php';
 include_once '../objects/product.php';
  
 $database = new Database();
 $db = $database->getConnection();
+
+$agreementGrantToken = "SI3xOLaIzbSWH1embrkNYSWWIKBK09bd8efEvZRvKwo1";
+$appSecretToken = "7tVtBFEIEBPre0Fq3NWlNds54AXF76xA4NIe8vMsKx41";
+
+$ec = new Economic($agreementGrantToken, $appSecretToken); 
  
 $product = new Product($db);
  
@@ -18,13 +24,17 @@ $product = new Product($db);
 $data = json_decode(file_get_contents("php://input"));
  
 // set product property values
+$product->number = $data->number;
 $product->name = $data->name;
+$product->group = $data->group;
 $product->price = $data->price;
-$product->description = $data->description;
 $product->created = date('Y-m-d H:i:s');
  
-// create the product
-if($product->create()){
+$insert = $ec->addProduct($product->number, $product->name, $product->group, $product->price);
+// create the product	//$product->create() && 
+//$ec->addProduct($product->number, $product->name, $product->group, $product->price)
+if($insert){
+	$product->create();
     echo '{';
         echo '"message": "Product was created."';
     echo '}';
