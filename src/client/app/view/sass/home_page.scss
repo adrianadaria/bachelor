@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 @import "partials/_colors";
+@import "./node_modules/react-vis/dist/style";
 
 $font-family: 'Open Sans', sans-serif;
 $bold-weight-text: 700;
@@ -19,6 +20,18 @@ h1 {
 	font-family: $font-family;
 	font-weight: $bold-weight-text;
 	display: inline;
+}
+h2 {
+	font-size: 80px;
+	line-height: 1px;
+	font-family: $font-family;
+}
+h3 {
+	font-size: 20px;
+	color: $grey;
+	font-family: $font-family;
+	display: inline;
+	text-transform: uppercase;
 }
 h4 {
 	font-size: 14px;
@@ -43,8 +56,22 @@ h4 {
   float: left;
 }
 .box:hover {
-	box-shadow: 0 6px 6px rgba(0,0,0,.23)
+	box-shadow: 0 6px 6px rgba(0,0,0,.23);
 }
+.box:hover .circle {
+    background-color: $grey;  
+}
+.container-data{
+	width: 400px;
+	margin: 0 auto;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+
 .nav-header {
     background-color: #fff;
     width: 100%;
@@ -56,27 +83,27 @@ h4 {
 
 .box-product:hover {
   @extend .box;
-    background-color: $red;
+    background-color: $yellow;
 }
 .box-customer:hover {
   @extend .box;
-    background-color: $light-blue;
+    background-color: $orange;
 }
 .box-invoice:hover {
   @extend .box;
-    background-color: $purple;
+    background-color: $blue;
 }
 .box-account:hover {
   @extend .box;
-    background-color: $green;
+    background-color: $dark-purple;
 }
 .box-group:hover {
   @extend .box;
-    background-color: $yellow;
+    background-color: $dark-green;
 }
 .box-order:hover {
   @extend .box;
-    background-color: $dark-blue;
+    background-color: $light-red;
 }
 
 @media only screen and (max-width: 640px) {
@@ -84,25 +111,6 @@ h4 {
 	  width: 50%;
 	  height: 150px;
 	}
-	.box-product {
-    	background-color: #8BBD3F;
-	}
-	.box-customer {
-	    background-color: #FCC711;
-	}
-	.box-invoice {
-	    background-color: #EB6225;
-	}
-	.box-account {
-	    background-color: #1A96BB;
-	}
-	.box-group {
-	    background-color: #414F9B;
-	}
-	.box-order {
-	    background-color: #C3197F;
-	}
-
 }
 
 @media (min-width:640px) and (max-width: 960px) {

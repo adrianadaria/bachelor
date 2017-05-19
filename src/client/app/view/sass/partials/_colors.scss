@@ -1,9 +1,20 @@
+//First Design
 $red: #f1664c;
 $light-blue: #8dd4dc;
 $purple: #8f75b4;
 $green: #66c088;
 $yellow: #ffc80b;
 $dark-blue: #5572b7;
+
+//Second Design
+$orange: #f89837;
+$blue: #83c6ea;
+$dark-green: #1b8057;
+$light-red: #e57575;
+$dark-purple: #643579;
+
+
+
 $grey: #c8c8ca;
 $size: 30px;
 
@@ -37,4 +48,58 @@ $size: 30px;
 .dark-blue {
 	@extend .circle;
 	background-color: $dark-blue;
+}
+.orange {
+	@extend .circle;
+	background-color: $orange;
+}
+.blue {
+	@extend .circle;
+	background-color: $blue;
+}
+.dark-green {
+	@extend .circle;
+	background-color: $dark-green;
+}
+.light-red {
+	@extend .circle;
+	background-color: $light-red;
+}
+.dark-purple {
+	@extend .circle;
+	background-color: $dark-purple;
+}
+
+.red-color {
+	color: $red;
+}
+.light-blue-color {
+	color: $light-blue;
+}
+.purple-color {
+	color: $purple;
+}
+.green-color {
+	color: $green;
+}
+.yellow-color {
+	color: $yellow;
+}
+.dark-blue-color {
+	color: $dark-blue;
+}
+.orange-color {
+	color: $orange;
+}
+.blue-color {
+	color: $blue;
+}
+.dark-green-color {
+	color: $dark-green;
+}
+.light-red-color {
+	color: $light-red;
+}
+.dark-purple-color {
+	color: $dark-purple;
 }
