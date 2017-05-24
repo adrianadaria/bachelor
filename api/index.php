@@ -4,6 +4,11 @@ require_once('./config/Economic.php');
 require_once('./config/database.php');
 require_once('./objects/Product.php');
 require_once('./objects/Customer.php');
+require_once('./objects/Invoice.php');
+require_once('./objects/Account.php');
+require_once('./objects/ProductGroup.php');
+require_once('./objects/CustomerGroup.php');
+require_once('./objects/Order.php');
 
 $agreementGrantToken = "SI3xOLaIzbSWH1embrkNYSWWIKBK09bd8efEvZRvKwo1";
 $appSecretToken = "7tVtBFEIEBPre0Fq3NWlNds54AXF76xA4NIe8vMsKx41";
@@ -13,12 +18,15 @@ $ec = new Economic($agreementGrantToken, $appSecretToken);
 $database = new Database();
 $db = $database->getConnection();
 
-$productGroups = $ec->getAllProductGroups();
-$go = $ec->aaa();
 
 if (isset($_GET['products'])) {
 	$productDataObjects = $ec->getAllproducts();
     importProducts($productDataObjects, $db);
+}
+
+if (isset($_GET['pg'])) {
+	$productGroupDataObjects = $ec->getAllProductGroups();
+    importProductGroups($productGroupDataObjects, $db);
 }
 
 if (isset($_GET['customers'])) {
@@ -26,22 +34,25 @@ if (isset($_GET['customers'])) {
     importCustomers($customerDataArray, $db);
 }
 
-if (isset($_GET['pu'])) {
-	$number = 'Aconto';
-	$name = 'Aconto indbetaling blah';
-	$group = 1012; //5620
-	$pno = $ec->updateProduct($number, $name, $group, 400.00);
-    print($pno);
+if (isset($_GET['cg'])) {
+	$customerGroupDataObjects = $ec->getAllDebtorGroups();
+    importCustomerGroups($customerGroupDataObjects, $db);
 }
 
-if (isset($_GET['dp'])) {
-	/* $number = '98';
-	if ($ec->deleteProduct($number)) {
-		echo 'yay';
-	} else {
-		echo 'boo';
-	} */
-	print($ec->addProduct('98','atlas',1012,200.00));
+if (isset($_GET['inv'])) {
+	$invoiceDataObjects = $ec->getAllInvoices();
+	importInvoices($invoiceDataObjects, $db);
+   
+}
+
+if (isset($_GET['acc'])) {
+	$accountDataArray = $ec->getAllAccounts();
+	importAccounts($accountDataArray, $db);
+}
+
+if (isset($_GET['orders'])) {
+	$orderDataArray = $ec->getAllOrders();
+	importOrders($orderDataArray, $db);
 }
 
 function importProducts($data, $db) {
@@ -64,6 +75,30 @@ function importProducts($data, $db) {
 			echo '}';
 		}
 	} 				
+}
+
+function importProductGroups($data, $db) {
+	$productGroup = new ProductGroup($db);
+	
+	foreach ($data as $i => $row) {
+		$productGroup->number = $row->Number;
+		$productGroup->name = $row->Name;
+		(property_exists($row,'AccountForVatLiableDebtorInvoicesCurrentHandle') ? 
+			$productGroup->vatAcc = $row->AccountForVatLiableDebtorInvoicesCurrentHandle->Number : $productGroup->vatAcc = 0);
+		(property_exists($row,'AccountForVatExemptDebtorInvoicesCurrentHandle') ? 
+			$productGroup->noVatAcc = $row->AccountForVatExemptDebtorInvoicesCurrentHandle->Number : $productGroup->noVatAcc = 0);
+		$productGroup->created = date('Y-m-d H:i:s');
+
+		if($productGroup->create()){
+			echo '{';
+				echo '"message": "Product group was created."';
+			echo '}';
+		} else {
+			echo '{';
+				echo '"message": "Unable to create product group."';
+			echo '}';
+		}
+	}
 }
 
 function importCustomers($data, $db) {
@@ -92,6 +127,108 @@ function importCustomers($data, $db) {
 		} 
 	} 				
 }
+
+function importCustomerGroups($data, $db) {
+	$customerGroup = new CustomerGroup($db);
+	
+	foreach ($data as $i => $row) {
+		$customerGroup->number = $row->Number;
+		$customerGroup->name = $row->Name;
+		$customerGroup->account = $row->AccountHandle->Number;
+		$customerGroup->created = date('Y-m-d H:i:s');
+
+		if($customerGroup->create()){
+			echo '{';
+				echo '"message": "Customer group was created."';
+			echo '}';
+		} else {
+			echo '{';
+				echo '"message": "Unable to create customer group."';
+			echo '}';
+		}
+	}
+}
+
+function importInvoices($data, $db) {
+	$invoice = new Invoice($db);
+	
+	foreach ($data as $i => $row) {
+		$invoice->id = $row->Id;
+		$val = new DateTime($row->Date);
+		$invoice->date = $val->format('Y-m-d');
+		$invoice->cusNo = $row->DebtorHandle->Number;
+		$invoice->total = $row->NetAmount;
+		$invoice->created = date('Y-m-d H:i:s');
+
+		if($invoice->create()){
+			echo '{';
+				echo '"message": "Invoice was created."';
+			echo '}';
+		} else {
+			echo '{';
+				echo '"message": "Unable to create invoice."';
+			echo '}';
+		}
+	} 				
+}
+
+function importAccounts($data, $db) {
+	$account = new Account($db);
+	
+	foreach ($data as $i => $row) {
+		$account->number = $row->Number;
+		$account->name = $row->Name;
+		$account->type = $row->Type;
+		$account->card = $row->DebitCredit;
+		//if (property_exists($row,'VatAccountHandle')) { $account->vat = $row->VatAccountHandle->VatCode; }
+		(property_exists($row,'VatAccountHandle') ? $account->vat = $row->VatAccountHandle->VatCode : $account->vat = '');
+		$account->balance = $row->Balance;
+		$account->created = date('Y-m-d H:i:s');
+
+		if($account->create()){
+			echo '{';
+				echo '"message": "Account was created."';
+			echo '}';
+		} else {
+			echo '{';
+				echo '"message": "Unable to create account."';
+			echo '}';
+		}
+	} 				
+}
+
+function importOrders($data, $db) {
+	$order = new Order($db);
+	//print_r($data);
+	foreach ($data as $i => $row) {
+		
+		$order->id = $row->Id;
+		$order->cusNo = $row->DebtorHandle->Number;
+		$order->date = $row->Date;//$date->format('Y-m-d'); 
+		(property_exists($row,'DeliveryAddress') ? $order->delAddress = $row->DeliveryAddress : $order->delAddress = '');
+		(property_exists($row,'DeliveryPostalCode') ? $order->delZip = $row->DeliveryPostalCode : $order->delZip = '');
+		(property_exists($row,'DeliveryCity') ? $order->delCity = $row->DeliveryCity : $order->delCity = '');
+		(property_exists($row,'DeliveryCountry') ? $order->delCountry = $row->DeliveryCountry : $order->delCountry = '');
+		(property_exists($row,'TermsOfDelivery') ? $order->delTerms = $row->TermsOfDelivery : $order->DelTerms = '');
+		(property_exists($row,'DeliveryDate') ? $order->delDate = $row->DeliveryDate : $order->delDate = '');
+		$order->total = $row->NetAmount;
+		$order->created = date('Y-m-d H:i:s');
+			
+		if($order->create()) {
+			echo '{';
+				echo '"message": "Order was created."';
+			echo '}';
+		} else {
+			echo '{';
+				echo '"message": "Unable to create order."';
+			echo '}';
+		}
+	
+	}
+}
+//echo '<pre>';
+//print_r($ec->getAllProductGroups());
+//echo '</pre>';
 ?>
 <html>
 	<head>
@@ -109,9 +246,12 @@ function importCustomers($data, $db) {
 		<section>
 			<ul>
 				<li>Products <a href='index.php?products=true'>import</a></li>
+				<li>ProductGroups <a href='index.php?pg=true'>import</a></li>
 				<li>Customers <a href='index.php?customers=true'>import</a></li>
-				<li>Update product <a href='index.php?pu=true'>go</a></li>
-				<li>Delete product <a href='index.php?dp=true'>goo</a></li>
+				<li>CustomerGroups <a href='index.php?cg=true'>import</a></li>
+				<li>Invoices <a href='index.php?inv=true'>import</a></li>
+				<li>Accounts <a href='index.php?acc=true'>import</a></li>
+				<li>Orders <a href='index.php?orders=true'>import</a></li>
 			</ul>
 		</section>
 	</body>
