@@ -1,7 +1,235 @@
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #000;
+@import "./node_modules/react-vis/dist/style";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+@import "partials/_colors";
+@import "partials/_typography";
+@import "partials/_variables_size";
+@import "partials/_variables_colors";
+
+html{ 
+	height:100%; 
+}
 
 body {
-  font: 100% $font-stack;
-  color: $primary-color;
+font-family: $font-family;
+color: $secondrary-color;
+margin: 0px;
+min-height: 100%;
+}
+
+#container {
+    min-height: 100%;
+    position:relative;
+}
+#header {
+    background-color: #fff;
+    height: 70px;
+    width: 100%;
+}
+#body {
+   padding-bottom:60px;
+}
+
+#footer {
+    bottom: 0;
+    height: 60px;
+    left: 0;
+    position: absolute;
+    right: 0;
+}
+
+.container {
+	display: inline-block;
+	vertical-align: middle;
+	width: 100%;
+}
+.title {
+	padding: 30px;
+}
+.circle{
+	height: $size;
+	width: $size;
+	border-radius: 50px;
+	display: inline-block;
+	margin-left: 15px;
+}
+.triangle-up {
+	width: 0;
+	height: 0;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-bottom: 30px solid $logo-blue;
+}
+.triangle-down {
+	@extend .triangle-up;
+	border-bottom: 0px;
+	border-top: 30px solid $red;
+}
+
+.margin-top {
+	margin-top: 30px;
+}
+
+.margin-zero {
+	margin-top: 0px;
+}
+.box {
+	position: relative;
+  background-color: $box-color;
+  color: $font-color;
+  width: 33.13%;
+  margin: 0.1%;
+  float: left;
+  min-height: 250px;
+  max-height: 600px;
+}
+.box:hover {
+	box-shadow: 0 6px 6px rgba(0,0,0,.23);
+}
+.box:hover .circle {
+    background-color: $grey;  
+}
+
+.container-data{
+	padding: 0px 30px;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.right-active{
+	float: right;
+}
+.category{
+	margin-left: 80px;
+}
+.account_title{
+	letter-spacing: 2em;
+}
+.box-text {
+	text-align: center;
+}
+
+.box-product:hover {
+  @extend .box;
+    background-color: $yellow;
+}
+.box-customer:hover {
+  @extend .box;
+    background-color: $orange;
+}
+.box-invoice:hover {
+  @extend .box;
+    background-color: $blue;
+}
+.box-account:hover {
+  @extend .box;
+    background-color: $dark-purple;
+}
+.box-group:hover {
+  @extend .box;
+    background-color: $dark-green;
+}
+.box-order:hover {
+  @extend .box;
+    background-color: $light-red;
+}
+
+@media only screen and (max-width: 480px) {
+	.box {
+		width: 100%;
+		margin-bottom: 0.1%;
+	}
+
+	body {
+		margin: 0px;
+	}
+
+	.container-data{
+	width: 80%;
+
+	}
+	.circle{
+	height: 20px;
+	width: 20px;
+	}
+
+	.margin-top{
+		margin-top: 0px;
+	}
+
+	.category{
+	margin-left: 40px;
+}
+.account_title{
+	letter-spacing: 0.5em;
+}
+}
+
+@media (min-width:480px) and (max-width: 1024px) {
+	.box {
+		width: 49.8%;
+	}
+
+	.circle{
+	height: 20px;
+	width: 20px;
+	}
+
+		body {
+		margin: 0px;
+	}
+
+	.box {
+	height: 400px;
+}
+
+	.right {
+		float: left;
+	}
+
+	.margin-top{
+		margin-top: 10px;
+		margin-left: 5px;
+	}
+
+		.category{
+	margin-left: 40px;
+}
+.account_title{
+	letter-spacing: 0.5em;
+}
+
+
+}
+
+
+
+@media only screen and (min-width: 960px) {
+
+.box {
+	height: 600px;
+}
+
+.right-active {
+	float: left;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+
+}
+
+@media only screen and (max-width: 1200px) {
+		.triangle-up {
+
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 15px solid $logo-blue;
+	}
+	.triangle-down {
+		border-bottom: 0px;
+		border-top: 15px solid $red;
+	}
 }

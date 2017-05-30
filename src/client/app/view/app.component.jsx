@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import HomePageComponent from './home_page.component.jsx';
+import style from './sass/home_page.scss';
+
 
 // navigation imports
 import ReadProductsComponent   from './product/read_products.component.jsx';
@@ -53,17 +55,27 @@ class AppComponent extends React.Component {
 				break;
 		}
 		
-			return (
-				<div>
-					<div>
-						<a href='#' onClick={() => this.changeAppMode('home')}
-						   className='btn btn-info m-r-1em' style={{marginTop:10+'px', marginBottom:10+'px'}} >
-							HomePage(LOGO)
-						</a>
-					</div>
-					{modeComponent}
+	return (
+		<div id="container">
+   			<div id="header">
+
+   					<div className="nav-header">
+					<a href='#'  onClick={() => this.props.changeAppMode('home')}>
+						<img src="http://localhost/BACHELOR/bachelor/src/client/app/view/img/logo_small.png" alt="home"/>
+					</a>
 				</div>
-			);
+   			</div>
+   			<div id="body">
+   						{modeComponent}
+   			</div>
+   			<div id="footer">
+   				<h6>Copyrights 2017 - THRIFT</h6>
+   			</div>
+		</div>
+				
+
+
+		);
 	}
 }
 

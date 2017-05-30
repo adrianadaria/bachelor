@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/invoice_page.scss';
 
 class ReadInvoicesComponent extends React.Component {
 
@@ -66,8 +67,13 @@ class ReadInvoicesComponent extends React.Component {
 
         return (
             //if current mode read render tobar
-            <div className='overflow-hidden'>
-                Helloy
+            <div className="container">
+                <div className="col-left">
+                    <p>List of Invoices</p>
+                </div>
+                <div className="col-right">
+                    <p>Make Invoices</p>
+                </div>
             </div>
         );
     }

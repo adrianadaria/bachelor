@@ -1,0 +1,85 @@
+@import "partials/_variables_size";
+@import "partials/_variables_colors";
+
+
+.red {
+	@extend .circle;
+	background-color: $red;
+}
+.light-blue {
+	@extend .circle;
+	background-color: $light-blue;
+}
+.purple {
+	@extend .circle;
+	background-color: $purple;
+}
+.green {
+	@extend .circle;
+	background-color: $green;
+}
+.yellow {
+	@extend .circle;
+	background-color: $yellow;
+}
+.dark-blue {
+	@extend .circle;
+	background-color: $dark-blue;
+}
+.orange {
+	@extend .circle;
+	background-color: $orange;
+}
+.blue {
+	@extend .circle;
+	background-color: $blue;
+}
+.dark-green {
+	@extend .circle;
+	background-color: $dark-green;
+}
+.light-red {
+	@extend .circle;
+	background-color: $light-red;
+}
+.dark-purple {
+	@extend .circle;
+	background-color: $dark-purple;
+}
+.red-color {
+	color: $red;
+}
+.light-blue-color {
+	color: $light-blue;
+}
+.purple-color {
+	color: $purple;
+}
+.green-color {
+	color: $green;
+}
+.yellow-color {
+	color: $yellow;
+}
+.dark-blue-color {
+	color: $dark-blue;
+}
+.orange-color {
+	color: $orange;
+}
+.blue-color {
+	color: $blue;
+}
+.dark-green-color {
+	color: $dark-green;
+}
+.light-red-color {
+	color: $light-red;
+}
+.dark-purple-color {
+	color: $dark-purple;
+}
+
+.logo-blue{
+	color: $logo-blue;
+}

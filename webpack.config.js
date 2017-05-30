@@ -15,12 +15,16 @@ var config = {
       {
         test : /\.jsx?/,
         include : APP_DIR,
-        loader : 'babel-loader'
+        loader : 'babel-loader',
+        exclude: [/node_modules/]
       },
       {
         test: /\.scss$/,
         loaders: [ 'style-loader', 'css-loader', 'sass-loader' ]
-        }
+      },
+      {
+        test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'
+      }
     ]
   }
 };

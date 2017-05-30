@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-
+import style from '../sass/home_page.scss';
 import CustomerTableComponent from './customer_table.component.jsx';
 import ReadOneCustomerComponent from './read_one_customer.component.jsx';
 import CreateCustomerComponent from './create_customer.component.jsx';
@@ -67,7 +67,7 @@ class ReadCustomersComponent extends React.Component {
         //console.log(filteredProducts);
         return (
             //if current mode read render tobar
-            <div className='overflow-hidden'>
+            <div id='#body'>
 
                 welcome customer section
             </div>
