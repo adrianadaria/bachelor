@@ -54,7 +54,6 @@ class AppComponent extends React.Component {
 			default:
 				break;
 		}
-		
 	return (
 		<div id="container">
    			<div id="header">

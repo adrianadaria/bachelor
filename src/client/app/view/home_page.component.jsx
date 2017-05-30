@@ -70,7 +70,6 @@ const data = {
     ]
   }]
 };
-
 const bubb = {
   labels: ['January'],
   datasets: [
