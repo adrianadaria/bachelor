@@ -54,6 +54,15 @@ class AppComponent extends React.Component {
 			case 'invoice':
 				modeComponent = <ReadInvoicesComponent />;
 				break;
+			case 'account':
+				modeComponent = <ReadAccountsComponent />;
+				break;
+			case 'order':
+				modeComponent = <ReadOrdersComponent />;
+				break;
+			case 'group':
+				modeComponent = <ReadGroupsComponent />;
+				break;			
 			default:
 				break;
 		}
