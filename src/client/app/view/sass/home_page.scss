@@ -84,10 +84,6 @@ min-height: 100%;
 .box:hover {
 	box-shadow: 0 6px 6px rgba(0,0,0,.23);
 }
-.box:hover .circle {
-    background-color: $grey;  
-}
-
 .container-data{
 	padding: 0px 30px;
 }
@@ -109,7 +105,7 @@ min-height: 100%;
 .box-text {
 	text-align: center;
 }
-
+/*
 .box-product:hover {
   @extend .box;
     background-color: $yellow;
@@ -133,7 +129,7 @@ min-height: 100%;
 .box-order:hover {
   @extend .box;
     background-color: $light-red;
-}
+}*/
 
 @media only screen and (max-width: 480px) {
 	.box {

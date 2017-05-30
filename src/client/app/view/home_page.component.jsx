@@ -17,11 +17,6 @@ class HomePageComponent extends React.Component {
   constructor(props) {
     super(props);
   }
- componentDidMount() {
-    this.myChart = this.refs['canvas'].getChart();
-    this.myChart.data.datasets[0].points[2] = 50;
-    this.myChart.update();
-  }
   render() {
 
     const line = {
