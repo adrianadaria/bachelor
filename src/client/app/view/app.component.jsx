@@ -56,18 +56,25 @@ class AppComponent extends React.Component {
 		}
 		
 	return (
-		<div className="container">
-				
-				<div className="nav-header">
+		<div id="container">
+   			<div id="header">
+
+   					<div className="nav-header">
 					<a href='#'  onClick={() => this.props.changeAppMode('home')}>
 						<img src="http://localhost/BACHELOR/bachelor/src/client/app/view/img/logo_small.png" alt="home"/>
 					</a>
 				</div>
-			{modeComponent}
-			<div className="footer">
-				<h4>Copyrights 2017 - THRIFT</h4>
-			</div>
+   			</div>
+   			<div id="body">
+   						{modeComponent}
+   			</div>
+   			<div id="footer">
+   				<h6>Copyrights 2017 - THRIFT</h6>
+   			</div>
 		</div>
+				
+
+
 		);
 	}
 }

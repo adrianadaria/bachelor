@@ -1,30 +1,7 @@
-//First Design
-$red: #f1664c;
-$light-blue: #8dd4dc;
-$purple: #8f75b4;
-$green: #66c088;
-$yellow: #ffc80b;
-$dark-blue: #5572b7;
-
-//Second Design
-$orange: #f89837;
-$blue: #83c6ea;
-$dark-green: #1b8057;
-$light-red: #e57575;
-$dark-purple: #643579;
+@import "partials/_variables_size";
+@import "partials/_variables_colors";
 
 
-
-$grey: #c8c8ca;
-$size: 30px;
-
-.circle{
-	height: $size;
-	width: $size;
-	border-radius: 50px;
-	display: inline-block;
-	margin-left: 15px;
-}
 .red {
 	@extend .circle;
 	background-color: $red;
@@ -69,7 +46,6 @@ $size: 30px;
 	@extend .circle;
 	background-color: $dark-purple;
 }
-
 .red-color {
 	color: $red;
 }
@@ -102,4 +78,8 @@ $size: 30px;
 }
 .dark-purple-color {
 	color: $dark-purple;
+}
+
+.logo-blue{
+	color: $logo-blue;
 }
