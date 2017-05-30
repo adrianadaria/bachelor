@@ -1,20 +1,16 @@
 <?php
-class Customer {
+class Invoice {
  
     // database connection and table name
     private $conn;
-    private $table_name = "customer";
+    private $table_name = "invoice";
  
     // object properties
-    public $number;
-    public $name;
-	public $email;
-	public $address;
-	public $postcode;
-    public $city;
-    public $country;
-    public $cvr;
-	public $created;
+    public $id;
+    public $date;
+    public $cusNo;
+    public $total;
+    public $created;
  
     // constructor with $db as database connection
     public function __construct($db) {
@@ -25,7 +21,8 @@ class Customer {
 	function read() {
  
 		// select all query
-		$query = "SELECT number, name, email, address, postcode, city, country, cvr, created FROM " . $this->table_name . " ORDER BY created DESC";
+		$query = "SELECT i.*, c.name, c.address, c.city, c.postcode, c.country, c.email FROM " . $this->table_name . 
+		" i JOIN customer c ON i.cusNo = c.number ORDER BY i.created DESC";
  
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
@@ -36,47 +33,30 @@ class Customer {
 		return $stmt;
 	}
 	
-	public function emptyProp() {
-		$this->email = '';
-		$this->address = '';
-		$this->postcode = '';
-		$this->city = '';
-		$this->country = '';
-		$this->cvr = '';
-	}
-	
 	// create product
 	function create() {
  
 		// query to insert record
-		$query = "INSERT INTO " . $this->table_name . " SET number=:number, name=:name, email=:email, 
-			address=:address, postcode=:postcode, city=:city, country=:country, cvr=:cvr, created=:created";
+		$query = "INSERT INTO " . $this->table_name . " SET id=:id, date=:date, cusNo=:cusNo, 
+			total=:total, created=:created";
 		
 		// prepare query
 		$stmt = $this->conn->prepare($query);
  
 		// sanitize
-		$this->number=htmlspecialchars(strip_tags($this->number));
-		$this->name=htmlspecialchars(strip_tags($this->name));
-		$this->email=htmlspecialchars(strip_tags($this->email));
-		$this->address=htmlspecialchars(strip_tags($this->address));
-		$this->postcode=htmlspecialchars(strip_tags($this->postcode));
-		$this->city=htmlspecialchars(strip_tags($this->city));
-		$this->country=htmlspecialchars(strip_tags($this->country));
-		$this->cvr=htmlspecialchars(strip_tags($this->cvr));
+		$this->id=htmlspecialchars(strip_tags($this->id));
+		$this->date=htmlspecialchars(strip_tags($this->date));
+		$this->cusNo=htmlspecialchars(strip_tags($this->cusNo));
+		$this->total=htmlspecialchars(strip_tags($this->total));
 		$this->created=htmlspecialchars(strip_tags($this->created));
 		
 		// bind values
-		$stmt->bindParam(":number", $this->number);
-		$stmt->bindParam(":name", $this->name);
-		$stmt->bindParam(":email", $this->email);
-		$stmt->bindParam(":address", $this->address);
-		$stmt->bindParam(":postcode", $this->postcode);
-		$stmt->bindParam(":city", $this->city);
-		$stmt->bindParam(":country", $this->country);
-		$stmt->bindParam(":cvr", $this->cvr);
+		$stmt->bindParam(":id", $this->id);
+		$stmt->bindParam(":date", $this->date);
+		$stmt->bindParam(":cusNo", $this->cusNo);
+		$stmt->bindParam(":total", $this->total);
 		$stmt->bindParam(":created", $this->created);
-		
+ 
 		// execute query
 		if($stmt->execute()) {
 			return true;
@@ -89,7 +69,8 @@ class Customer {
 	function readOne() {
  
 		// query to read single record
-		$query = "SELECT number, name, email, address, postcode, city, country, cvr, created FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
+		//$query = "SELECT number, name, group, price, created FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
+		$query = "SELECT number, name, `group`, price FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
  
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
@@ -102,38 +83,32 @@ class Customer {
  
 		// get retrieved row
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
- 
 		// set values to object properties
-		$this->number = $row['number'];
 		$this->name = $row['name'];
-		$this->email = $row['email'];
-		$this->address = $row['address'];
-		$this->postcode = $row['postcode'];
-		$this->city = $row['city'];
-		$this->country = $row['country'];
-		$this->cvr = $row['cvr'];
+		$this->group = $row['group'];
+		$this->price = $row['price'];
 	}
 	
 	// update the product
 	function update() {
  
 		// update query
-		$query = "UPDATE " . $this->table_name . " SET name=:name, description=:description, price=:price WHERE id=:id";
+		$query = "UPDATE " . $this->table_name . " SET name=:name, `group`=:group, price=:price WHERE number=:number";
  
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
  
 		// sanitize
 		$this->name=htmlspecialchars(strip_tags($this->name));
-		$this->description=htmlspecialchars(strip_tags($this->description));
+		$this->group=htmlspecialchars(strip_tags($this->group));
 		$this->price=htmlspecialchars(strip_tags($this->price));
-		$this->id=htmlspecialchars(strip_tags($this->id));
+		$this->number=htmlspecialchars(strip_tags($this->number));
     
 		// bind new values
 		$stmt->bindParam(':name', $this->name);
-		$stmt->bindParam(':description', $this->description);
+		$stmt->bindParam(':group', $this->group);
 		$stmt->bindParam(':price', $this->price);
-		$stmt->bindParam(':id', $this->id);
+		$stmt->bindParam(':number', $this->number);
  
 		// execute the query
 		if($stmt->execute()) {
@@ -147,16 +122,16 @@ class Customer {
 	function delete() {
  
 		// delete query
-		$query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+		$query = "DELETE FROM " . $this->table_name . " WHERE number = ?";
  
 		// prepare query
 		$stmt = $this->conn->prepare($query);
  
 		// sanitize
-		$this->id=htmlspecialchars(strip_tags($this->id));
+		$this->number=htmlspecialchars(strip_tags($this->number));
  
 		// bind id of record to delete
-		$stmt->bindParam(1, $this->id);
+		$stmt->bindParam(1, $this->number);
  
 		// execute query
 		if($stmt->execute()) {
@@ -220,5 +195,4 @@ class Customer {
  
 		return $row['total_rows'];
 	}
-	
 }
