@@ -1,21 +1,31 @@
 import React from 'react';
 import $ from 'jquery';
 
-class UpdateProductComponent extends React.Component {
+class UpdateCustomerComponent extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            id: 0,
+            number: 0,
             name: '',
-            price: 0.00,
+            email: '',
+            address: '',
+            postcode: '',
+            city: '',
+            country: '',
+            cvr: 0,
             successCreation: null
         };
 
         this.onNumberChange = this.onNumberChange.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
         this.onPriceChange = this.onPriceChange.bind(this);
+        this.onNumberChange = this.onNumberChange.bind(this);
+        this.onNameChange = this.onNameChange.bind(this);
+        this.onPriceChange = this.onPriceChange.bind(this);
+        this.onNumberChange = this.onNumberChange.bind(this);
+        this.onNameChange = this.onNameChange.bind(this);
         this.onSave = this.onSave.bind(this);
     }
 
@@ -133,4 +143,4 @@ class UpdateProductComponent extends React.Component {
     }
 }
 
-export default UpdateProductComponent;
+export default UpdateCustomerComponent;
