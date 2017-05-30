@@ -8,6 +8,9 @@ import style from './sass/home_page.scss';
 import ReadProductsComponent   from './product/read_products.component.jsx';
 import ReadCustomersComponent from './customer/read_customers.component.jsx';
 import ReadInvoicesComponent from './invoice/read_invoices.component.jsx';
+import ReadAccountsComponent from './account/read_accounts.component.jsx';
+import ReadOrdersComponent from './order/read_orders.component.jsx';
+import ReadGroupsComponent from './group/read_groups.component.jsx';
 
 class AppComponent extends React.Component {
 	
@@ -59,7 +62,7 @@ class AppComponent extends React.Component {
    			<div id="header">
 
    					<div className="nav-header">
-					<a href='#'  onClick={() => this.props.changeAppMode('home')}>
+					<a href='#'  onClick={() => this.changeAppMode('home')} >
 						<img src="http://localhost/BACHELOR/bachelor/src/client/app/view/img/logo_small.png" alt="home"/>
 					</a>
 				</div>
