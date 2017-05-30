@@ -67,12 +67,53 @@ class Economic {
 					)
 				)
 			)->Debtor_CreateFromDataResult;
+			return $newDebtorFromData;
 			print("<p>A new debtor has been created.</p>");
 		} catch(Exception $e) {
 			print("<p><b>Could not create debtor.</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
 		}
 		
+	}
+	
+	public function updateDebtor($dNo, $dName, $dEmail, $dAddress, $dPostCode, $dCity, $dCountry, $dCvr) {
+		
+		try
+		{
+			//Fetch first DebtorGroup
+			$debtorGroupHandles = $this->client->debtorGroup_GetAll()->DebtorGroup_GetAllResult->DebtorGroupHandle;
+			
+			//Fetch second TermOfPayment
+			$termOfPaymentHandles = $this->client->TermOfPayment_GetAll()->TermOfPayment_GetAllResult->TermOfPaymentHandle;
+			
+			//Add new customer/debtor
+			$updateDebtorFromData = $this->client->Debtor_UpdateFromData (
+				array( 'data' =>
+					array(
+						'Handle'				=> array('Number' => $dNo),
+						'Number'            	=> $dNo,
+						'DebtorGroupHandle' 	=> array_values($debtorGroupHandles)[0], //first group debtors
+						'Name'              	=> $dName,
+						'VatZone'           	=> 'HomeCountry',
+						'CurrencyHandle'		=> array('Code' => 'DKK'),
+						'IsAccessible'			=> true,
+						'Ean'					=> null,
+						'Email'					=> $dEmail,
+						'Address'				=> $dAddress,
+						'PostalCode'			=> $dPostCode,
+						'City'					=> $dCity,
+						'Country'				=> $dCountry,
+						'CINumber'				=> $dCvr,
+						'TermOfPaymentHandle'	=> array_values($termOfPaymentHandles)[1] //lobende maned 30dage
+					)
+				)
+			)->Debtor_UpdateFromDataResult;
+			return $updateDebtorFromData;
+			print("<p>Debtor has been updated.</p>");
+		} catch(Exception $e) {
+			print("<p><b>Could not update debtor.</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		}
 	}
 	
 	public function getAllDebtors() {	//get all customers
@@ -87,6 +128,17 @@ class Economic {
 			
 		} catch(Exception $e) {
 			print("<p><b>Error occuried fetching all the debtors</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		}
+	}
+	
+	public function deleteDebtor($no) {
+		try {
+			$numberArr = array('Number' => $no);
+			$this->client->Debtor_Delete(array('debtorHandle' => $numberArr));
+			return true;
+		} catch(Exception $e) {
+			print("<p><b>Error occuried deleting</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
 		}
 	}
@@ -295,7 +347,7 @@ class Economic {
 		}		
 	}
 	
-	public function addAccount($no, $name, $type, $ptype) {
+	public function addAccount($no, $name, $type, $card) {
 		
 		try {
 			$newAccount = $this->client->Account_CreateFromData(
@@ -305,7 +357,7 @@ class Economic {
 						'Number' => $no,
 						'Name' => $name,
 						'Type' => $type,
-						'DebitCredit' => $ptype,
+						'DebitCredit' => $card,
 						'IsAccessible' => true,
 						'BlockDirectEntries' => false,
 						'VatAccountHandle' => array('VatCode' => 'U25'),
@@ -313,12 +365,51 @@ class Economic {
 					)
 				)
 			)->Account_CreateFromDataResult;
-			print("<p><b>Account has been created!</b></p>");	
+			return true;
+			print("<p><b>Account has been created!</b></p>");			
 			
 		} catch(Exception $e) {
 			print("<p><b>Error occuried creating account</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
 		}
+	}
+	
+	public function updateAccount($number, $name, $type, $card) {
+		try {
+			$updateAccount = $this->client->Account_UpdateFromData (
+				array( 'data' =>
+					array(
+						'Handle' => array('Number' => $number),
+						'Number' => $number,
+						'Name' => $name,
+						'Type' => $type,
+						'DebitCredit' => $card,
+						'IsAccessible' => true,
+						'BlockDirectEntries' => false,
+						'VatAccountHandle' => array('VatCode' => 'U25'),
+						'Balance' => 0.00
+					)
+				)
+			)->Account_UpdateFromDataResult;
+			return $updateAccount;
+			print("<p><b>Account has been updated!</b></p>");			
+			
+		} catch(Exception $e) {
+			print("<p><b>Error occuried updating account</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		}
+	}
+	
+	public function deleteAccount($number) {
+		
+		try {
+			$numberArr = array('Number' => $number);
+			$this->client->Account_Delete(array('accountHandle' => $numberArr));
+			return true;
+		} catch(Exception $e) {
+			print("<p><b>Error occuried deleting</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		} 
 	}
 	
 	public function addDebtorGroup($no, $name, $ano) {
@@ -334,10 +425,33 @@ class Economic {
 					)
 				)
 			)->DebtorGroup_CreateFromDataResult;
+			return $newDebtorGroup;
 			print("<p><b>Customer group has been created!</b></p>");	
 			
 		} catch(Exception $e) {
 			print("<p><b>Error occuried creating customer group</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		}
+	}
+	
+	public function updateDebtorGroup($no, $name, $ano) {
+		try {
+			$updateDebtorGroup = $this->client->DebtorGroup_UpdateFromData (
+				array( 'data' =>
+					array(
+						'Handle' => array('Number' => $no),
+						'Number' => $no,
+						'Name' => $name,
+						'AccountHandle' => array('Number' => $ano)
+						//'LayoutHandle' => array('Id' => $id)
+					)
+				)
+			)->DebtorGroup_UpdateFromDataResult;
+			return $updateDebtorGroup;
+			print("<p><b>Customer group has been updated!</b></p>");	
+			
+		} catch(Exception $e) {
+			print("<p><b>Error occuried updating customer group</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
 		}
 	}
@@ -353,6 +467,62 @@ class Economic {
 			print("<p><b>Error occuried getting customer groups data</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
 		}		
+	}
+	
+	public function addProductGroup($no, $name, $vat, $noVat) {
+		try {
+			$newProductGroup = $this->client->ProductGroup_CreateFromData (
+				array( 'data' =>
+					array(
+						'Handle' => array('Number' => $no),
+						'Number' => $no,
+						'Name' => $name,
+						'AccountForVatLiableDebtorInvoicesCurrentHandle' => array('Number' => $vat),
+						'AccountForVatExemptDebtorInvoicesCurrentHandle' => array('Number' => $noVat)
+					)
+				)
+			)->ProductGroup_CreateFromDataResult;
+			return $newProductGroup;
+			print("<p><b>Product group has been created!</b></p>");	
+			
+		} catch(Exception $e) {
+			print("<p><b>Error occuried creating product group</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		}
+	}
+	
+	public function updateProductGroup($no, $name, $vat, $noVat) {
+		try {
+			$updatedProductGroup = $this->client->ProductGroup_UpdateFromData(
+				array( 'data' =>
+					array(
+						'Handle' => array('Number' => $no),
+						'Number' => $no,
+						'Name' => $name,
+						'AccountForVatLiableDebtorInvoicesCurrentHandle' => array('Number' => $vat),
+						'AccountForVatExemptDebtorInvoicesCurrentHandle' => array('Number' => $noVat)
+					)
+				)
+			)->ProductGroup_UpdateFromDataResult;
+			return $updatedProductGroup;
+			print("<p><b>Product group has been updated!</b></p>");	
+			
+		} catch(Exception $e) {
+			print("<p><b>Error occuried updating product group</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		}
+	}
+	
+	public function deleteProductGroup($number) {
+		
+		try {
+			$numberArr = array('Number' => $number);
+			$this->client->ProductGroup_Delete(array('productGroupHandle' => $numberArr));
+			return true;
+		} catch(Exception $e) {
+			print("<p><b>Error occuried deleting</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		} 
 	}
 	
 	public function getAllProductGroups() {

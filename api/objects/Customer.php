@@ -89,7 +89,7 @@ class Customer {
 	function readOne() {
  
 		// query to read single record
-		$query = "SELECT number, name, email, address, postcode, city, country, cvr, created FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
+		$query = "SELECT number, name, email, address, postcode, city, country, cvr FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
  
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
@@ -118,22 +118,31 @@ class Customer {
 	function update() {
  
 		// update query
-		$query = "UPDATE " . $this->table_name . " SET name=:name, description=:description, price=:price WHERE id=:id";
+		$query = "UPDATE " . $this->table_name . " SET name=:name, email=:email, address=:address, 
+			postcode=:postcode, city=:city, country=:country, cvr=:cvr WHERE number=:number";
  
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
  
 		// sanitize
+		$this->number=htmlspecialchars(strip_tags($this->number));
 		$this->name=htmlspecialchars(strip_tags($this->name));
-		$this->description=htmlspecialchars(strip_tags($this->description));
-		$this->price=htmlspecialchars(strip_tags($this->price));
-		$this->id=htmlspecialchars(strip_tags($this->id));
-    
-		// bind new values
-		$stmt->bindParam(':name', $this->name);
-		$stmt->bindParam(':description', $this->description);
-		$stmt->bindParam(':price', $this->price);
-		$stmt->bindParam(':id', $this->id);
+		$this->email=htmlspecialchars(strip_tags($this->email));
+		$this->address=htmlspecialchars(strip_tags($this->address));
+		$this->postcode=htmlspecialchars(strip_tags($this->postcode));
+		$this->city=htmlspecialchars(strip_tags($this->city));
+		$this->country=htmlspecialchars(strip_tags($this->country));
+		$this->cvr=htmlspecialchars(strip_tags($this->cvr));
+		
+		// bind values
+		$stmt->bindParam(":number", $this->number);
+		$stmt->bindParam(":name", $this->name);
+		$stmt->bindParam(":email", $this->email);
+		$stmt->bindParam(":address", $this->address);
+		$stmt->bindParam(":postcode", $this->postcode);
+		$stmt->bindParam(":city", $this->city);
+		$stmt->bindParam(":country", $this->country);
+		$stmt->bindParam(":cvr", $this->cvr);
  
 		// execute the query
 		if($stmt->execute()) {
@@ -147,16 +156,16 @@ class Customer {
 	function delete() {
  
 		// delete query
-		$query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+		$query = "DELETE FROM " . $this->table_name . " WHERE number = ?";
  
 		// prepare query
 		$stmt = $this->conn->prepare($query);
  
 		// sanitize
-		$this->id=htmlspecialchars(strip_tags($this->id));
+		$this->number = htmlspecialchars(strip_tags($this->number));
  
 		// bind id of record to delete
-		$stmt->bindParam(1, $this->id);
+		$stmt->bindParam(1, $this->number);
  
 		// execute query
 		if($stmt->execute()) {
@@ -165,60 +174,4 @@ class Customer {
 			return false;
 		} 
 	}
-	
-	// search products
-	function search($keywords){
- 
-		// select all query
-		$query = "SELECT id, name, description, price, created FROM " . $this->table_name . " WHERE
-            name LIKE ? OR description LIKE ? ORDER BY created DESC";
- 
-		// prepare query statement
-		$stmt = $this->conn->prepare($query);
- 
-		// sanitize
-		$keywords = htmlspecialchars(strip_tags($keywords));
-		$keywords = "%{$keywords}%";
- 
-		// bind
-		$stmt->bindParam(1, $keywords);
-		$stmt->bindParam(2, $keywords);
- 
-		// execute query
-		$stmt->execute();
- 
-		return $stmt;
-	}
-	
-	// read products with pagination
-	public function readPaging($from_record_num, $records_per_page){
- 
-		// select query
-		$query = "SELECT id, name, description, price, created FROM " . $this->table_name . " ORDER BY created DESC LIMIT ?, ?";
- 
-		// prepare query statement
-		$stmt = $this->conn->prepare( $query );
- 
-		// bind variable values
-		$stmt->bindParam(1, $from_record_num, PDO::PARAM_INT);
-		$stmt->bindParam(2, $records_per_page, PDO::PARAM_INT);
- 
-		// execute query
-		$stmt->execute();
- 
-		// return values from database
-		return $stmt;
-	}
-	
-	// used for paging products
-	public function count(){
-		$query = "SELECT COUNT(*) as total_rows FROM " . $this->table_name . "";
- 
-		$stmt = $this->conn->prepare( $query );
-		$stmt->execute();
-		$row = $stmt->fetch(PDO::FETCH_ASSOC);
- 
-		return $row['total_rows'];
-	}
-	
 }

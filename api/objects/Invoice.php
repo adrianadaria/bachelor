@@ -70,13 +70,14 @@ class Invoice {
  
 		// query to read single record
 		//$query = "SELECT number, name, group, price, created FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
-		$query = "SELECT number, name, `group`, price FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
+		$query = "SELECT i.*, c.name FROM " . $this->table_name . 
+			" i JOIN customer c ON i.cusNo = c.number WHERE id = ? LIMIT 0,1";
  
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
  
 		// bind id of product to be updated
-		$stmt->bindParam(1, $this->number);
+		$stmt->bindParam(1, $this->id);
  
 		// execute query
 		$stmt->execute();
@@ -84,9 +85,11 @@ class Invoice {
 		// get retrieved row
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		// set values to object properties
-		$this->name = $row['name'];
-		$this->group = $row['group'];
-		$this->price = $row['price'];
+		$this->date = $row['date'];
+		$this->cusNo = $row['cusNo'];
+		$this->total = $row['total'];
+		
+		return $row['name'];
 	}
 	
 	// update the product

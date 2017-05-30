@@ -95,13 +95,14 @@ class Order {
  
 		// query to read single record
 		//$query = "SELECT number, name, group, price, created FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
-		$query = "SELECT number, name, `group`, price FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
+		$query = "SELECT o.*, c.name FROM " . $this->table_name . 
+		" o JOIN customer c ON o.cusNo = c.number WHERE id = ? LIMIT 0,1"; 
  
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
  
 		// bind id of product to be updated
-		$stmt->bindParam(1, $this->number);
+		$stmt->bindParam(1, $this->id);
  
 		// execute query
 		$stmt->execute();
@@ -109,9 +110,16 @@ class Order {
 		// get retrieved row
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		// set values to object properties
-		$this->name = $row['name'];
-		$this->group = $row['group'];
-		$this->price = $row['price'];
+		$this->cusNo = $row['cusNo'];
+		$this->date = $row['date'];
+		$this->delAddress = $row['delAddress'];
+		$this->delZip = $row['delZip'];
+		$this->delCity = $row['delCity'];
+		$this->delCountry = $row['delCountry'];
+		$this->delTerms = $row['delTerms'];
+		$this->delDate = $row['delDate'];
+		$this->total = $row['total'];
+		return $row['name'];
 	}
 	
 	// update the product
