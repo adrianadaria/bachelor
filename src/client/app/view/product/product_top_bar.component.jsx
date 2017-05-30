@@ -13,6 +13,10 @@ class ProductTopBarComponent extends React.Component {
                    onClick={() => this.props.changeProductMode('create')}
                    className='btn btn-primary margin-bottom-1em'> Create product
                 </a>
+                <a href='#'
+                   onClick={() => this.props.refresh()}
+                   className='btn btn-primary margin-bottom-1em'> refresh
+                </a>
             </div>
         );
     }

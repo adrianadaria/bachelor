@@ -25,7 +25,12 @@ class CustomerTableComponent extends React.Component {
                     <tr>
                         <th>Number</th>
                         <th>Name</th>
-                        <th>Price</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Zip</th>
+                        <th>City</th>
+                        <th>Country</th>
+                        <th>CVR</th>
                         <th>Action</th>
                     </tr>
                     </thead>

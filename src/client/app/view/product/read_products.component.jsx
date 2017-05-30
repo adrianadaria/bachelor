@@ -18,18 +18,23 @@ class ReadProductsComponent extends React.Component {
             currentMode: 'read',
             productNo: null,
             products: []
-        }
+        };
 
         this.changeProductMode = this.changeProductMode.bind(this);
+        this.fetchProducts = this.fetchProducts.bind(this);
+    }
+
+    fetchProducts() {
+        this.serverRequest = $.get("http://localhost/api/product/read.php", (products) => {
+            this.setState({
+                products: products.records
+            });
+        });
     }
 
     // on mount, fetch all products and stored them as this component's state
     componentDidMount() {
-        this.serverRequest = $.get("http://localhost/api/product/read.php", (products) => {
-                this.setState({
-                    products: products.records
-                });
-        });
+        this.fetchProducts();
     }
 
     // on unmount, kill product fetching in case the request is still pending
@@ -47,7 +52,7 @@ class ReadProductsComponent extends React.Component {
 
     // render component on the page
     render() {
-        let topBar = <ProductTopBarComponent changeProductMode={this.changeProductMode} />;
+        let topBar = <ProductTopBarComponent changeProductMode={this.changeProductMode} refresh={this.fetchProducts} />;
         let filteredProducts = this.state.products;
         let modeComponent = <ProductTableComponent products={filteredProducts} changeProductMode={this.changeProductMode} />;
         $('.page-header h1').text('Read Products');

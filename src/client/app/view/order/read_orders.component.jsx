@@ -1,34 +1,34 @@
 import React from 'react';
 import $ from 'jquery';
 
-import InvoiceTableComponent from './invoice_table.component.jsx';
+import OrderTableComponent from './order_table.component.jsx';
 
-class ReadInvoicesComponent extends React.Component {
+class ReadOrdersComponent extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             currentMode: 'read',
-            invoiceId: null,
-            invoices: []
+            orderId: null,
+            orders: []
         };
 
-        this.changeInvoiceMode = this.changeInvoiceMode.bind(this);
-        this.fetchInvoices = this.fetchInvoices.bind(this);
+        this.changeOrderMode = this.changeOrderMode.bind(this);
+        this.fetchOrders = this.fetchOrders.bind(this);
     }
 
-    fetchInvoices() {
-        this.serverRequest = $.get("http://localhost/api/invoice/read.php", (invoice) => {
+    fetchOrders() {
+        this.serverRequest = $.get("http://localhost/api/order/read.php", (order) => {
             this.setState({
-                invoices: invoice.records
+                orders: order.records
             });
         });
     }
 
     // on mount, fetch all products and stored them as this component's state
     componentDidMount() {
-        this.fetchInvoices();
+        this.fetchOrders();
     }
 
     // on unmount, kill product fetching in case the request is still pending
@@ -36,19 +36,19 @@ class ReadInvoicesComponent extends React.Component {
         this.serverRequest.abort();
     }
 
-    changeInvoiceMode(newMode, invoiceId) {
+    changeOrderMode(newMode, orderId) {
         this.setState({currentMode: newMode});
 
-        if(invoiceId !== undefined) {
-            this.setState({invoiceId: invoiceId});
+        if(orderId !== undefined) {
+            this.setState({orderId: orderId});
         }
     }
 
     // render component on the page
     render() {
-        let filteredInvoices = this.state.invoices;
-        let modeComponent = <InvoiceTableComponent invoices={filteredInvoices} changeInvoiceMode={this.changeInvoiceMode} />;
-        $('.page-header h1').text('Read Invoices');
+        let filteredOrders = this.state.orders;
+        let modeComponent = <OrderTableComponent orders={filteredOrders} changeOrderMode={this.changeOrderMode} />;
+        $('.page-header h1').text('Read Orders');
         switch(this.state.currentMode) {
             case 'read':
                 break;
@@ -81,4 +81,4 @@ class ReadInvoicesComponent extends React.Component {
 
 }
 
-export default ReadInvoicesComponent;
+export default ReadOrdersComponent;

@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-import style from '../sass/home_page.scss';
+
 import CustomerTableComponent from './customer_table.component.jsx';
 import ReadOneCustomerComponent from './read_one_customer.component.jsx';
 import CreateCustomerComponent from './create_customer.component.jsx';
@@ -14,33 +14,44 @@ class ReadCustomersComponent extends React.Component {
 
         this.state = {
             currentMode: 'read',
-            customerId: null,
+            customerNo: null,
             customers: []
         }
 
         this.changeCustomerMode = this.changeCustomerMode.bind(this);
+        this.fetchCustomers = this.fetchCustomers.bind(this);
     }
 
     // on mount, fetch all products and stored them as this component's state
     componentDidMount() {
+        this.fetchCustomers();
     }
 
     // on unmount, kill product fetching in case the request is still pending
     componentWillUnmount() {
+        this.serverRequest.abort();
     }
 
-    changeCustomerMode(newMode, customerId) {
+    fetchCustomers() {
+        this.serverRequest = $.get("http://localhost/api/customer/read.php", (customers) => {
+            this.setState({
+                customers: customers.records
+            });
+        });
+    }
+
+    changeCustomerMode(newMode, customerNo) {
         this.setState({currentMode: newMode});
 
-        if(customerId !== undefined) {
-            this.setState({customerId: customerId});
+        if(customerNo !== undefined) {
+            this.setState({customerNo: customerNo});
         }
     }
 
     // render component on the page
     render() {
         let filteredProducts = this.state.customers;
-        let modeComponent;// = <CustomerTableComponent customers={filteredProducts} changeCustomerMode={this.changeCustomerMode} />;
+        let modeComponent = <CustomerTableComponent customers={filteredProducts} changeCustomerMode={this.changeCustomerMode} />;
         $('.page-header h1').text('Read Products');
 
         switch(this.state.currentMode) {
@@ -48,7 +59,7 @@ class ReadCustomersComponent extends React.Component {
                 break;
             case 'readOne':
                 modeComponent =
-                    <ReadOneCustomerComponent productId={this.state.customerId} changeCustomerMode={this.changeCustomerMode}/>;
+                    <ReadOneCustomerComponent cusNo={this.state.customerNo} changeCustomerMode={this.changeCustomerMode}/>;
                 break;
             case 'create':
                 modeComponent = <CreateCustomerComponent changeCustomerMode={this.changeCustomerMode}/>;
@@ -67,9 +78,8 @@ class ReadCustomersComponent extends React.Component {
         //console.log(filteredProducts);
         return (
             //if current mode read render tobar
-            <div id='#body'>
-
-                welcome customer section
+            <div className='overflow-hidden'>
+                {modeComponent}
             </div>
         );
     }
