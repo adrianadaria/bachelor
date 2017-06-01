@@ -78,8 +78,13 @@ class ReadCustomersComponent extends React.Component {
         //console.log(filteredProducts);
         return (
             //if current mode read render tobar
-            <div className='overflow-hidden'>
+
+            <div className="container">
+                <div className="left">
                 {modeComponent}
+                </div>
+                <div className="right">
+                </div>
             </div>
         );
     }

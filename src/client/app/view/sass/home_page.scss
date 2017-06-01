@@ -35,6 +35,13 @@ min-height: 100%;
     position: absolute;
     right: 0;
 }
+.circle{
+	height: $size;
+	width: $size;
+	border-radius: 50px;
+	display: inline-block;
+	margin-left: 15px;
+}
 
 .container {
 	display: inline-block;
@@ -44,13 +51,7 @@ min-height: 100%;
 .title {
 	padding: 30px;
 }
-.circle{
-	height: $size;
-	width: $size;
-	border-radius: 50px;
-	display: inline-block;
-	margin-left: 15px;
-}
+
 .triangle-up {
 	width: 0;
 	height: 0;

@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/subpage.scss';
 
 import ProductTopBarComponent  from './product_top_bar.component.jsx';
 import ProductTableComponent from './product_table.component.jsx';
@@ -84,9 +85,14 @@ class ReadProductsComponent extends React.Component {
         //console.log(filteredProducts);
         return (
             //if current mode read render tobar
-            <div className='overflow-hidden'>
+            <div className="container">
                 {topBar}
-                {modeComponent}
+                <div className="col-left bg-grey">
+                    {modeComponent}
+                </div>
+                <div className="col-right bg-yellow">
+                    <CreateProductComponent/>
+                </div>
             </div>
         );
     }

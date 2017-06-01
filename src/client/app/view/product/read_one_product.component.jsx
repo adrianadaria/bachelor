@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/subpage.scss';
 
 class ReadOneProductComponent extends React.Component {
 
@@ -48,7 +49,7 @@ class ReadOneProductComponent extends React.Component {
                     <table className='table table-bordered table-hover'>
                         <tbody>
                         <tr>
-                            <td>Number</td>
+                            <td><h4>Number</h4></td>
                             <td>{this.state.number}</td>
                         </tr>
                         <tr>

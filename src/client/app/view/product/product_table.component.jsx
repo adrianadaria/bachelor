@@ -1,6 +1,6 @@
 import React from 'react';
-
 import ProductTableRowComponent from './product_table_row.component.jsx';
+import style from '../sass/subpage.scss';
 
 class ProductTableComponent extends React.Component {
 
@@ -23,7 +23,7 @@ class ProductTableComponent extends React.Component {
                 <table className='table table-bordered table-hover'>
                     <thead>
                     <tr>
-                        <th>Number</th>
+                        <th><h4>Number</h4></th>
                         <th>Name</th>
                         <th>Price</th>
                         <th>Group</th>

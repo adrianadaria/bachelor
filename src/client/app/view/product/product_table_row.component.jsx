@@ -1,4 +1,5 @@
 import React from 'react';
+import style from '../sass/subpage.scss';
 
 class ProductTableRowComponent extends React.Component {
 

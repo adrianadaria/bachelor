@@ -1,50 +1,41 @@
-@import "partials/_variables_size";
-@import "partials/_variables_colors";
+@import "_variables_colors";
+@import "_variables_size";
 
-
-.red {
-	@extend .circle;
+.bg-red {
 	background-color: $red;
 }
-.light-blue {
-	@extend .circle;
+.bg-light-blue {
 	background-color: $light-blue;
 }
-.purple {
-	@extend .circle;
+.bg-purple {
 	background-color: $purple;
 }
-.green {
-	@extend .circle;
+.bg-green {
 	background-color: $green;
 }
-.yellow {
-	@extend .circle;
+.bg-yellow {
 	background-color: $yellow;
 }
-.dark-blue {
-	@extend .circle;
+.bg-dark-blue {
 	background-color: $dark-blue;
 }
-.orange {
-	@extend .circle;
+.bg-orange {
 	background-color: $orange;
 }
-.blue {
-	@extend .circle;
+.bg-blue {
 	background-color: $blue;
 }
-.dark-green {
-	@extend .circle;
+.bg-dark-green {
 	background-color: $dark-green;
 }
-.light-red {
-	@extend .circle;
+.bg-light-red {
 	background-color: $light-red;
 }
-.dark-purple {
-	@extend .circle;
+.bg-dark-purple {
 	background-color: $dark-purple;
+}
+.bg-grey {
+	background-color: $grey;
 }
 .red-color {
 	color: $red;

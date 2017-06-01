@@ -1,5 +1,5 @@
 import React from 'react';
-
+import style from '../sass/subpage.scss';
 class ProductTopBarComponent extends React.Component {
 
     constructor(props, context) {

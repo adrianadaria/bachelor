@@ -20,24 +20,25 @@ class CustomerTableComponent extends React.Component {
             !rows.length
                 ? <div className='alert alert-danger'>No customers found.</div>
                 :
-                <table className='table table-bordered table-hover'>
-                    <thead>
-                    <tr>
-                        <th>Number</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Zip</th>
-                        <th>City</th>
-                        <th>Country</th>
-                        <th>CVR</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {rows}
-                    </tbody>
-                </table>
+                    <table className='table table-bordered table-hover'>
+                        <thead>
+                        <tr>
+                            <th>Number</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Zip</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>CVR</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {rows}
+                        </tbody>
+                    </table>
+
         );
     }
 }
