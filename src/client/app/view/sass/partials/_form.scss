@@ -1,0 +1,27 @@
+@import "_colors";
+
+body {
+  color: $white;
+}
+
+[type=text] {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  border: 0;
+  border-bottom: 1px solid $white;
+  height: 45px;
+  line-height: 45px;  
+  margin-bottom: 10px;
+  font-size: 1em;
+  background-color: transparent;
+  color: $white;
+}
+
+input[required]{
+    box-shadow: none;
+    background-image: url("../img/asterisk.png");;
+    background-size: 0.5em 0.5em;
+    background-position: right top;
+    background-repeat: no-repeat;
+}
