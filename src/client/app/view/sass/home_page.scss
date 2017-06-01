@@ -42,6 +42,32 @@ min-height: 100%;
 	display: inline-block;
 	margin-left: 15px;
 }
+.nohome{
+	display: none;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: $dark-grey;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    color: $grey;
+}
+
 
 .container {
 	display: inline-block;
@@ -74,7 +100,7 @@ min-height: 100%;
 }
 .box {
 	position: relative;
-  background-color: $box-color;
+  background-color: $light-grey;
   color: $font-color;
   width: 33.13%;
   margin: 0.1%;

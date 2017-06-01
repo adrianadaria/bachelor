@@ -264,6 +264,9 @@
 .bg-grey {
   background-color: #c8c8ca; }
 
+.bg-light-grey {
+  background-color: #f4f6fa; }
+
 .red-color {
   color: #f1664c; }
 
@@ -365,6 +368,16 @@ h6 {
   .special {
     font-size: 50px; } }
 
+body::-webkit-scrollbar {
+  width: 1em; }
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); }
+
+body::-webkit-scrollbar-thumb {
+  background-color: red;
+  outline: 1px solid slategrey; }
+
 html {
   height: 100%; }
 
@@ -399,6 +412,25 @@ body {
   border-radius: 50px;
   display: inline-block;
   margin-left: 15px; }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; }
+
+li {
+  float: left; }
+
+li a {
+  display: block;
+  color: #727272;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none; }
+
+li a:hover {
+  color: #c8c8ca; }
 
 .container {
   display: inline-block;

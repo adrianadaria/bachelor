@@ -3,7 +3,13 @@
 @import "partials/_typography";
 @import "partials/_variables_size";
 @import "partials/_variables_colors";
+@import "partials/_form";
+@import "partials/_list";
 
+.subpage-navigation {
+	float: right;
+	margin-top: -3% 30%;
+}
 .container {
 	display: inline-block;
 	vertical-align: middle;
@@ -12,8 +18,7 @@
 .col-left {
 	float: left;
 	width: 50%;
-	min-height: 500px;
-	height: 100%;
+	max-height: 800px;
 }
 
 .col-right {
@@ -27,3 +32,5 @@
 	  overflow: scroll;
 	}
 }
+
+
