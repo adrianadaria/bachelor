@@ -72,7 +72,7 @@ class AppComponent extends React.Component {
 
    					<div className="nav-header">
 					<a href='#'  onClick={() => this.changeAppMode('home')} >
-						<img src="http://localhost/BACHELOR/bachelor/src/client/app/view/img/logo_small.png" alt="home"/>
+						<img src={require('./img/logo_small.png')}/>
 					</a>
 				</div>
    			</div>
