@@ -42,14 +42,15 @@ class ReadOneProductComponent extends React.Component {
     render() {
         return (
             <div>
-                <a href='#' onClick={() => this.props.changeProductMode('read')}
-                   className='btn btn-primary margin-bottom-1em'>Read Products
+                <a href='#' onClick={() => this.props.changeProductMode('read')}>Read Products
                 </a>
                 <form onSubmit={this.onSave}>
-                    <table className='table table-bordered table-hover'>
+                    <table className="table_list">
+                        <caption><h4 className="table_title">DETAILS OF</h4>
+                    <h4 className="table_title">THE PRODUCT</h4></caption>
                         <tbody>
                         <tr>
-                            <td><h4>Number</h4></td>
+                            <td>Number</td>
                             <td>{this.state.number}</td>
                         </tr>
                         <tr>
