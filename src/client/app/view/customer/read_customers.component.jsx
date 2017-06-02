@@ -88,16 +88,16 @@ class ReadCustomersComponent extends React.Component {
 
             <div className="container equal">
                 <div className="col-left bg-grey left-typo scroll">
-            <div className='overflow-hidden'>
-                {
-                    topBar !== null ?
-                        topBar
-                        : null
-                }
-                {modeComponent}
+
+                    {
+                        topBar !== null ?
+                            topBar
+                            : null
+                    }
+                    {modeComponent}
                 </div>
-                 <div className="col-right bg-yellow">
-                    <CreateCustomerComponent/>
+                <div className="col-right bg-yellow">
+                        <CreateCustomerComponent/>
                 </div>
             </div>
         );

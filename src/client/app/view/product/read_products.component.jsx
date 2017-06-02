@@ -88,6 +88,7 @@ class ReadProductsComponent extends React.Component {
                 <div className="col-right bg-yellow">
                     <CreateProductComponent/>
                 </div>
+            </div>
 
         );
     }

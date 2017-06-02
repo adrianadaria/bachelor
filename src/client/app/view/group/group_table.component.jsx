@@ -24,7 +24,6 @@ class GroupTableComponent extends React.Component {
                     <caption><h4 className="table_title">LIST OF</h4>
                     <h4 className="table_title">PRODUCT GROUPS</h4></caption>
                 <div>
-                <table className='table table-bordered table-hover'>
                     <thead>
                     <tr>
                         <th><h5>Number</h5></th>
@@ -37,8 +36,9 @@ class GroupTableComponent extends React.Component {
                     <tbody>
                         {rows}
                     </tbody>
-                </table>
+                
                 </div>
+                </table>
         );
     }
 }

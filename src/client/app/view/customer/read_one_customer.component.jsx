@@ -53,8 +53,6 @@ class ReadOneCustomerComponent extends React.Component {
                     <table className="table_list">
                         <caption><h4 className="table_title">DETAILS OF</h4>
                         <h4 className="table_title">THE CUSTOMER</h4></caption>
-                <form>
-                    <table className='table table-bordered table-hover'>
                         <tbody>
                         <tr>
                             <td>Number</td>

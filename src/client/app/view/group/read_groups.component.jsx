@@ -177,6 +177,7 @@ class ReadGroupsComponent extends React.Component {
                     <div className="col-right bg-yellow">
                     </div>
                 </div>
+            </div>
         );
     }
 

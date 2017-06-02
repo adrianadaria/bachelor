@@ -85,6 +85,7 @@ class ReadOrdersComponent extends React.Component {
                 </div>
                 <div className="col-right bg-yellow">
                 </div>
+            </div>
 
         );
     }

@@ -133,9 +133,9 @@ class CreateCustomerComponent extends React.Component {
                     <input type="number" placeholder="Price (DKK)" step='0.01' min="0" value={this.state.price} required onChange={this.onPriceChange} />
                     <input type="submit" value="Save" onClick={this.onSave}/>
 
-                <a href='#' onClick={() => this.props.changeCustomerMode('read')}
-                   className='btn btn-primary margin-bottom-1em'> Back
+                <a href='#' onClick={() => this.props.changeCustomerMode('read')}> Back
                 </a>
+                </form>
             </div>
         );
     }
