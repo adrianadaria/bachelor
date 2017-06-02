@@ -57,7 +57,14 @@ table {
 table tr td:last-child {
     background-color: $grey;
 }
-
+.back {
+	background-image: url(../img/back-arrow.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 40px;
+	margin: 20px;
+	color: $black;
+}
 .view {
 	background-image: url(../img/read.png);
 }
