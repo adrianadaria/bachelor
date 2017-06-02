@@ -89,17 +89,16 @@ class CreateProductComponent extends React.Component {
                 {
 
                     this.state.successCreation == "Product was created." ?
-                        <div className='alert alert-success'>
-                            Product was saved.
-                        </div>
+                            <h4>PRODUCT WAS SAVED</h4>
                         : null
                 }
 
                 {
 
                     this.state.successCreation == "Unable to create product." ?
-                        <div className='alert alert-danger'>
-                            Unable to save product. Please try again.
+                        <div>
+                            <h4>UNABLE TO CREATE PRODUCT</h4>
+                            <h4>PLEASE TRY AGAIN</h4>
                         </div>
                         : null
                 }

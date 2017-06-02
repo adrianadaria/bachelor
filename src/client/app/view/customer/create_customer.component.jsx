@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/subpage.scss';
 
 class CreateProductComponent extends React.Component {
 
@@ -9,7 +10,7 @@ class CreateProductComponent extends React.Component {
         this.state = {
             name: '',
             description: '',
-            price: 0.00,
+            price: '',
             successCreation: null
         };
 
@@ -75,59 +76,32 @@ class CreateProductComponent extends React.Component {
          - form to create a product
          */
         return (
-            <div>
+            <div className="form_style">
                 {
 
                     this.state.successCreation == "Customer was created." ?
-                        <div className='alert alert-success'>
-                            Customer was saved.
-                        </div>
+                        <h4>CUSTOMER WAS SAVED</h4>
                         : null
                 }
 
                 {
 
                     this.state.successCreation == "Unable to create customer." ?
-                        <div className='alert alert-danger'>
-                            Unable to save customer. Please try again.
+                        <div>
+                            <h4>UNABLE TO CREATE CUSTOMER</h4>
+                            <h4>PLEASE TRY AGAIN</h4>
                         </div>
                         : null
                 }
                     <h4 className="title_right_col">CREATE A</h4>
                     <h4 className="title_right_col">NEW CUSTOMER</h4>
                 <form onSubmit={this.onSave}>
-                    <table className='table table-bordered table-hover'>
-                        <tbody>
-                            <tr>
-                                <td>Name</td>
-                                <td>
-                                    <input type='text' className='form-control' value={this.state.name}
-                                        required onChange={this.onNameChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Description</td>
-                                <td>
-                                    <textarea type='text' className='form-control' value={this.state.description}
+                    <input type="text" placeholder="Name" value={this.state.name} required onChange={this.onNameChange} />
+                    <textarea type="text" placeholder="Description" value={this.state.description}
                                             required onChange={this.onDescriptionChange}>
                                     </textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Price (DKK)</td>
-                                <td>
-                                    <input type='number' step='0.01' className='form-control' value={this.state.price}
-                                           required onChange={this.onPriceChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button className='btn btn-primary' onClick={this.onSave}>Save</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <input type="number" placeholder="Price (DKK)" step='0.01' min="0" value={this.state.price} required onChange={this.onPriceChange} />
+                    <input type="submit" value="Save" onClick={this.onSave}/>
                 </form>
             </div>
         );

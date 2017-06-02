@@ -47,7 +47,13 @@
   color: $white;
 }
 
-input[required]{
+textarea[type="text"]{
+  line-height: 1.5em;
+  height: 100px;
+  margin-top: 30px;
+}
+
+input[required], textarea[required]{
     box-shadow: none;
     background-image: url("../img/asterisk.png");;
     background-size: 0.5em 0.5em;
