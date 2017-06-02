@@ -75,15 +75,13 @@ class ReadOrdersComponent extends React.Component {
         return (
 
             <div className="container equal">
-                <div className="col-left bg-grey left-typo scroll">
+                <div className="col-left bg-grey left-typo scroll col-fullwidth">
                  {
                     bar !== null ?
                         bar
                         : null
                 }
                     {modeComponent}
-                </div>
-                <div className="col-right bg-yellow">
                 </div>
             </div>
 
