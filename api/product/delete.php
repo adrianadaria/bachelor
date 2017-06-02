@@ -22,13 +22,13 @@ $db = $database->getConnection();
 // prepare product object
 $product = new Product($db);
  
-// get product id
+// get product number
 $data = json_decode(file_get_contents("php://input"));
  
-// set product id to be deleted
+// set product number to be deleted
 $product->number = $data->number;
  
-// delete the product && $ec->deleteProduct($product->number)
+// delete the product
 if($ec->deleteProduct($product->number)) {
 	$product->delete();
     echo '{';

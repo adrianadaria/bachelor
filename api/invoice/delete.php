@@ -8,7 +8,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
  
 include_once '../config/database.php';
 include_once '../config/Economic.php';
-include_once '../objects/Account.php';
+include_once '../objects/Invoice.php';
  
 $agreementGrantToken = "SI3xOLaIzbSWH1embrkNYSWWIKBK09bd8efEvZRvKwo1";
 $appSecretToken = "7tVtBFEIEBPre0Fq3NWlNds54AXF76xA4NIe8vMsKx41";
@@ -19,24 +19,24 @@ $ec = new Economic($agreementGrantToken, $appSecretToken);
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
-$account = new Account($db);
+// prepare object
+$invoice = new Invoice($db);
  
-// get product id
+// get id
 $data = json_decode(file_get_contents("php://input"));
  
-// set product id to be deleted
-$account->number = $data->number;
+// set id to be deleted
+$invoice->id = $data->id;
  
-// delete the product && $ec->deleteProduct($product->number)
-if($ec->deleteAccount($account->number)) {
-	$account->delete();
+// delete 
+if($ec->deleteInvoiceDraft($invoice->id)) {
+	$invoice->delete();
     echo '{';
-        echo '"message": "Account was deleted."';
+        echo '"message": "Invoice was deleted."';
     echo '}';
 } else {
     echo '{';
-        echo '"message": "Unable to delete account"';
+        echo '"message": "Unable to delete invoice"';
     echo '}';
 }
 ?>

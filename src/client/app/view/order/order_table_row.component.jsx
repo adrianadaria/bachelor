@@ -18,16 +18,13 @@ class OrderTableRowComponent extends React.Component {
                 <td>{this.props.order.delCountry}</td>
                 <td>{this.props.order.delTerms}</td>
                 <td>{this.props.order.delDate}</td>
-                <td>{this.props.order.total}</td>
+                <td>{parseFloat(this.props.order.total).toFixed(2)}</td>
                 <td>
                     <a href='#'
                        onClick={() => this.props.changeOrderMode('readOne', this.props.order.id)}>
                        <div className="action_btn view" />
                     </a>
-                    <a href='#'
-                       onClick={() => this.props.changeOrderMode('update', this.props.order.id)}>
-                       <div className="action_btn edit" />
-                    </a>
+
                     <a
                         onClick={() => this.props.changeOrderMode('delete', this.props.order.id)}>
                        <div className="action_btn delete" />

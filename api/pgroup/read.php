@@ -15,18 +15,18 @@ $db = $database->getConnection();
 // initialize object
 $pgroup = new ProductGroup($db);
  
-// query products
+// query
 $stmt = $pgroup->read();
 $num = $stmt->rowCount();
  
 // check if more than 0 record found
 if($num > 0) {
  
-    // products array
+    // array
     $pgroups_arr = array();
     $pgroups_arr["records"] = array();
  
-    // retrieve account table
+    // retrieve  table
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         // this will make $row['name'] to just $name only
         extract($row);
@@ -34,7 +34,7 @@ if($num > 0) {
         $pgroup_item = array(
             "number" => $number,
             "name" => $name,
-            "vatAcc" => $vatAcc, //html_entity_decode($description),
+            "vatAcc" => $vatAcc,
             "noVatAcc" => $noVatAcc
         );
  

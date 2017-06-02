@@ -1,5 +1,4 @@
 import React from 'react';
-
 import CustomerTableRowComponent from './customer_table_row.component.jsx';
 
 class CustomerTableComponent extends React.Component {

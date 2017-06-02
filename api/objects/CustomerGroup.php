@@ -17,7 +17,7 @@ class CustomerGroup {
         $this->conn = $db;
     }
 	
-	// read products
+	// read cgroups
 	function read() {
  
 		// select all query
@@ -32,7 +32,7 @@ class CustomerGroup {
 		return $stmt;
 	}
 	
-	// create product
+	// create cgroups
 	function create() {
  
 		// query to insert record
@@ -62,17 +62,16 @@ class CustomerGroup {
 		}
 	}
 	
-	// used when filling up the update product form
+	// used when filling up the update cgroups form
 	function readOne() {
  
 		// query to read single record
-		//$query = "SELECT number, name, group, price, created FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
 		$query = "SELECT number, name, account FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
  
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
  
-		// bind id of product to be updated
+		// bind number of cgroups to be updated
 		$stmt->bindParam(1, $this->number);
  
 		// execute query
@@ -85,7 +84,7 @@ class CustomerGroup {
 		$this->account = $row['account'];
 	}
 	
-	// update the product
+	// update the cgroups
 	function update() {
  
 		// update query
@@ -112,7 +111,7 @@ class CustomerGroup {
 		}
 	}
 	
-	// delete the product
+	// delete the cgroups
 	function delete() {
  
 		// delete query

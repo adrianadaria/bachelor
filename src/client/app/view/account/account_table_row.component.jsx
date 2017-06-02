@@ -14,7 +14,7 @@ class AccountTableRowComponent extends React.Component {
                 <td>{this.props.account.type}</td>
                 <td>{this.props.account.card}</td>
                 <td>{this.props.account.vat}</td>
-                <td>{this.props.account.balance}</td>
+                <td>{parseFloat(this.props.account.balance).toFixed(2)}</td>
                 <td>
                     <a href='#'
                        onClick={() => this.props.changeAccountMode('readOne', this.props.account.number)}>

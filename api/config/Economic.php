@@ -297,6 +297,17 @@ class Economic {
 		}
 	}
 	
+	public function deleteInvoiceDraft($number) {
+		try {
+			$numberArr = array('Id' => $number);
+			$this->client->CurrentInvoice_Delete (array('currentInvoiceHandle' => $numberArr));
+			return true;
+		} catch(Exception $e) {
+			print("<p><b>Error occuried deleting</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		}
+	}
+	
 	public function getAllInvoices() {	//get all invoice drafts
 		
 		try {
@@ -536,6 +547,17 @@ class Economic {
 			print("<p><b>Error occuried getting product groups data</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
 		}		
+	}
+	
+	public function deleteOrder($id) {
+		try {
+			$numberArr = array('Id' => $id);
+			$this->client->ProductGroup_Delete(array('orderHandle' => $numberArr));
+			return true;
+		} catch(Exception $e) {
+			print("<p><b>Error occuried deleting</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		} 
 	}
 	
 	public function getAllOrders() {

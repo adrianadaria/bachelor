@@ -1,7 +1,9 @@
 import React from 'react';
 import $ from 'jquery';
 
+import AccountTopBarComponent from './account_top_bar.component.jsx';
 import AccountTableComponent from './account_table.component.jsx';
+import CreateAccountComponent from './create_account.component.jsx';
 import ReadOneAccountComponent from './read_one_account.component.jsx';
 import UpdateAccountComponent from "./update_account.component.jsx";
 import DeleteAccountComponent from './delete_account.component.jsx';
@@ -29,12 +31,12 @@ class ReadAccountsComponent extends React.Component {
         });
     }
 
-    // on mount, fetch all products and stored them as this component's state
+    // on mount, fetch all accounts and stored them as this component's state
     componentDidMount() {
         this.fetchAccounts();
     }
 
-    // on unmount, kill product fetching in case the request is still pending
+    // on unmount, kill account fetching in case the request is still pending
     componentWillUnmount() {
         this.serverRequest.abort();
     }
@@ -52,9 +54,14 @@ class ReadAccountsComponent extends React.Component {
         let filteredAccounts = this.state.accounts;
         let modeComponent = <AccountTableComponent accounts={filteredAccounts} changeAccountMode={this.changeAccountMode} />;
         $('.page-header h1').text('Read Accounts');
+        let topBar = null;
 
         switch(this.state.currentMode) {
             case 'read':
+                topBar = <AccountTopBarComponent changeAccountMode={this.changeAccountMode} refresh={this.fetchAccounts}/>;
+                break;
+            case 'create':
+                modeComponent = <CreateAccountComponent accountNo={this.state.accountNo} changeAccountMode={this.changeAccountMode} />;
                 break;
             case 'readOne':
                 modeComponent = <ReadOneAccountComponent accountNo={this.state.accountNo} changeAccountMode={this.changeAccountMode} />;
@@ -72,11 +79,16 @@ class ReadAccountsComponent extends React.Component {
         return (
              <div className="container equal">
                 <div className="col-left bg-grey left-typo scroll">
+                 {
+                    topBar !== null ?
+                        topBar
+                        : null
+                }
                     {modeComponent}
                 </div>
                 <div className="col-right bg-yellow">
                 </div>
-            </div>
+
         );
     }
 

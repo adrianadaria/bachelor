@@ -10,10 +10,6 @@ class DeleteAccountComponent extends React.Component {
         this.onDelete = this.onDelete.bind(this);
     }
 
-    componentDidMount() {
-        $('.page-header h1').text('Delete Product');
-    }
-
     // handle single row deletion
     onDelete(e) {
         // product to delete
@@ -23,17 +19,16 @@ class DeleteAccountComponent extends React.Component {
           number: accountNo
         };
         $.ajax({
-            url: "http://localhost/api/product/delete.php",
+            url: "http://localhost/api/account/delete.php",
             type : "POST",
             contentType : 'application/json',
             data : JSON.stringify(data),
             success : (response) => {
-                this.props.changeProductMode('read');
+                this.props.changeAccountMode('read');
             },
             error: (xhr, resp, text) => {
                 // show error in console
                 console.log(xhr, resp, text);
-                console.warn(xhr.responseText);
             }
         });
     }

@@ -2,6 +2,8 @@ import React from 'react';
 import $ from 'jquery';
 
 import OrderTableComponent from './order_table.component.jsx';
+import ReadOneOrderComponent from './read_one_order.component.jsx';
+import DeleteOrderComponent from './delete_order.component.jsx';
 
 class ReadOrdersComponent extends React.Component {
 
@@ -19,6 +21,9 @@ class ReadOrdersComponent extends React.Component {
     }
 
     fetchOrders() {
+        if(this.serverRequest) {
+            this.serverRequest.abort();
+        }
         this.serverRequest = $.get("http://localhost/api/order/read.php", (order) => {
             this.setState({
                 orders: order.records
@@ -26,12 +31,10 @@ class ReadOrdersComponent extends React.Component {
         });
     }
 
-    // on mount, fetch all products and stored them as this component's state
     componentDidMount() {
         this.fetchOrders();
     }
 
-    // on unmount, kill product fetching in case the request is still pending
     componentWillUnmount() {
         this.serverRequest.abort();
     }
@@ -48,38 +51,41 @@ class ReadOrdersComponent extends React.Component {
     render() {
         let filteredOrders = this.state.orders;
         let modeComponent = <OrderTableComponent orders={filteredOrders} changeOrderMode={this.changeOrderMode} />;
-        $('.page-header h1').text('Read Orders');
+        let bar = null;
+
         switch(this.state.currentMode) {
             case 'read':
+                bar = (
+                    <a href='#' onClick={() => this.fetchOrders()} className='btn btn-info m-r-1em'> refresh
+                    </a>
+                );
                 break;
             case 'readOne':
-                //modeComponent =
-                //    <ReadOneProductComponent productId={this.state.productId} changeProductMode={this.changeProductMode}/>;
-                break;
-            case 'create':
-                //modeComponent = <CreateProductComponent changeProductMode={this.changeProductMode}/>;
-                break;
-            case 'update':
-                //modeComponent =
-                //   <UpdateProductComponent productId={this.state.productId} changeProductMode={this.changeProductMode}/>;
+                modeComponent =
+                    <ReadOneOrderComponent orderId={this.state.orderId} changeOrderMode={this.changeOrderMode}/>;
                 break;
             case 'delete':
-                //modeComponent =
-                //    <DeleteProductComponent productId={this.state.productId} changeProductMode={this.changeProductMode}/>;
+                modeComponent =
+                    <DeleteOrderComponent orderId={this.state.orderId} changeOrderMode={this.changeOrderMode}/>;
                 break;
             default:
                 break;
         }
 
         return (
-            //if current mode read render tobar
+
             <div className="container equal">
                 <div className="col-left bg-grey left-typo scroll">
+                 {
+                    bar !== null ?
+                        bar
+                        : null
+                }
                     {modeComponent}
                 </div>
                 <div className="col-right bg-yellow">
                 </div>
-            </div>
+
         );
     }
 

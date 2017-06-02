@@ -17,7 +17,7 @@ class Invoice {
         $this->conn = $db;
     }
 	
-	// read products
+	// read invoices
 	function read() {
  
 		// select all query
@@ -33,7 +33,7 @@ class Invoice {
 		return $stmt;
 	}
 	
-	// create product
+	// create invoice
 	function create() {
  
 		// query to insert record
@@ -65,18 +65,17 @@ class Invoice {
 		}
 	}
 	
-	// used when filling up the update product form
+	// used when filling up the update form
 	function readOne() {
  
 		// query to read single record
-		//$query = "SELECT number, name, group, price, created FROM " . $this->table_name . " WHERE number = ? LIMIT 0,1";
 		$query = "SELECT i.*, c.name FROM " . $this->table_name . 
 			" i JOIN customer c ON i.cusNo = c.number WHERE id = ? LIMIT 0,1";
  
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
  
-		// bind id of product to be updated
+		// bind id of invoice to be updated
 		$stmt->bindParam(1, $this->id);
  
 		// execute query
@@ -85,56 +84,27 @@ class Invoice {
 		// get retrieved row
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		// set values to object properties
-		$this->date = $row['date'];
+		$date = new DateTime($row['date']);
+		$this->date = $date->format('Y-m-d');
 		$this->cusNo = $row['cusNo'];
 		$this->total = $row['total'];
 		
 		return $row['name'];
 	}
 	
-	// update the product
-	function update() {
- 
-		// update query
-		$query = "UPDATE " . $this->table_name . " SET name=:name, `group`=:group, price=:price WHERE number=:number";
- 
-		// prepare query statement
-		$stmt = $this->conn->prepare($query);
- 
-		// sanitize
-		$this->name=htmlspecialchars(strip_tags($this->name));
-		$this->group=htmlspecialchars(strip_tags($this->group));
-		$this->price=htmlspecialchars(strip_tags($this->price));
-		$this->number=htmlspecialchars(strip_tags($this->number));
-    
-		// bind new values
-		$stmt->bindParam(':name', $this->name);
-		$stmt->bindParam(':group', $this->group);
-		$stmt->bindParam(':price', $this->price);
-		$stmt->bindParam(':number', $this->number);
- 
-		// execute the query
-		if($stmt->execute()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	
-	// delete the product
 	function delete() {
  
 		// delete query
-		$query = "DELETE FROM " . $this->table_name . " WHERE number = ?";
+		$query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
  
 		// prepare query
 		$stmt = $this->conn->prepare($query);
  
 		// sanitize
-		$this->number=htmlspecialchars(strip_tags($this->number));
+		$this->id=htmlspecialchars(strip_tags($this->id));
  
 		// bind id of record to delete
-		$stmt->bindParam(1, $this->number);
+		$stmt->bindParam(1, $this->id);
  
 		// execute query
 		if($stmt->execute()) {
@@ -142,60 +112,5 @@ class Invoice {
 		} else {
 			return false;
 		} 
-	}
-	
-	// search products
-	function search($keywords){
- 
-		// select all query
-		$query = "SELECT id, name, description, price, created FROM " . $this->table_name . " WHERE
-            name LIKE ? OR description LIKE ? ORDER BY created DESC";
- 
-		// prepare query statement
-		$stmt = $this->conn->prepare($query);
- 
-		// sanitize
-		$keywords = htmlspecialchars(strip_tags($keywords));
-		$keywords = "%{$keywords}%";
- 
-		// bind
-		$stmt->bindParam(1, $keywords);
-		$stmt->bindParam(2, $keywords);
- 
-		// execute query
-		$stmt->execute();
- 
-		return $stmt;
-	}
-	
-	// read products with pagination
-	public function readPaging($from_record_num, $records_per_page){
- 
-		// select query
-		$query = "SELECT id, name, description, price, created FROM " . $this->table_name . " ORDER BY created DESC LIMIT ?, ?";
- 
-		// prepare query statement
-		$stmt = $this->conn->prepare( $query );
- 
-		// bind variable values
-		$stmt->bindParam(1, $from_record_num, PDO::PARAM_INT);
-		$stmt->bindParam(2, $records_per_page, PDO::PARAM_INT);
- 
-		// execute query
-		$stmt->execute();
- 
-		// return values from database
-		return $stmt;
-	}
-	
-	// used for paging products
-	public function count(){
-		$query = "SELECT COUNT(*) as total_rows FROM " . $this->table_name . "";
- 
-		$stmt = $this->conn->prepare( $query );
-		$stmt->execute();
-		$row = $stmt->fetch(PDO::FETCH_ASSOC);
- 
-		return $row['total_rows'];
 	}
 }

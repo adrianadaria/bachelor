@@ -2,11 +2,13 @@ import React from 'react';
 import $ from 'jquery';
 import style from '../sass/subpage.scss';
 
+import CustomerTopBarComponent from './customer_top_bar.component.jsx';
 import CustomerTableComponent from './customer_table.component.jsx';
 import ReadOneCustomerComponent from './read_one_customer.component.jsx';
 import CreateCustomerComponent from './create_customer.component.jsx';
 import UpdateCustomerComponent from './update_customer.component.jsx';
 import DeleteCustomerComponent from './delete_customer.component.jsx';
+import CustomerDetailComponent from './customer_detail.component.jsx';
 
 class ReadCustomersComponent extends React.Component {
 
@@ -14,26 +16,27 @@ class ReadCustomersComponent extends React.Component {
         super(props);
 
         this.state = {
-            currentMode: 'read',
+            currentMode: 'detail',
             customerNo: null,
             customers: []
-        }
+        };
 
         this.changeCustomerMode = this.changeCustomerMode.bind(this);
         this.fetchCustomers = this.fetchCustomers.bind(this);
     }
 
-    // on mount, fetch all products and stored them as this component's state
     componentDidMount() {
         this.fetchCustomers();
     }
 
-    // on unmount, kill product fetching in case the request is still pending
     componentWillUnmount() {
         this.serverRequest.abort();
     }
 
     fetchCustomers() {
+        if(this.serverRequest) {
+            this.serverRequest.abort();
+        }
         this.serverRequest = $.get("http://localhost/api/customer/read.php", (customers) => {
             this.setState({
                 customers: customers.records
@@ -52,11 +55,16 @@ class ReadCustomersComponent extends React.Component {
     // render component on the page
     render() {
         let filteredProducts = this.state.customers;
-        let modeComponent = <CustomerTableComponent customers={filteredProducts} changeCustomerMode={this.changeCustomerMode} />;
-        $('.page-header h1').text('Read Products');
+        let modeComponent = <CustomerDetailComponent />;
+        let topBar = null;
 
         switch(this.state.currentMode) {
+            case 'detail':
+                topBar = <CustomerTopBarComponent changeCustomerMode={this.changeCustomerMode} refresh={this.fetchCustomers} />;
+                break;
             case 'read':
+                topBar = <CustomerTopBarComponent changeCustomerMode={this.changeCustomerMode} refresh={this.fetchCustomers} />;
+                modeComponent = <CustomerTableComponent customers={filteredProducts} changeCustomerMode={this.changeCustomerMode} />;
                 break;
             case 'readOne':
                 modeComponent =
@@ -67,21 +75,25 @@ class ReadCustomersComponent extends React.Component {
                 break;
             case 'update':
                 modeComponent =
-                    <UpdateCustomerComponent productId={this.state.customerId} changeCustomerMode={this.changeCustomerMode}/>;
+                    <UpdateCustomerComponent cusNo={this.state.customerNo} changeCustomerMode={this.changeCustomerMode}/>;
                 break;
             case 'delete':
                 modeComponent =
-                    <DeleteCustomerComponent productId={this.state.customerId} changeCustomerMode={this.changeCustomerMode}/>;
+                    <DeleteCustomerComponent cusNo={this.state.customerNo} changeCustomerMode={this.changeCustomerMode}/>;
                 break;
             default:
                 break;
         }
-        //console.log(filteredProducts);
         return (
-            //if current mode read render tobar
 
             <div className="container equal">
                 <div className="col-left bg-grey left-typo scroll">
+            <div className='overflow-hidden'>
+                {
+                    topBar !== null ?
+                        topBar
+                        : null
+                }
                 {modeComponent}
                 </div>
                  <div className="col-right bg-yellow">
@@ -90,7 +102,6 @@ class ReadCustomersComponent extends React.Component {
             </div>
         );
     }
-
 }
 
 export default ReadCustomersComponent;

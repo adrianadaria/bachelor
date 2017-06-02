@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-class DeleteProductComponent extends React.Component {
+class DeleteCustomerComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -9,22 +9,17 @@ class DeleteProductComponent extends React.Component {
         this.onDelete = this.onDelete.bind(this);
     }
 
-    componentDidMount() {
-        $('.page-header h1').text('Delete Product');
-    }
-
     // handle single row deletion
     onDelete(e) {
-        // product to delete
-        let productId = this.props.productId;
+        let cusNo = this.props.cusNo;
         // submit form data to api
         $.ajax({
-            url: "http://localhost/api/product/delete.php",
+            url: "http://localhost/api/customer/delete.php",
             type : "POST",
             contentType : 'application/json',
-            data : JSON.stringify({'id' : productId}),
+            data : JSON.stringify({'number' : cusNo}),
             success : (response) => {
-                this.props.changeAppMode('read');
+                this.props.changeCustomerMode('read');
             },
             error: (xhr, resp, text) => {
                 // show error in console
@@ -40,13 +35,14 @@ class DeleteProductComponent extends React.Component {
                 <h4 className="line_height_del">DELETE THIS CUSTOMER?</h4>
                             <div className="btn_wrap">
                                 <button className="btn_yes" onClick={this.onDelete}>Yes</button>
-                                <button className="btn_no" onClick={() => this.props.changeProductMode('read')}>No
-                                </button>
-                            </div>
-            </div>
+                                <button className="btn_no" onClick={() => this.props.changeCustomerMode('read')}>No</button>
+                             </div>
+                           </div>
+                                
+        
            
         );
     }
 }
 
-export default DeleteProductComponent;
+export default DeleteCustomerComponent;

@@ -13,7 +13,7 @@ class ProductTableRowComponent extends React.Component {
             <tr>
                 <td>{this.props.product.number}</td>
                 <td>{this.props.product.name}</td>
-                <td>{this.props.product.price} kr</td>
+                <td>{parseFloat(this.props.product.price).toFixed(2)}</td>
                 <td>{this.props.product.group}</td>
                 <td>
                     <a href='#'

@@ -19,16 +19,15 @@ $ec = new Economic($agreementGrantToken, $appSecretToken);
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
+// prepare account object
 $account = new Account($db);
  
-// get product id
+// get account number
 $data = json_decode(file_get_contents("php://input"));
  
-// set product id to be deleted
+// set account number to be deleted
 $account->number = $data->number;
  
-// delete the product && $ec->deleteProduct($product->number)
 if($ec->deleteAccount($account->number)) {
 	$account->delete();
     echo '{';

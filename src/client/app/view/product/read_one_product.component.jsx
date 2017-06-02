@@ -13,8 +13,6 @@ class ReadOneProductComponent extends React.Component {
             group: 0,
             price: 0
         };
-
-        this.onSave = this.onSave.bind(this);
     }
 
     // on mount, read product data and them as this component's state
@@ -28,16 +26,12 @@ class ReadOneProductComponent extends React.Component {
                 this.setState({group: product.group});
                 this.setState({price: product.price});
              });
-
-        $('.page-header h1').text('Read Product');
     }
 
     // on unmount, kill categories fetching in case the request is still pending
     componentWillUnmount() {
         this.serverRequestProd.abort();
     }
-
-    onSave() {}
 
     render() {
         return (
@@ -59,7 +53,7 @@ class ReadOneProductComponent extends React.Component {
                         </tr>
                         <tr>
                             <td>Price (DKK)</td>
-                            <td>{parseFloat(this.state.price).toFixed(2)} kr</td>
+                            <td>{parseFloat(this.state.price).toFixed(2)}</td>
                         </tr>
                         <tr>
                             <td>Group</td>

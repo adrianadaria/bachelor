@@ -19,23 +19,21 @@ $ec = new Economic($agreementGrantToken, $appSecretToken);
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
 $account = new Account($db);
  
-// get id of product to be edited
 $data = json_decode(file_get_contents("php://input"));
  
-// set ID property of product to be edited
+// set number property of account to be edited
 $account->number = $data->number;
  
-// set product property values
+// set account property values
 $account->name = $data->name;
 $account->type = $data->type;
 $account->card = $data->card;
 $account->vat = $data->vat;
 $account->balance = $data->balance;
 
-// update the product
+// update the account
 if($ec->updateAccount($account->number, $account->name, $account->type, $account->card)) {
     $account->update();
 	echo '{';

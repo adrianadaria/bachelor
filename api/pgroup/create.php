@@ -23,19 +23,17 @@ $pgroup = new ProductGroup($db);
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
  
-// set product property values
+// set property values
 $pgroup->number = $data->number;
 $pgroup->name = $data->name;
 $pgroup->vatAcc = $data->vatAcc;
 $pgroup->noVatAcc = $data->noVatAcc;
 $pgroup->created = date('Y-m-d H:i:s');
- 
-$insert = $ec->addProductGroup($pgroup->number, $pgroup->name, $pgroup->vatAcc, $pgroup->noVatAcc);
 
-if($insert){
+if($ec->addProductGroup($pgroup->number, $pgroup->name, $pgroup->vatAcc, $pgroup->noVatAcc)) {
 	$pgroup->create();
     echo '{';
-        echo '"message": "Product Group was created."';
+        echo '"message": "Product group was created."';
     echo '}';
 }
  

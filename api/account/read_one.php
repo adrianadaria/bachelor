@@ -12,13 +12,11 @@ include_once '../objects/Account.php';
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
 $account = new Account($db);
  
-// set ID property of product to be edited
+// set number property of account to be edited
 $account->number = isset($_GET['number']) ? $_GET['number'] : die();
  
-// read the details of product to be edited
 $account->readOne();
  
 // create array

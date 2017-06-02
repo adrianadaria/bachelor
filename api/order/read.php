@@ -15,18 +15,18 @@ $db = $database->getConnection();
 // initialize object
 $order = new Order($db);
  
-// query products
+// query
 $stmt = $order->read();
 $num = $stmt->rowCount();
  
 // check if more than 0 record found
 if($num > 0) {
  
-    // products array
+    // array
     $orders_arr = array();
     $orders_arr["records"] = array();
  
-    // retrieve product table
+    // retrieve table
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         // this will make $row['name'] to just $name only
         extract($row);
@@ -39,7 +39,7 @@ if($num > 0) {
 		$date = new DateTime($date);
         $order_item = array(
             "id" => $id,
-            "cusNo" => $cusNo, //html_entity_decode($description),
+            "cusNo" => $cusNo,
             "date" => $date->format('Y-m-d'),
 			"delAddress" => $delAddress,
 			"delZip" => $delZip,

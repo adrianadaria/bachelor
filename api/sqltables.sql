@@ -12,26 +12,6 @@ CREATE TABLE IF NOT EXISTS `customer` (
   PRIMARY KEY (`number`)
 )
 
-CREATE TABLE IF NOT EXISTS `product` (
-  `number` varchar(100) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `price`double,  
-  `group` integer,
-  `created` datetime NOT NULL,
-  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`number`)
-)
-
-CREATE TABLE IF NOT EXISTS `invoice` (
-  `id` int NOT NULL,
-  `date` datetime NOT NULL,
-  `cusNo` int NOT NULL,  
-  `total` double,
-  `created` datetime NOT NULL,
-  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-)
-
 CREATE TABLE IF NOT EXISTS `account` (
   `number` int NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -44,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   PRIMARY KEY (`number`)
 )
 
+
 CREATE TABLE IF NOT EXISTS `productgroup` (
   `number` int NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -51,7 +32,9 @@ CREATE TABLE IF NOT EXISTS `productgroup` (
   `noVatAcc` SMALLINT,
   `created` datetime NOT NULL,
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`number`)
+  PRIMARY KEY (`number`),
+  FOREIGN KEY (`vatAcc`) REFERENCES `account`(`number`),
+  FOREIGN KEY (`noVatAcc`) REFERENCES `account`(`number`)
 )
 
 CREATE TABLE IF NOT EXISTS `customergroup` (
@@ -60,7 +43,31 @@ CREATE TABLE IF NOT EXISTS `customergroup` (
   `account` SMALLINT NOT NULL,  
   `created` datetime NOT NULL,
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`number`)
+  PRIMARY KEY (`number`),
+  FOREIGN KEY (`account`) REFERENCES `account`(`number`)
+)
+
+
+CREATE TABLE IF NOT EXISTS `product` (
+  `number` varchar(100) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price`double,  
+  `group` integer,
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`number`),
+  FOREIGN KEY (`group`) REFERENCES `productgroup`(`number`)
+)
+
+CREATE TABLE IF NOT EXISTS `invoice` (
+  `id` int NOT NULL,
+  `date` datetime NOT NULL,
+  `cusNo` int NOT NULL,  
+  `total` double,
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`cusNo`) REFERENCES `customer`(`number`)
 )
 
 CREATE TABLE IF NOT EXISTS `order` (
@@ -76,5 +83,16 @@ CREATE TABLE IF NOT EXISTS `order` (
   `total` double,
   `created` datetime NOT NULL,
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`cusNo`) REFERENCES `customer`(`number`)
 )
+
+CREATE TABLE IF NOT EXISTS `detail` (
+  `id` int NOT NULL AUTO_INCREMENT, 
+  `cusNo` int NOT NULL,
+  `pNo` varchar(255) NOT NULL,
+  `price`double,  
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`cusNo`) REFERENCES `customer`(`number`),
+  FOREIGN KEY (`pNo`) REFERENCES `product`(`number`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19;

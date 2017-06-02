@@ -1,5 +1,4 @@
 import React from 'react';
-
 import OrderTableRowComponent from './order_table_row.component.jsx';
 
 class OrderTableComponent extends React.Component {

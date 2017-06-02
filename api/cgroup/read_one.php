@@ -12,13 +12,11 @@ include_once '../objects/CustomerGroup.php';
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
 $cgroup = new CustomerGroup($db);
  
-// set ID property of product to be edited
 $cgroup->number = isset($_GET['number']) ? $_GET['number'] : die();
  
-// read the details of product to be edited
+// read the details 
 $cgroup->readOne();
  
 // create array

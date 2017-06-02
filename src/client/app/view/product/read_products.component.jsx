@@ -54,7 +54,7 @@ class ReadProductsComponent extends React.Component {
     render() {
         let filteredProducts = this.state.products;
         let modeComponent = <ProductTableComponent products={filteredProducts} changeProductMode={this.changeProductMode} />;
-        $('.page-header h1').text('Read Products');
+
         switch(this.state.currentMode) {
             case 'read':
                 break;
@@ -76,17 +76,19 @@ class ReadProductsComponent extends React.Component {
             default:
                 break;
         }
-        //console.log(filteredProducts);
+
         return (
-            //if current mode read render tobar
+
+
             <div className="container equal">
                 <div className="col-left bg-grey left-typo scroll">
+                {topBar}
                     {modeComponent}
                 </div>
                 <div className="col-right bg-yellow">
                     <CreateProductComponent/>
                 </div>
-            </div>
+
         );
     }
 

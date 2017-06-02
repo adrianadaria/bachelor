@@ -15,15 +15,15 @@ class GroupTableRowComponent extends React.Component {
                 <td>{this.props.pgroup.noVatAcc}</td>
                 <td>
                     <a href='#'
-                       onClick={() => this.props.changeGroupMode('readOne', this.props.pgroup.number)}>
+                       onClick={() => this.props.changeGroupMode('readOnep', this.props.pgroup.number)}>
                        <div className="action_btn view" />
                     </a>
                     <a href='#'
-                       onClick={() => this.props.changeGroupMode('update', this.props.pgroup.number)}>
+                       onClick={() => this.props.changeGroupMode('updatep', this.props.pgroup.number)}>
                        <div className="action_btn edit"/>
                     </a>
                     <a
-                        onClick={() => this.props.changeGroupMode('delete', this.props.pgroup.number)}>
+                        onClick={() => this.props.changeGroupMode('deletep', this.props.pgroup.number)}>
                         <div className="action_btn delete"/>
                     </a>
                 </td>
