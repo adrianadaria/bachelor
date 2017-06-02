@@ -85,9 +85,9 @@ class ReadProductsComponent extends React.Component {
         //console.log(filteredProducts);
         return (
             //if current mode read render tobar
-            <div className="container">
+            <div className="container equal">
                 {topBar}
-                <div className="col-left bg-grey">
+                <div className="col-left bg-grey left-typo scroll">
                     {modeComponent}
                 </div>
                 <div className="col-right bg-yellow">

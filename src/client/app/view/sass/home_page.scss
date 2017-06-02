@@ -106,7 +106,7 @@ li a:hover {
   margin: 0.1%;
   float: left;
   min-height: 250px;
-  max-height: 600px;
+  max-height: 500px;
 }
 .box:hover {
 	box-shadow: 0 6px 6px rgba(0,0,0,.23);
@@ -231,7 +231,7 @@ li a:hover {
 @media only screen and (min-width: 960px) {
 
 .box {
-	height: 600px;
+	height: 500px;
 }
 
 .right-active {

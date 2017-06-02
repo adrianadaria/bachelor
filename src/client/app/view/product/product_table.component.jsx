@@ -18,16 +18,18 @@ class ProductTableComponent extends React.Component {
 
         return (
             !rows.length
-                ? <div className='alert alert-danger'>No products found.</div>
+                ?  <h4>NO PRODUCTS FOUND</h4>
                 :
-                <table className='table table-bordered table-hover'>
+                <table className='table_list'>
+                    <caption><h4 className="table_title">LIST OF</h4>
+                    <h4 className="table_title">PRODUCTS</h4></caption>
                     <thead>
                     <tr>
-                        <th><h4>Number</h4></th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Group</th>
-                        <th>Action</th>
+                        <th><h5>Number</h5></th>
+                        <th><h5>Name</h5></th>
+                        <th><h5>Price</h5></th>
+                        <th><h5>Group</h5></th>
+                        <th className="extra_width"><h5>Action</h5></th>
                     </tr>
                     </thead>
                     <tbody>

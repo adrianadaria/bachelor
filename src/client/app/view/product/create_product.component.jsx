@@ -2,6 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import style from '../sass/subpage.scss';
 
+
 class CreateProductComponent extends React.Component {
 
     constructor(props) {
@@ -84,7 +85,7 @@ class CreateProductComponent extends React.Component {
          - form to create a product
          */
         return (
-            <div>
+            <div className="form_style">
                 {
 
                     this.state.successCreation == "Product was created." ?
@@ -106,48 +107,17 @@ class CreateProductComponent extends React.Component {
                 <a href='#' onClick={() => this.props.changeProductMode('read')}
                    className='btn btn-primary margin-bottom-1em'> Read Products
                 </a>
-
-                <form onSubmit={this.onSave}>
-                    <table className='table table-bordered table-hover'>
-                        <tbody>
-                            <tr>
-                                <td>Number</td>
-                                <td>
-                                    <input type='text' className='form-control' value={this.state.number}
-                                           required onChange={this.onNumberChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>
-                                    <input type='text' className='form-control' value={this.state.name}
-                                        required onChange={this.onNameChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Price (DKK)</td>
-                                <td>
-                                    <textarea type='number' step="0.01" className='form-control' value={this.state.price}
-                                            required onChange={this.onPriceChange}>
-                                    </textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Group</td>
-                                <td>
-                                    <input type='number' step='0' className='form-control' value={this.state.group}
-                                           required onChange={this.onGroupChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button className='btn btn-primary' onClick={this.onSave}>Save</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
+                    <h4 className="title_right_col">CREATE A</h4>
+                    <h4 className="title_right_col">NEW PRODUCT</h4>
+                    <form onSubmit={this.onSave}>
+                        <input type="text" placeholder="Number" value={this.state.number} required onChange={this.onNumberChange} />
+                        <input type="text" placeholder="Name" value={this.state.name} required onChange={this.onNameChange} />
+                        <label>Price</label>
+                        <textarea type="number" step="0.01" value={this.state.price} required onChange={this.onPriceChange}/>
+                        <label>Group</label>
+                        <input type="number" step='0' value={this.state.group} required onChange={this.onGroupChange} />
+                        <input type="submit" value="Save" onClick={this.onSave}/>
+                    </form>
             </div>
         );
     }

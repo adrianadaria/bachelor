@@ -1,6 +1,11 @@
 @import "_colors";
 
-body {
+.title_right_col {
+  text-align: left;
+  margin-left: 5%;
+  line-height: 1px;
+}
+.form_style {
   color: $white;
 }
 

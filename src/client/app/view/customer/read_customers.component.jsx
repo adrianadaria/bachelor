@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/subpage.scss';
 
 import CustomerTableComponent from './customer_table.component.jsx';
 import ReadOneCustomerComponent from './read_one_customer.component.jsx';
@@ -79,11 +80,12 @@ class ReadCustomersComponent extends React.Component {
         return (
             //if current mode read render tobar
 
-            <div className="container">
-                <div className="left">
+            <div className="container equal">
+                <div className="col-left bg-grey left-typo scroll">
                 {modeComponent}
                 </div>
-                <div className="right">
+                 <div className="col-right bg-yellow">
+                    <CreateCustomerComponent/>
                 </div>
             </div>
         );

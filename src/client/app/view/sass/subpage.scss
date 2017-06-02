@@ -18,11 +18,16 @@
 .col-left {
 	float: left;
 	width: 50%;
-	max-height: 800px;
+	height: 100%;
 }
 
 .col-right {
 	@extend .col-left;
+	overflow: hidden;
+}
+
+.equal {
+	height: 800px;
 }
 
 @media only screen and (max-width: 768px) {
