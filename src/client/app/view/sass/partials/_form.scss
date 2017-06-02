@@ -2,14 +2,14 @@
 
 .title_right_col {
   text-align: left;
-  margin-left: 5%;
+  margin-left: 10%;
   line-height: 1px;
 }
 .form_style {
   color: $white;
 }
 
-[type=text] {
+[type=text], [type=number] {
   display: block;
   margin: 0 auto;
   width: 80%;
@@ -19,6 +19,30 @@
   line-height: 45px;  
   margin-bottom: 10px;
   font-size: 1em;
+  background-color: transparent;
+  color: $white;
+}
+
+[type=submit] {
+  display: block;
+  width: 20%;
+  border: 1px solid $black;
+  height: 45px;
+  line-height: 45px;  
+  margin-bottom: 10px;
+  font-size: 1em;
+  background-color: $black;
+  color: $white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: $size-m;
+  margin-left: 10%;
+  margin-top: 8%;
+}
+
+[type=submit]:hover {
+  border: 1px solid $white;
   background-color: transparent;
   color: $white;
 }
