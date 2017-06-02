@@ -82,7 +82,6 @@ class ReadProductsComponent extends React.Component {
 
             <div className="container equal">
                 <div className="col-left bg-grey left-typo scroll">
-                {topBar}
                     {modeComponent}
                 </div>
                 <div className="col-right bg-yellow">
