@@ -90,33 +90,39 @@ class ReadGroupsComponent extends React.Component {
                     <td>{cgroup.account}</td>
                     <td>
                         <a href='#'
-                           onClick={() => this.changeGroupMode('readOnec', '', cgroup.number)}
-                           className='btn btn-info m-r-1em'> Read One
+                           onClick={() => this.props.changeGroupMode('readOnec', '', cgroup.number)}>
+                           <div className="action_btn view" />
                         </a>
                         <a href='#'
-                           onClick={() => this.changeGroupMode('updatec','', cgroup.number)}
-                           className='btn btn-primary m-r-1em'> Edit
+                           onClick={() => this.props.changeGroupMode('updatec','', cgroup.number)}>
+                           <div className="action_btn edit"/>
                         </a>
                     </td>
                 </tr>
             );
         });
         let cusTable = (
-            <div>
-                <table className='table table-bordered table-hover'>
-                    <thead>
-                    <tr>
-                        <th>Number</th>
-                        <th>Name</th>
-                        <th>Account</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {cdata}
-                    </tbody>
-                </table>
-            </div>
+            <div className="container equal">
+                    <div className="col-left bg-grey left-typo scroll">
+                        <table className="table_list">
+                            <caption><h4 className="table_title">LIST OF</h4>
+                            <h4 className="table_title">CUSTOMER GROUPS</h4></caption>
+                            <thead>
+                                <tr>
+                                    <th><h5>Number</h5></th>
+                                    <th><h5>Name</h5></th>
+                                    <th><h5>Account</h5></th>
+                                    <th className="extra_width"><h5>Action</h5></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {cdata}
+                            </tbody>
+                        </table>
+                    </div>
+                        <div className="col-right bg-yellow">
+                        </div>
+                </div>
         );
 
         switch(this.state.currentMode) {
@@ -158,15 +164,19 @@ class ReadGroupsComponent extends React.Component {
         }
 
         return (
-            //if current mode read render tobar
-            <div className='overflow-hidden'>
-                {
+            <div>
+                <div className="container equal">
+                    <div className="col-left bg-grey left-typo scroll">
+                         {
                     topBar !== null ?
                         topBar
                     : null
                 }
-                {modeComponent}
-            </div>
+                        {modeComponent}
+                    </div>
+                    <div className="col-right bg-yellow">
+                    </div>
+                </div>
         );
     }
 

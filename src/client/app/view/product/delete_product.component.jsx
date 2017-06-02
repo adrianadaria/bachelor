@@ -1,6 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
-
+import style from '../sass/subpage.scss';
 class DeleteProductComponent extends React.Component {
 
     constructor(props) {
@@ -34,21 +34,14 @@ class DeleteProductComponent extends React.Component {
 
     render() {
         return (
-            <div className='row'>
-                <div className='col-md-3'></div>
-                <div className='col-md-6'>
-                    <div className='panel panel-default'>
-                        <div className='panel-body text-align-center'>Are you sure?</div>
-                        <div className='panel-footer clearfix'>
-                            <div className='text-align-center'>
-                                <button onClick={this.onDelete} className='btn btn-danger m-r-1em'>Yes</button>
-                                <button onClick={() => this.props.changeProductMode('read')} className='btn btn-primary'>No
+            <div>
+                <h4 className="line_height_del">DO YOU WANT TO</h4>
+                <h4 className="line_height_del">DELETE THIS PRODUCT?</h4>
+                            <div className="btn_wrap">
+                                <button className="btn_yes" onClick={this.onDelete}>Yes</button>
+                                <button className="btn_no" onClick={() => this.props.changeProductMode('read')}>No
                                 </button>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div className='col-md-3'></div>
             </div>
         );
     }

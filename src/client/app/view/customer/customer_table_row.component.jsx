@@ -19,16 +19,16 @@ class CustomerTableRowComponent extends React.Component {
                 <td>{this.props.customer.cvr}</td>
                 <td>
                     <a href='#'
-                       onClick={() => this.props.changeCustomerMode('readOne', this.props.customer.number)}
-                       className='btn btn-info m-r-1em'> Read One
+                       onClick={() => this.props.changeCustomerMode('readOne', this.props.customer.number)}>
+                       <div className="action_btn view"/>
                     </a>
                     <a href='#'
-                       onClick={() => this.props.changeCustomerMode('update', this.props.customer.number)}
-                       className='btn btn-primary m-r-1em'> Edit
+                       onClick={() => this.props.changeCustomerMode('update', this.props.customer.number)}>
+                       <div className="action_btn edit"/>
                     </a>
                     <a
-                        onClick={() => this.props.changeCustomerMode('delete', this.props.customer.number)}
-                        className='btn btn-danger'> Delete
+                        onClick={() => this.props.changeCustomerMode('delete', this.props.customer.number)}>
+                        <div className="action_btn delete"/>
                     </a>
                 </td>
             </tr>

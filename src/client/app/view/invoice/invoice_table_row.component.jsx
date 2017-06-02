@@ -15,12 +15,12 @@ class InvoiceTableRowComponent extends React.Component {
                 <td>{parseFloat(this.props.invoice.total).toFixed(2)}</td>
                 <td>
                     <a href='#'
-                       onClick={() => this.props.changeInvoiceMode('readOne', this.props.invoice.id)}
-                       className='btn btn-info m-r-1em'> Read One
+                       onClick={() => this.props.changeInvoiceMode('readOne', this.props.invoice.id)}>
+                       <div className="action_btn view" />
                     </a>
                     <a
-                        onClick={() => this.props.changeInvoiceMode('delete', this.props.invoice.id)}
-                        className='btn btn-danger'> Delete
+                        onClick={() => this.props.changeInvoiceMode('delete', this.props.invoice.id)}>
+                        <div className="action_btn delete" />
                     </a>
                 </td>
             </tr>

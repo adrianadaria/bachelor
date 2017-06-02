@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/subpage.scss';
 
 class ReadOneAccountComponent extends React.Component {
 
@@ -43,7 +44,9 @@ class ReadOneAccountComponent extends React.Component {
                    className='btn btn-primary margin-bottom-1em'>Read Accounts
                 </a>
                 <form onSubmit={this.onSave}>
-                    <table className='table table-bordered table-hover'>
+                    <table className="table_list">
+                        <caption><h4 className="table_title">DETAILS OF</h4>
+                    <h4 className="table_title">THE ACCOUNT</h4></caption>
                         <tbody>
                         <tr>
                             <td>Number</td>

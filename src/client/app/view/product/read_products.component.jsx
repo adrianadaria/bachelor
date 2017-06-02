@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/subpage.scss';
 
-import ProductTopBarComponent  from './product_top_bar.component.jsx';
 import ProductTableComponent from './product_table.component.jsx';
 
 import ReadOneProductComponent from './read_one_product.component.jsx';
@@ -52,7 +52,6 @@ class ReadProductsComponent extends React.Component {
 
     // render component on the page
     render() {
-        let topBar = <ProductTopBarComponent changeProductMode={this.changeProductMode} refresh={this.fetchProducts} />;
         let filteredProducts = this.state.products;
         let modeComponent = <ProductTableComponent products={filteredProducts} changeProductMode={this.changeProductMode} />;
 
@@ -62,31 +61,34 @@ class ReadProductsComponent extends React.Component {
             case 'readOne':
                 modeComponent =
                     <ReadOneProductComponent productNo={this.state.productNo} changeProductMode={this.changeProductMode}/>;
-                topBar = null;
                 break;
             case 'create':
                 modeComponent = <CreateProductComponent changeProductMode={this.changeProductMode}/>;
-                topBar = null;
                 break;
             case 'update':
                 modeComponent =
                     <UpdateProductComponent productNo={this.state.productNo} changeProductMode={this.changeProductMode}/>;
-                topBar = null;
                 break;
             case 'delete':
                 modeComponent =
                     <DeleteProductComponent productNo={this.state.productNo} changeProductMode={this.changeProductMode}/>;
-                topBar = null;
                 break;
             default:
                 break;
         }
 
         return (
-            <div className='overflow-hidden'>
+
+
+            <div className="container equal">
+                <div className="col-left bg-grey left-typo scroll">
                 {topBar}
-                {modeComponent}
-            </div>
+                    {modeComponent}
+                </div>
+                <div className="col-right bg-yellow">
+                    <CreateProductComponent/>
+                </div>
+
         );
     }
 

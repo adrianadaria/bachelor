@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/subpage.scss';
 
 class CreateCustomerComponent extends React.Component {
 
@@ -9,6 +10,8 @@ class CreateCustomerComponent extends React.Component {
         this.state = {
             number: 0,
             name: '',
+            description: '',
+            price: '',
             email: '',
             address: '',
             postcode: '',
@@ -103,97 +106,36 @@ class CreateCustomerComponent extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="form_style">
                 {
 
                     this.state.successCreation == "Customer was created." ?
-                        <div className='alert alert-success'>
-                            Customer was saved.
-                        </div>
+                        <h4>CUSTOMER WAS SAVED</h4>
                         : null
                 }
 
                 {
 
                     this.state.successCreation == "Unable to create customer." ?
-                        <div className='alert alert-danger'>
-                            Unable to save customer. Please try again.
+                        <div>
+                            <h4>UNABLE TO CREATE CUSTOMER</h4>
+                            <h4>PLEASE TRY AGAIN</h4>
                         </div>
                         : null
                 }
+                    <h4 className="title_right_col">CREATE A</h4>
+                    <h4 className="title_right_col">NEW CUSTOMER</h4>
+                <form onSubmit={this.onSave}>
+                    <input type="text" placeholder="Name" value={this.state.name} required onChange={this.onNameChange} />
+                    <textarea type="text" placeholder="Description" value={this.state.description}
+                                            required onChange={this.onDescriptionChange}>
+                                    </textarea>
+                    <input type="number" placeholder="Price (DKK)" step='0.01' min="0" value={this.state.price} required onChange={this.onPriceChange} />
+                    <input type="submit" value="Save" onClick={this.onSave}/>
 
                 <a href='#' onClick={() => this.props.changeCustomerMode('read')}
                    className='btn btn-primary margin-bottom-1em'> Back
                 </a>
-
-                <form onSubmit={this.onSave}>
-                    <table className='table table-bordered table-hover'>
-                        <tbody>
-                        <tr>
-                            <td>Number</td>
-                            <td>
-                                <input type='number' className='form-control' value={this.state.number}
-                                       required onChange={this.onNumberChange}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>
-                                <textarea type='text' className='form-control' value={this.state.name}
-                                          required onChange={this.onNameChange}></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>
-                                <input type='text' className='form-control' value={this.state.email}
-                                       required onChange={this.onEmailChange}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>
-                                <input type='text' className='form-control' value={this.state.address}
-                                       required onChange={this.onAddressChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Zip</td>
-                            <td>
-                                <textarea type='text' className='form-control' value={this.state.postcode}
-                                          required onChange={this.onPostcodeChange}></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>City</td>
-                            <td>
-                                <input type='text' className='form-control' value={this.state.city}
-                                       required onChange={this.onCityChange}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Country</td>
-                            <td>
-                                <input type='text' className='form-control' value={this.state.country}
-                                       required onChange={this.onCountryChange}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>CVR</td>
-                            <td>
-                                <input type='number' className='form-control' value={this.state.cvr}
-                                       required onChange={this.onCvrChange}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <button className='btn btn-primary' onClick={this.onSave}>Save Changes</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </form>
             </div>
         );
     }

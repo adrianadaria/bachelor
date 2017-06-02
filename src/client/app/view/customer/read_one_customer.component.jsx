@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/subpage.scss';
 
 class ReadOneCustomerComponent extends React.Component {
 
@@ -48,6 +49,10 @@ class ReadOneCustomerComponent extends React.Component {
                 <a href='#' onClick={() => this.props.changeCustomerMode('read')}
                    className='btn btn-primary margin-bottom-1em'>Back
                 </a>
+                <form onSubmit={this.onSave}>
+                    <table className="table_list">
+                        <caption><h4 className="table_title">DETAILS OF</h4>
+                        <h4 className="table_title">THE CUSTOMER</h4></caption>
                 <form>
                     <table className='table table-bordered table-hover'>
                         <tbody>

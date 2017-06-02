@@ -77,14 +77,18 @@ class ReadAccountsComponent extends React.Component {
         }
 
         return (
-            <div className='overflow-hidden'>
-                {
+             <div className="container equal">
+                <div className="col-left bg-grey left-typo scroll">
+                 {
                     topBar !== null ?
                         topBar
                         : null
                 }
-                {modeComponent}
-            </div>
+                    {modeComponent}
+                </div>
+                <div className="col-right bg-yellow">
+                </div>
+
         );
     }
 

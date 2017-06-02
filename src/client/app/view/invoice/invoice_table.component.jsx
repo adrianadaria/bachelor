@@ -18,16 +18,18 @@ class InvoiceTableComponent extends React.Component {
 
         return (
             !rows.length
-                ? <div className='alert alert-danger'>No invoices found.</div>
+                ? <h4>NO INVOICES FOUND</h4>
                 :
-                <table className='table table-bordered table-hover'>
+               <table className="table_list">
+                    <caption><h4 className="table_title">LIST OF</h4>
+                    <h4 className="table_title">INVOICES</h4></caption>
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Date</th>
-                        <th>CustomerName</th>
-                        <th>Amount</th>
-                        <th>Action</th>
+                        <th><h5>Id</h5></th>
+                        <th><h5>Date</h5></th>
+                        <th><h5>CustomerName</h5></th>
+                        <th><h5>Amount</h5></th>
+                        <th className="extra_width"><h5>Action</h5></th>
                     </tr>
                     </thead>
                     <tbody>

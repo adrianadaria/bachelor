@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/subpage.scss';
 
 class UpdateProductComponent extends React.Component {
 
@@ -86,7 +87,7 @@ class UpdateProductComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="form_style">
                 {
                     this.state.successUpdate == "Product was updated." ?
                         <div className='alert alert-success'>Product was updated.</div>
@@ -100,49 +101,26 @@ class UpdateProductComponent extends React.Component {
                 }
 
                 <a href='#'
-                   onClick={() => this.props.changeProductMode('read')} className='btn btn-primary margin-bottom-1em'>
-                    Read Products
+                   onClick={() => this.props.changeProductMode('read')} alt="Read Products">
+                    <div className="back"></div>
                 </a>
 
                 <form onSubmit={this.onSave}>
-                    <table className='table table-bordered table-hover'>
-                        <tbody>
-                            <tr>
-                                <td>Number</td>
-                                <td>
-                                    <input type='text' className='form-control' value={this.state.number}
+                    <h4 className="title_right_col">UPDATE</h4>
+                    <h4 className="title_right_col">THIS PRODUCT</h4>
+                                <label>Number</label>
+                                    <input type="text" value={this.state.number}
                                         required onChange={this.onNumberChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>
-                                <textarea type='text' className='form-control' value={this.state.name}
+                                 <label>Name</label>
+                                <textarea type="text" value={this.state.name}
                                     required onChange={this.onNameChange}></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Price (DKK)</td>
-                                <td>
-                                    <input type='number' step="0.01" className='form-control' value={this.state.price}
+                                 <label>Price (DKK)</label>
+                                    <input type="number" step="0.01" value={this.state.price}
                                         required onChange={this.onPriceChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Group</td>
-                                <td>
-                                    <input type='number' step="0.01" className='form-control' value={this.state.group}
+                                <label>Group</label>
+                                    <input type="number" step="0.01" className='form-control' value={this.state.group}
                                            required onChange={this.onGroupChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button className='btn btn-primary' onClick={this.onSave}>Save Changes</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                <input type="submit" value="Update" onClick={this.onSave}/>
                 </form>
             </div>
         );

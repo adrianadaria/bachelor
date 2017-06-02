@@ -74,14 +74,20 @@ class ReadInvoicesComponent extends React.Component {
         }
 
         return (
-            <div className='overflow-hidden'>
-                {
+
+     
+            <div className="container equal">
+                <div className="col-left bg-grey left-typo scroll">
+                 {
                     bar !== null ?
                         bar
                         : null
                 }
-                {modeComponent}
-            </div>
+                    {modeComponent}
+                </div>
+                <div className="col-right bg-yellow">
+                </div>
+
         );
     }
 

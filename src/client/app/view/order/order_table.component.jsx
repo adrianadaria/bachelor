@@ -17,22 +17,24 @@ class OrderTableComponent extends React.Component {
 
         return (
             !rows.length
-                ? <div className='alert alert-danger'>No orders found.</div>
+                ? <h4>NO ORDERS FOUND</h4>
                 :
-                <table className='table table-bordered table-hover'>
+                <table className="table_list">
+                    <caption><h4 className="table_title">LIST OF</h4>
+                    <h4 className="table_title">ORDERS</h4></caption>
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>DelAddress</th>
-                        <th>DelZip</th>
-                        <th>DelCity</th>
-                        <th>DelCountry</th>
-                        <th>DelTerms</th>
-                        <th>DelDate</th>
-                        <th>Total (DKK)</th>
-                        <th>Action</th>
+                        <th><h5 className="smaller_title">Id</h5></th>
+                        <th><h5 className="smaller_title">Name</h5></th>
+                        <th><h5 className="smaller_title">Date</h5></th>
+                        <th><h5 className="smaller_title">DelAddress</h5></th>
+                        <th><h5 className="smaller_title">DelZip</h5></th>
+                        <th><h5 className="smaller_title">DelCity</h5></th>
+                        <th><h5 className="smaller_title">DelCountry</h5></th>
+                        <th><h5 className="smaller_title">DelTerms</h5></th>
+                        <th><h5 className="smaller_title">DelDate</h5></th>
+                        <th><h5 className="smaller_title">Total (DKK)</h5></th>
+                        <th className="extra_width"><h5 >Action</h5></th>
                     </tr>
                     </thead>
                     <tbody>

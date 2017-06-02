@@ -1,0 +1,85 @@
+@import "_colors";
+@import "_typography";
+
+.left-typo {
+	color: $dark-grey;
+}
+.scroll {
+   overflow-y: scroll;
+}
+td {
+    padding: 0px 20px;
+    font-weight: 600;
+    font-size: $size-sm;
+}
+th {
+  padding: 0px 20px;
+  max-width: 200px;
+}
+.smaller_width {
+  width: 70px;
+}
+.extra_width {
+  width: 140px;
+}
+.table_list {
+	padding: 5%;
+	width: 100%;
+}
+
+.smaller_title {
+	font-size: $size-mm;
+	line-height: 1em;
+}
+.table_title {
+	color: $black;
+	text-align: left;
+	margin-left: 2%;
+	line-height: 1px;
+}
+.action_btn {
+	background-color: $black;
+	width: $size;
+	height: $size;
+	border-radius: 10%;
+	padding: 5px;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 24px;
+	margin-right: 5px;
+}
+
+tr:nth-child(even) {background-color: $grey-highlight;}
+table {
+	border-collapse: collapse;
+}
+table tr td:last-child {
+    background-color: $grey;
+}
+.back {
+	background-image: url(../img/back-arrow.png);
+	background-repeat: no-repeat;
+	height: 40px;
+	width: 40px;
+	margin: 20px;
+	color: $black;
+}
+.view {
+	background-image: url(../img/read.png);
+}
+.edit {
+	background-image: url(../img/edit.png);
+}
+.delete {
+	background-image: url(../img/delete.png);
+}
+.view:hover {
+	background-image: url(../img/read-hover.png);
+}
+.edit:hover {
+	background-image: url(../img/edit-hover.png);
+}
+.delete:hover {
+	background-image: url(../img/delete-hover.png);
+}

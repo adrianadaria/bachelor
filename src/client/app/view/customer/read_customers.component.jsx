@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/subpage.scss';
 
 import CustomerTopBarComponent from './customer_top_bar.component.jsx';
 import CustomerTableComponent from './customer_table.component.jsx';
@@ -84,6 +85,9 @@ class ReadCustomersComponent extends React.Component {
                 break;
         }
         return (
+
+            <div className="container equal">
+                <div className="col-left bg-grey left-typo scroll">
             <div className='overflow-hidden'>
                 {
                     topBar !== null ?
@@ -91,6 +95,10 @@ class ReadCustomersComponent extends React.Component {
                         : null
                 }
                 {modeComponent}
+                </div>
+                 <div className="col-right bg-yellow">
+                    <CreateCustomerComponent/>
+                </div>
             </div>
         );
     }

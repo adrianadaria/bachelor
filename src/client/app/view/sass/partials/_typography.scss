@@ -1,5 +1,5 @@
-@import "partials/_variables_size";
-@import "partials/_variables_colors";
+@import "_variables_size";
+@import "_variables_colors";
 
 $font-family: 'Open Sans', sans-serif;
 
@@ -37,9 +37,11 @@ h4 {
 }
 
 h5 {
-	font-size: $size-s;
+	font-size: $size-ml;
 	font-weight: 600;
-	text-align: center;
+	text-align: left;
+	color: $black;
+	line-height: 1px;
 }
 
 h6 {

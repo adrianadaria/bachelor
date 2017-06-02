@@ -99,7 +99,7 @@ const bubb = {
           <a href='#' onClick={() => this.props.changeAppMode('read')}>
             <div className="shadow box box-product">
               <div className="title">
-                <h1>Products</h1><div className="circle yellow"/>
+                <h1>Products</h1><div className="circle bg-yellow"/>
               </div>
               <div className="container-data">
                 <div className="left">
@@ -133,7 +133,7 @@ const bubb = {
           <a href='#' onClick={() => this.props.changeAppMode('customer')}>
             <div className="box box-customer">
               <div className="title">
-                <h1>Customers</h1><div className="circle orange"/>
+                <h1>Customers</h1><div className="circle bg-orange"/>
               </div>
               <div className="container-data">
                 <Line data={data} />
@@ -144,7 +144,7 @@ const bubb = {
           <a href='#' onClick={() => this.props.changeAppMode('invoice')}>
             <div className="shadow box box-invoice">
               <div className="title">
-              <h1>Invoices</h1><div className="circle blue"/>
+              <h1>Invoices</h1><div className="circle bg-blue"/>
               </div>
                <div className="container-data">
                 <div className="left">
@@ -179,7 +179,7 @@ const bubb = {
   <a href='#' onClick={() => this.props.changeAppMode('account')}>
     <div className="box box-account">
       <div className="title">
-        <h1>Accounts</h1><div className="circle dark-purple"/>
+        <h1>Accounts</h1><div className="circle bg-dark-purple"/>
       </div>
         <div className="container-data">
           <div className="container-data">
@@ -199,7 +199,7 @@ const bubb = {
           <a href='#' onClick={() => this.props.changeAppMode('order')}>
             <div className="box box-order">
               <div className="title">
-                <h1>Orders</h1><div className="circle light-red"/>
+                <h1>Orders</h1><div className="circle bg-light-red"/>
                 <Bubble data={bubb} />
               </div>
             </div>
@@ -207,7 +207,7 @@ const bubb = {
           <a href='#' onClick={() => this.props.changeAppMode('group')}>
             <div className="shadow box box-group">
               <div className="title">
-                <h1>Groups</h1><div className="circle dark-green"/>
+                <h1>Groups</h1><div className="circle bg-dark-green"/>
               </div>
               <div className="container-data">
          <Pie data={data} />
