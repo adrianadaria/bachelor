@@ -12,13 +12,13 @@ include_once '../objects/Order.php';
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
+// prepare object
 $order = new Order($db);
  
-// set ID property of product to be edited
+// set ID property of order to be edited
 $order->id = isset($_GET['id']) ? $_GET['id'] : die();
  
-// read the details of product to be edited
+// read the details
 $name = $order->readOne();
  
 // create array

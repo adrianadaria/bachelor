@@ -14,33 +14,27 @@ class ReadOneAccountComponent extends React.Component {
             vat: '',
             balance: 0.00
         };
-
-        this.onSave = this.onSave.bind(this);
     }
 
-    // on mount, read product data and them as this component's state
+    // on mount, read account data and them as this component's state
     componentDidMount() {
         let accountNo = this.props.accountNo;
 
         this.serverRequestProd = $.get("http://localhost/api/account/read_one.php?number=" + accountNo,
              (account) => {
-                this.setState({number: account.number});
-                this.setState({name: account.name});
-                this.setState({type: account.type});
-                this.setState({card: account.card});
+                 this.setState({number: account.number});
+                 this.setState({name: account.name});
+                 this.setState({type: account.type});
+                 this.setState({card: account.card});
                  this.setState({vat: account.vat});
                  this.setState({balance: account.balance});
              });
-
-        $('.page-header h1').text('Read Account');
     }
 
-    // on unmount, kill categories fetching in case the request is still pending
+    // on unmount, kill account fetching in case the request is still pending
     componentWillUnmount() {
         this.serverRequestProd.abort();
     }
-
-    onSave() {}
 
     render() {
         return (

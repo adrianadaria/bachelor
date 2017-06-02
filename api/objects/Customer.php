@@ -21,7 +21,7 @@ class Customer {
         $this->conn = $db;
     }
 	
-	// read products
+	// read customers
 	function read() {
  
 		// select all query
@@ -45,7 +45,7 @@ class Customer {
 		$this->cvr = '';
 	}
 	
-	// create product
+	// create customer
 	function create() {
  
 		// query to insert record
@@ -85,7 +85,7 @@ class Customer {
 		}
 	}
 	
-	// used when filling up the update product form
+	// used when filling up the update form
 	function readOne() {
  
 		// query to read single record
@@ -94,7 +94,7 @@ class Customer {
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
  
-		// bind id of product to be updated
+		// bind number of customer to be updated
 		$stmt->bindParam(1, $this->number);
  
 		// execute query
@@ -114,7 +114,7 @@ class Customer {
 		$this->cvr = $row['cvr'];
 	}
 	
-	// update the product
+	// update the customer
 	function update() {
  
 		// update query
@@ -152,7 +152,7 @@ class Customer {
 		}
 	}
 	
-	// delete the product
+	// delete the customer
 	function delete() {
  
 		// delete query

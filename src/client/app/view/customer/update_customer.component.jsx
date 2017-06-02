@@ -18,59 +18,79 @@ class UpdateCustomerComponent extends React.Component {
             successCreation: null
         };
 
-        this.onNumberChange = this.onNumberChange.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
-        this.onPriceChange = this.onPriceChange.bind(this);
-        this.onNumberChange = this.onNumberChange.bind(this);
-        this.onNameChange = this.onNameChange.bind(this);
-        this.onPriceChange = this.onPriceChange.bind(this);
-        this.onNumberChange = this.onNumberChange.bind(this);
-        this.onNameChange = this.onNameChange.bind(this);
+        this.onEmailChange = this.onEmailChange.bind(this);
+        this.onAddressChange = this.onAddressChange.bind(this);
+        this.onPostcodeChange = this.onPostcodeChange.bind(this);
+        this.onCityChange = this.onCityChange.bind(this);
+        this.onCountryChange = this.onCountryChange.bind(this);
+        this.onCvrChange = this.onCvrChange.bind(this);
         this.onSave = this.onSave.bind(this);
     }
 
     componentDidMount() {
-        // read one product data
-        var productId = this.props.productId;
-        /*this.serverRequestProd = $.get("http://localhost/api/product/read_one.php?id=" + productId,
-            (product) => {
-                this.setState({id: product.id});
-                this.setState({name: product.name});
-                this.setState({description: product.description});
-                this.setState({price: product.price});
-            });*/
-
-        $('.page-header h1').text('Update product');
+        let cusNo = this.props.cusNo;
+        this.serverRequestProd = $.get("http://localhost/api/customer/read_one.php?number=" + cusNo,
+            (customer) => {
+                this.setState({number: customer.number});
+                this.setState({name: customer.name});
+                this.setState({email: customer.email});
+                this.setState({address: customer.address});
+                this.setState({postcode: customer.postcode});
+                this.setState({city: customer.city});
+                this.setState({country: customer.country});
+                this.setState({cvr: customer.cvr});
+            });
     }
 
     componentWillUnmount() {
-        //this.serverRequestProd.abort();
+        this.serverRequestProd.abort();
     }
 
-    // handle name change
-    onNumberChange(e){
-        this.setState({id: e.target.value});
-    }
-    // handle description change
     onNameChange(e){
         this.setState({name: e.target.value});
     }
-    // handle price change
-    onPriceChange(e){
-        this.setState({price: e.target.value});
+
+    onEmailChange(e){
+        this.setState({email: e.target.value});
+    }
+
+    onAddressChange(e){
+        this.setState({address: e.target.value});
+    }
+
+    onPostcodeChange(e){
+        this.setState({postcode: e.target.value});
+    }
+
+    onCityChange(e){
+        this.setState({city: e.target.value});
+    }
+
+    onCountryChange(e){
+        this.setState({country: e.target.value});
+    }
+
+    onCvrChange(e){
+        this.setState({cvr: e.target.value});
     }
 
     // handle save changes button clicked
     onSave(e){
         // data in the form
         let form_data = {
-            id: this.state.id,
+            number: this.state.number,
             name: this.state.name,
-            price: this.state.price
+            email: this.state.email,
+            address: this.state.address,
+            postcode: this.state.postcode,
+            city: this.state.city,
+            country: this.state.country,
+            cvr: this.state.cvr
         };
         // submit form data to api
         $.ajax({
-            url: "http://localhost/api/product/update.php",
+            url: "http://localhost/api/customer/update.php",
             type : "POST",
             contentType : 'application/json',
             data : JSON.stringify(form_data),
@@ -89,20 +109,20 @@ class UpdateCustomerComponent extends React.Component {
         return (
             <div>
                 {
-                    this.state.successUpdate == "Product was updated." ?
-                        <div className='alert alert-success'>Product was updated.</div>
+                    this.state.successUpdate == "Customer was updated." ?
+                        <div className='alert alert-success'>Customer was updated.</div>
                         : null
                 }
 
                 {
-                    this.state.successUpdate == "Unable to update product." ?
-                        <div className='alert alert-danger'>Unable to update product. Please try again.</div>
+                    this.state.successUpdate == "Unable to update customer." ?
+                        <div className='alert alert-danger'>Unable to update customer. Please try again.</div>
                         : null
                 }
 
                 <a href='#'
-                   onClick={() => this.props.changeProductMode('read')} className='btn btn-primary margin-bottom-1em'>
-                    Read Products
+                   onClick={() => this.props.changeCustomerMode('read')} className='btn btn-primary margin-bottom-1em'>
+                    Back
                 </a>
 
                 <form onSubmit={this.onSave}>
@@ -111,8 +131,8 @@ class UpdateCustomerComponent extends React.Component {
                             <tr>
                                 <td>Number</td>
                                 <td>
-                                    <input type='number' step="0.01" className='form-control' value={this.state.id}
-                                        required onChange={this.onNumberChange} />
+                                    <input type='number' step="0.01" className='form-control' value={this.state.number}
+                                           readOnly/>
                                 </td>
                             </tr>
                             <tr>
@@ -123,10 +143,45 @@ class UpdateCustomerComponent extends React.Component {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Price (DKK)</td>
+                                <td>Email</td>
                                 <td>
-                                    <input type='number' step="0.01" className='form-control' value={this.state.price}
-                                        required onChange={this.onPriceChange}/>
+                                    <input type='text' className='form-control' value={this.state.email}
+                                        required onChange={this.onEmailChange}/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td>
+                                    <input type='text' className='form-control' value={this.state.address}
+                                           required onChange={this.onAddressChange} />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Zip</td>
+                                <td>
+                                <textarea type='text' className='form-control' value={this.state.postcode}
+                                          required onChange={this.onPostcodeChange}></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td>
+                                    <input type='text' className='form-control' value={this.state.city}
+                                           required onChange={this.onCityChange}/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Country</td>
+                                <td>
+                                    <input type='text' className='form-control' value={this.state.country}
+                                           required onChange={this.onCountryChange}/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>CVR</td>
+                                <td>
+                                    <input type='number' className='form-control' value={this.state.cvr}
+                                           required onChange={this.onCvrChange}/>
                                 </td>
                             </tr>
                             <tr>

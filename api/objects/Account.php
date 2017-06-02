@@ -19,7 +19,7 @@ class Account {
         $this->conn = $db;
     }
 	
-	// read products
+	// read accounts
 	function read() {
  
 		// select all query
@@ -34,7 +34,7 @@ class Account {
 		return $stmt;
 	}
 	
-	// create product
+	// create account
 	function create() {
  
 		// query to insert record
@@ -70,7 +70,7 @@ class Account {
 		}
 	}
 	
-	// used when filling up the update product form
+	// used when filling up the update form
 	function readOne() {
  
 		// query to read single record
@@ -79,7 +79,7 @@ class Account {
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
  
-		// bind id of product to be updated
+		// bind number of account to be updated
 		$stmt->bindParam(1, $this->number);
  
 		// execute query
@@ -95,7 +95,7 @@ class Account {
 		$this->balance = $row['balance'];
 	}
 	
-	// update the product
+	// update the account
 	function update() {
  
 		// update query
@@ -127,7 +127,7 @@ class Account {
 		}
 	}
 	
-	// delete the product
+	// delete the account
 	function delete() {
  
 		// delete query

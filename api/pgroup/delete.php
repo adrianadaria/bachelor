@@ -19,16 +19,16 @@ $ec = new Economic($agreementGrantToken, $appSecretToken);
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
+// prepare object
 $pgroup = new ProductGroup($db);
  
-// get product id
+// get number
 $data = json_decode(file_get_contents("php://input"));
  
-// set product id to be deleted
+// set number
 $pgroup->number = $data->number;
  
-// delete the product && $ec->deleteProduct($product->number)
+// delete
 if($ec->deleteProductGroup($pgroup->number)) {
 	$pgroup->delete();
     echo '{';

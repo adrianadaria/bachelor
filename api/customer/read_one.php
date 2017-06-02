@@ -12,13 +12,13 @@ include_once '../objects/Customer.php';
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
+// prepare object
 $customer = new Customer($db);
  
-// set ID property of product to be edited
+// set number property of customer to be edited
 $customer->number = isset($_GET['number']) ? $_GET['number'] : die();
  
-// read the details of product to be edited
+// read the details of customer to be edited
 $customer->readOne();
  
 // create array

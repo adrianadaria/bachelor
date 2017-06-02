@@ -9,10 +9,6 @@ class DeleteProductComponent extends React.Component {
         this.onDelete = this.onDelete.bind(this);
     }
 
-    componentDidMount() {
-        $('.page-header h1').text('Delete Product');
-    }
-
     // handle single row deletion
     onDelete(e) {
         // product to delete
@@ -32,7 +28,6 @@ class DeleteProductComponent extends React.Component {
             error: (xhr, resp, text) => {
                 // show error in console
                 console.log(xhr, resp, text);
-                console.warn(xhr.responseText);
             }
         });
     }

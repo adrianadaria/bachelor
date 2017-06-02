@@ -21,10 +21,6 @@ class CreateProductComponent extends React.Component {
         this.onSave = this.onSave.bind(this);
     }
 
-    componentDidMount() {
-        $('.page-header h1').text('Create product');
-    }
-
     onNumberChange(e) {
         this.setState({number: e.target.value});
     }
@@ -34,7 +30,7 @@ class CreateProductComponent extends React.Component {
         this.setState({name: e.target.value});
     }
 
-    // handle description change
+    // handle group change
     onGroupChange(e) {
         this.setState({group: e.target.value});
     }
@@ -64,7 +60,6 @@ class CreateProductComponent extends React.Component {
                 // empty form
                 this.setState({number: ""});
                 this.setState({name: ""});
-                this.setState({group: ""});
                 this.setState({price: ""});
             },
             error: (xhr, resp, text) => {

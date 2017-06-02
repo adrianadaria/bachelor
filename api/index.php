@@ -9,6 +9,7 @@ require_once('./objects/Account.php');
 require_once('./objects/ProductGroup.php');
 require_once('./objects/CustomerGroup.php');
 require_once('./objects/Order.php');
+require_once('./objects/Detail.php');
 
 $agreementGrantToken = "SI3xOLaIzbSWH1embrkNYSWWIKBK09bd8efEvZRvKwo1";
 $appSecretToken = "7tVtBFEIEBPre0Fq3NWlNds54AXF76xA4NIe8vMsKx41";
@@ -20,7 +21,8 @@ $db = $database->getConnection();
 
 if (isset($_GET['test'])) {
 	//echo $ec->addAccount(1004, 'yolotest23', 'ProfitAndLoss', 'Debit', 100.00);
-	print_r($ec->addProductGroup(9, 'lalalland', 1010, 1010));
+	//print_r($ec->addProductGroup(9, 'lalalland', 1010, 1010));
+	print_r($ec->updateInvoiceDraft(17, 99999999, '2017-05-09', 0.00));
 }
 
 if (isset($_GET['products'])) {

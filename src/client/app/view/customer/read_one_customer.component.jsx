@@ -17,7 +17,6 @@ class ReadOneCustomerComponent extends React.Component {
             cvr: 0
         };
         this.fetchSingleCustomer = this.fetchSingleCustomer.bind(this);
-        this.onSave = this.onSave.bind(this);
     }
 
     fetchSingleCustomer(cusNo) {
@@ -34,29 +33,22 @@ class ReadOneCustomerComponent extends React.Component {
             });
     }
 
-    // on mount, read product data and them as this component's state
     componentDidMount() {
-        $('.page-header h1').text('Read Customer');
         let cusNo = this.props.cusNo;
         this.fetchSingleCustomer(cusNo);
     }
 
-    // on unmount, kill categories fetching in case the request is still pending
     componentWillUnmount() {
         this.serverRequestProd.abort();
-    }
-
-    onSave() {
-
     }
 
     render() {
         return (
             <div>
                 <a href='#' onClick={() => this.props.changeCustomerMode('read')}
-                   className='btn btn-primary margin-bottom-1em'>Read Products
+                   className='btn btn-primary margin-bottom-1em'>Back
                 </a>
-                <form onSubmit={this.onSave}>
+                <form>
                     <table className='table table-bordered table-hover'>
                         <tbody>
                         <tr>

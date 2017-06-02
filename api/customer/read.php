@@ -14,18 +14,18 @@ $db = $database->getConnection();
 // initialize object
 $customer = new Customer($db);
  
-// query products
+// query
 $stmt = $customer->read();
 $num = $stmt->rowCount();
  
 // check if more than 0 record found
 if($num > 0) {
  
-    // products array
+    // make array
     $customers_arr = array();
     $customers_arr["records"] = array();
  
-    // retrieve product table
+    // retrieve table
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         // this will make $row['name'] to just $name only
         extract($row);
@@ -35,7 +35,7 @@ if($num > 0) {
             "name" => $name,
 			"email" => $email,
             "address" => $address,
-            "postcode" => $postcode, //html_entity_decode($description)
+            "postcode" => $postcode,
 			"city" => $city,
 			"country" => $country,
 			"cvr" => $cvr

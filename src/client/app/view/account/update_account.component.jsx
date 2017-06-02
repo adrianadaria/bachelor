@@ -25,7 +25,7 @@ class UpdateAccountComponent extends React.Component {
     }
 
     componentDidMount() {
-        // read one product data
+        // read one account data
         let accountNo = this.props.accountNo;
         this.serverRequestProd = $.get("http://localhost/api/account/read_one.php?number=" + accountNo,
             (account) => {
@@ -36,17 +36,12 @@ class UpdateAccountComponent extends React.Component {
                 this.setState({vat: account.vat});
                 this.setState({balance: account.balance});
             });
-
-        $('.page-header h1').text('Update account');
     }
 
     componentWillUnmount() {
         this.serverRequestProd.abort();
     }
 
-    // handle name change
-
-    // handle description change
     onNameChange(e){
         this.setState({name: e.target.value});
     }
@@ -59,7 +54,6 @@ class UpdateAccountComponent extends React.Component {
         this.setState({card: e.target.value});
     }
 
-    // handle price change
     onVatChange(e){
         this.setState({vat: e.target.value});
     }
@@ -77,7 +71,7 @@ class UpdateAccountComponent extends React.Component {
             type: this.state.type,
             card: this.state.card,
             vat: this.state.vat,
-            balance: this.state.balance,
+            balance: this.state.balance
         };
         // submit form data to api
         $.ajax({
@@ -131,8 +125,8 @@ class UpdateAccountComponent extends React.Component {
                             <tr>
                                 <td>Name</td>
                                 <td>
-                                <textarea type='text' className='form-control' value={this.state.name}
-                                    required onChange={this.onNameChange}></textarea>
+                                <input type='text' className='form-control' value={this.state.name}
+                                    required onChange={this.onNameChange}/>
                                 </td>
                             </tr>
                             <tr>
@@ -159,7 +153,7 @@ class UpdateAccountComponent extends React.Component {
                             <tr>
                                 <td>Balance</td>
                                 <td>
-                                    <input type='number' step='0.01' className='form-control' value={this.state.balance}
+                                    <input type='number' step='0.01' className='form-control' value={parseFloat(this.state.balance).toFixed(2)}
                                            required onChange={this.onBalanceChange} readOnly/>
                                 </td>
                             </tr>

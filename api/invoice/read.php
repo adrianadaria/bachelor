@@ -8,25 +8,25 @@ include_once '../config/Database.php';
 include_once '../objects/Invoice.php';
 include_once '../config/Economic.php';
  
-// instantiate database and product object
+// instantiate database and object
 $database = new Database();
 $db = $database->getConnection();
  
 // initialize object
 $invoice = new Invoice($db);
  
-// query products
+// query
 $stmt = $invoice->read();
 $num = $stmt->rowCount();
  
 // check if more than 0 record found
 if($num > 0) {
  
-    // products array
+    // array
     $invoices_arr = array();
     $invoices_arr["records"] = array();
  
-    // retrieve product table
+    // retrieve table
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         // this will make $row['name'] to just $name only
         extract($row);
@@ -34,7 +34,7 @@ if($num > 0) {
         $invoice_item = array(
             "id" => $id,
             "date" => $date->format('Y-m-d'),
-            "cusNo" => $cusNo, //html_entity_decode($description),
+            "cusNo" => $cusNo,
             "total" => $total,
 			"name" => $name,
 			"address" => $address,
