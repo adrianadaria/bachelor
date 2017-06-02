@@ -18,18 +18,16 @@ class ProductTableRowComponent extends React.Component {
                 <td>
                     <a href='#'
                        onClick={() => this.props.changeProductMode('readOne', this.props.product.number)}> 
-                       <div className="action_btn view" role="img" alt="Read"/>
+                       <div className="action_btn view" />
                     </a>
                     <a href='#'
                        onClick={() => this.props.changeProductMode('update', this.props.product.number)}
                        >
-                        <div className="action_btn edit">
-                       </div>
+                        <div className="action_btn edit"/>
                     </a>
                     <a href="#"
                         onClick={() => this.props.changeProductMode('delete', this.props.product.number)}> 
-                        <div className="action_btn delete">
-                       </div>
+                        <div className="action_btn delete"/>
                     </a>
                 </td>
             </tr>

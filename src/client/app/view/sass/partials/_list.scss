@@ -15,15 +15,22 @@ td {
 th {
   padding: 0px 20px;
   max-width: 200px;
-  min-width: 100px;
+}
+.smaller_width {
+  width: 70px;
 }
 .extra_width {
-  width: 130px;
+  width: 140px;
 }
 .table_list {
 	padding: 5%;
+	width: 100%;
 }
 
+.smaller_title {
+	font-size: $size-mm;
+	line-height: 1em;
+}
 .table_title {
 	color: $black;
 	text-align: left;
@@ -40,7 +47,7 @@ th {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 24px;
-	margin-right: 2px;
+	margin-right: 5px;
 }
 
 tr:nth-child(even) {background-color: $grey-highlight;}

@@ -2,7 +2,6 @@ import React from 'react';
 import $ from 'jquery';
 import style from '../sass/subpage.scss';
 
-import ProductTopBarComponent  from './product_top_bar.component.jsx';
 import ProductTableComponent from './product_table.component.jsx';
 
 import ReadOneProductComponent from './read_one_product.component.jsx';
@@ -53,7 +52,6 @@ class ReadProductsComponent extends React.Component {
 
     // render component on the page
     render() {
-        let topBar = <ProductTopBarComponent changeProductMode={this.changeProductMode} refresh={this.fetchProducts} />;
         let filteredProducts = this.state.products;
         let modeComponent = <ProductTableComponent products={filteredProducts} changeProductMode={this.changeProductMode} />;
         $('.page-header h1').text('Read Products');
@@ -63,21 +61,17 @@ class ReadProductsComponent extends React.Component {
             case 'readOne':
                 modeComponent =
                     <ReadOneProductComponent productNo={this.state.productNo} changeProductMode={this.changeProductMode}/>;
-                topBar = null;
                 break;
             case 'create':
                 modeComponent = <CreateProductComponent changeProductMode={this.changeProductMode}/>;
-                topBar = null;
                 break;
             case 'update':
                 modeComponent =
                     <UpdateProductComponent productNo={this.state.productNo} changeProductMode={this.changeProductMode}/>;
-                topBar = null;
                 break;
             case 'delete':
                 modeComponent =
                     <DeleteProductComponent productNo={this.state.productNo} changeProductMode={this.changeProductMode}/>;
-                topBar = null;
                 break;
             default:
                 break;
@@ -86,7 +80,6 @@ class ReadProductsComponent extends React.Component {
         return (
             //if current mode read render tobar
             <div className="container equal">
-                {topBar}
                 <div className="col-left bg-grey left-typo scroll">
                     {modeComponent}
                 </div>

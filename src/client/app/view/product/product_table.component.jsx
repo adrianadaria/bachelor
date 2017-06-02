@@ -20,7 +20,7 @@ class ProductTableComponent extends React.Component {
             !rows.length
                 ?  <h4>NO PRODUCTS FOUND</h4>
                 :
-                <table className='table_list'>
+                <table className="table_list">
                     <caption><h4 className="table_title">LIST OF</h4>
                     <h4 className="table_title">PRODUCTS</h4></caption>
                     <thead>

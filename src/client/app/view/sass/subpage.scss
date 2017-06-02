@@ -17,13 +17,14 @@
 }
 .col-left {
 	float: left;
-	width: 50%;
+	width: 70%;
 	height: 100%;
 }
 
 .col-right {
 	@extend .col-left;
 	overflow: hidden;
+	width: 30%;
 }
 
 .equal {

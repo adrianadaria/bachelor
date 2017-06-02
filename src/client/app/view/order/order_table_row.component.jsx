@@ -21,16 +21,16 @@ class OrderTableRowComponent extends React.Component {
                 <td>{this.props.order.total}</td>
                 <td>
                     <a href='#'
-                       onClick={() => this.props.changeOrderMode('readOne', this.props.order.id)}
-                       className='btn btn-info m-r-1em'> Read One
+                       onClick={() => this.props.changeOrderMode('readOne', this.props.order.id)}>
+                       <div className="action_btn view" />
                     </a>
                     <a href='#'
-                       onClick={() => this.props.changeOrderMode('update', this.props.order.id)}
-                       className='btn btn-primary m-r-1em'> Edit
+                       onClick={() => this.props.changeOrderMode('update', this.props.order.id)}>
+                       <div className="action_btn edit" />
                     </a>
                     <a
-                        onClick={() => this.props.changeOrderMode('delete', this.props.order.id)}
-                        className='btn btn-danger'> Delete
+                        onClick={() => this.props.changeOrderMode('delete', this.props.order.id)}>
+                       <div className="action_btn delete" />
                     </a>
                 </td>
             </tr>

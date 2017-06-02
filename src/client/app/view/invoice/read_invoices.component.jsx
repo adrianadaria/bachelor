@@ -73,8 +73,12 @@ class ReadInvoicesComponent extends React.Component {
 
         return (
             //if current mode read render tobar
-            <div className='overflow-hidden'>
-                {modeComponent}
+            <div className="container equal">
+                <div className="col-left bg-grey left-typo scroll">
+                    {modeComponent}
+                </div>
+                <div className="col-right bg-yellow">
+                </div>
             </div>
         );
     }

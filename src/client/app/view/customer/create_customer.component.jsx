@@ -93,11 +93,8 @@ class CreateProductComponent extends React.Component {
                         </div>
                         : null
                 }
-
-                <a href='#' onClick={() => this.props.changeAppMode('read')}
-                   className='btn btn-primary margin-bottom-1em'> Read Products
-                </a>
-
+                    <h4 className="title_right_col">CREATE A</h4>
+                    <h4 className="title_right_col">NEW CUSTOMER</h4>
                 <form onSubmit={this.onSave}>
                     <table className='table table-bordered table-hover'>
                         <tbody>

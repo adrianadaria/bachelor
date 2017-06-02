@@ -17,16 +17,16 @@ class AccountTableRowComponent extends React.Component {
                 <td>{this.props.account.balance}</td>
                 <td>
                     <a href='#'
-                       onClick={() => this.props.changeAccountMode('readOne', this.props.account.number)}
-                       className='btn btn-info m-r-1em'> Read One
+                       onClick={() => this.props.changeAccountMode('readOne', this.props.account.number)}>
+                       <div className="action_btn view" />
                     </a>
                     <a href='#'
-                       onClick={() => this.props.changeAccountMode('update', this.props.account.number)}
-                       className='btn btn-info m-r-1em'> Edit
+                       onClick={() => this.props.changeAccountMode('update', this.props.account.number)}>
+                       <div className="action_btn edit" />
                     </a>
                     <a  href='#'
-                        onClick={() => this.props.changeAccountMode('delete', this.props.account.number)}
-                        className='btn btn-danger'> Delete
+                        onClick={() => this.props.changeAccountMode('delete', this.props.account.number)}>
+                        <div className="action_btn delete" />
                     </a>
                 </td>
             </tr>

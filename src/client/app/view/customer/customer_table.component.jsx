@@ -18,20 +18,22 @@ class CustomerTableComponent extends React.Component {
 
         return (
             !rows.length
-                ? <div className='alert alert-danger'>No customers found.</div>
+                ? <h4>NO CUSTOMERS FOUND</h4>
                 :
-                    <table className='table table-bordered table-hover'>
+                    <table className="table_list">
+                    <caption><h4 className="table_title">LIST OF</h4>
+                    <h4 className="table_title">CUSTOMERS</h4></caption>
                         <thead>
                         <tr>
-                            <th>Number</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Address</th>
-                            <th>Zip</th>
-                            <th>City</th>
-                            <th>Country</th>
-                            <th>CVR</th>
-                            <th>Action</th>
+                            <th><h5>Number</h5></th>
+                            <th><h5>Name</h5></th>
+                            <th><h5>Email</h5></th>
+                            <th><h5>Address</h5></th>
+                            <th className="smaller_width"><h5>Zip</h5></th>
+                            <th><h5>City</h5></th>
+                            <th><h5>Country</h5></th>
+                            <th><h5>CVR</h5></th>
+                            <th className="extra_width"><h5>Action</h5></th>
                         </tr>
                         </thead>
                         <tbody>
