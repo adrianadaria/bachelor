@@ -23,7 +23,7 @@ $customer = new Customer($db);
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
  
-// set product property values
+// set property values
 $customer->number = $data->number;
 $customer->name = $data->name;
 $customer->email = $data->email;
@@ -33,11 +33,10 @@ $customer->city = $data->city;
 $customer->country = $data->country;
 $customer->cvr = $data->cvr;
 $customer->created = date('Y-m-d H:i:s');
- $dNo, $dName, $dEmail, $dAddress, $dPostCode, $dCity, $dCountry, $dCvr
+
 $insert = $ec->addDebtor($customer->number, $customer->name, $customer->email, $customer->address,
 	$customer->postcode, $customer->city, $customer->country, $customer->cvr);
-// create the product	//$product->create() && 
-//$ec->addProduct($product->number, $product->name, $product->group, $product->price)
+
 if($insert){
 	$customer->create();
     echo '{';

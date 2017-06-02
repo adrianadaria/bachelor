@@ -14,20 +14,16 @@ import ReadGroupsComponent from './group/read_groups.component.jsx';
 
 class AppComponent extends React.Component {
 	
-	// es6 way of initiating state. Initial mode is 'read' mode
+	// es6 way of initiating state. Initial mode is 'home' mode
 	constructor(props, context) {
 		super(props, context);
 
 		this.state = {
 			currentMode: 'home',
 			productId: null
-		}
+		};
 
 		this.changeAppMode = this.changeAppMode.bind(this);
-		//setInterval(() => {
-        //    this.setState({currentMode: 'create'});
-		//}, 3000);
-		//this.setState = this.setState.bind(this);
 	}
 	
 	// used when use clicks something that changes the current mode
@@ -72,7 +68,7 @@ class AppComponent extends React.Component {
 
    					<div className="nav-header">
 					<a href='#'  onClick={() => this.changeAppMode('home')} >
-						<img src="http://localhost/BACHELOR/bachelor/src/client/app/view/img/logo_small.png" alt="home"/>
+						<img src="./src/client/app/view/img/logo_small.png" alt="home"/>
 					</a>
 				</div>
    			</div>

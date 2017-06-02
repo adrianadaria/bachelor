@@ -31,8 +31,6 @@ class UpdateProductComponent extends React.Component {
                 this.setState({group: product.group});
                 this.setState({price: product.price});
             });
-
-        $('.page-header h1').text('Update product');
     }
 
     componentWillUnmount() {

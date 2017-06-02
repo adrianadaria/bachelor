@@ -19,16 +19,16 @@ $ec = new Economic($agreementGrantToken, $appSecretToken);
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
+// prepare object
 $customer = new Customer($db);
  
-// get id of product to be edited
+// get number of customer to be edited
 $data = json_decode(file_get_contents("php://input"));
  
-// set ID property of product to be edited
+// set property to be edited
 $customer->number = $data->number;
  
-// set product property values
+// set property values
 $customer->number = $data->number;
 $customer->name = $data->name;
 $customer->email = $data->email;
@@ -41,7 +41,7 @@ $customer->cvr = $data->cvr;
 $update = $ec->updateDebtor($customer->number, $customer->name, $customer->email, $customer->address,
 	$customer->postcode, $customer->city, $customer->country, $customer->cvr);
 
-// update the product
+// update
 if($update) {
     $customer->update();
 	echo '{';

@@ -8,14 +8,15 @@ import {Pie} from 'react-chartjs-2';
 import {Bubble} from 'react-chartjs-2';
 import {Line} from 'react-chartjs-2';
 
-
-//import ProductTopBarComponent from './product/product_top_bar.component.jsx';
-//
-
 class HomePageComponent extends React.Component {
 
   constructor(props) {
     super(props);
+  }
+ componentDidMount() {
+    //this.myChart = this.refs['canvas'].getChart();
+    //this.myChart.data.datasets[0].points[2] = 50;
+    //this.myChart.update();
   }
   render() {
 

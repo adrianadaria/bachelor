@@ -23,22 +23,20 @@ $cgroup = new CustomerGroup($db);
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
  
-// set product property values
 $cgroup->number = $data->number;
 $cgroup->name = $data->name;
 $cgroup->account = $data->type;
 $cgroup->created = date('Y-m-d H:i:s');
  
-$insert = $ec->addDebtorGroup($cgroup->number, $cgroup->name, $cgroup->account);
 
-if($insert){
+if($ec->addDebtorGroup($cgroup->number, $cgroup->name, $cgroup->account)) {
 	$cgroup->create();
     echo '{';
-        echo '"message": "Customer Group was created."';
+        echo '"message": "Customer group was created."';
     echo '}';
 }
  
-// if unable to create the product, tell the user
+// if unable to create, tell the user
 else{
     echo '{';
         echo '"message": "Unable to create customer group."';

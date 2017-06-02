@@ -1,53 +1,81 @@
 import React from 'react';
 import $ from 'jquery';
 
-class CreateProductComponent extends React.Component {
+class CreateCustomerComponent extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
+            number: 0,
             name: '',
-            description: '',
-            price: 0.00,
+            email: '',
+            address: '',
+            postcode: '',
+            city: '',
+            country: '',
+            cvr: 0,
             successCreation: null
         };
 
+        this.onNumberChange = this.onNumberChange.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
-        this.onDescriptionChange = this.onDescriptionChange.bind(this);
-        this.onPriceChange = this.onPriceChange.bind(this);
+        this.onEmailChange = this.onEmailChange.bind(this);
+        this.onAddressChange = this.onAddressChange.bind(this);
+        this.onPostcodeChange = this.onPostcodeChange.bind(this);
+        this.onCityChange = this.onCityChange.bind(this);
+        this.onCountryChange = this.onCountryChange.bind(this);
+        this.onCvrChange = this.onCvrChange.bind(this);
         this.onSave = this.onSave.bind(this);
     }
 
-    componentDidMount() {
-        $('.page-header h1').text('Create product');
+    onNumberChange(e){
+        this.setState({number: e.target.value});
     }
 
-    // handle name change
-    onNameChange(e) {
+    onNameChange(e){
         this.setState({name: e.target.value});
     }
 
-    // handle description change
-    onDescriptionChange(e) {
-        this.setState({description: e.target.value});
+    onEmailChange(e){
+        this.setState({email: e.target.value});
     }
 
-    // handle price change
-    onPriceChange(e) {
-        this.setState({price: e.target.value});
+    onAddressChange(e){
+        this.setState({address: e.target.value});
+    }
+
+    onPostcodeChange(e){
+        this.setState({postcode: e.target.value});
+    }
+
+    onCityChange(e){
+        this.setState({city: e.target.value});
+    }
+
+    onCountryChange(e){
+        this.setState({country: e.target.value});
+    }
+
+    onCvrChange(e){
+        this.setState({cvr: e.target.value});
     }
 
     onSave(e) {
         // data in the form
         let form_data = {
+            number: this.state.number,
             name: this.state.name,
-            description: this.state.description,
-            price: this.state.price
+            email: this.state.email,
+            address: this.state.address,
+            postcode: this.state.postcode,
+            city: this.state.city,
+            country: this.state.country,
+            cvr: this.state.cvr
         };
         // submit form data to api
         $.ajax({
-            url: "http://localhost/api/product/create.php",
+            url: "http://localhost/api/customer/create.php",
             type : "POST",
             contentType : 'application/json',
             data : JSON.stringify(form_data),
@@ -55,9 +83,14 @@ class CreateProductComponent extends React.Component {
                 // api message
                 this.setState({successCreation: response['message']});
                 // empty form
+                this.setState({number: 0});
                 this.setState({name: ""});
-                this.setState({description: ""});
-                this.setState({price: ""});
+                this.setState({email: ""});
+                this.setState({address: ""});
+                this.setState({postcode: ""});
+                this.setState({city: ""});
+                this.setState({country: ""});
+                this.setState({cvr: 0});
             },
             error: (xhr, resp, text) => {
                 // show error to console
@@ -68,12 +101,7 @@ class CreateProductComponent extends React.Component {
     }
 
     render() {
-        /*
-         - tell the user if a product was created
-         - tell the user if unable to create product
-         - button to go back to products list
-         - form to create a product
-         */
+
         return (
             <div>
                 {
@@ -94,41 +122,75 @@ class CreateProductComponent extends React.Component {
                         : null
                 }
 
-                <a href='#' onClick={() => this.props.changeAppMode('read')}
-                   className='btn btn-primary margin-bottom-1em'> Read Products
+                <a href='#' onClick={() => this.props.changeCustomerMode('read')}
+                   className='btn btn-primary margin-bottom-1em'> Back
                 </a>
 
                 <form onSubmit={this.onSave}>
                     <table className='table table-bordered table-hover'>
                         <tbody>
-                            <tr>
-                                <td>Name</td>
-                                <td>
-                                    <input type='text' className='form-control' value={this.state.name}
-                                        required onChange={this.onNameChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Description</td>
-                                <td>
-                                    <textarea type='text' className='form-control' value={this.state.description}
-                                            required onChange={this.onDescriptionChange}>
-                                    </textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Price (DKK)</td>
-                                <td>
-                                    <input type='number' step='0.01' className='form-control' value={this.state.price}
-                                           required onChange={this.onPriceChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button className='btn btn-primary' onClick={this.onSave}>Save</button>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>Number</td>
+                            <td>
+                                <input type='number' className='form-control' value={this.state.number}
+                                       required onChange={this.onNumberChange}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>
+                                <textarea type='text' className='form-control' value={this.state.name}
+                                          required onChange={this.onNameChange}></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>
+                                <input type='text' className='form-control' value={this.state.email}
+                                       required onChange={this.onEmailChange}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>
+                                <input type='text' className='form-control' value={this.state.address}
+                                       required onChange={this.onAddressChange} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Zip</td>
+                            <td>
+                                <textarea type='text' className='form-control' value={this.state.postcode}
+                                          required onChange={this.onPostcodeChange}></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td>
+                                <input type='text' className='form-control' value={this.state.city}
+                                       required onChange={this.onCityChange}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Country</td>
+                            <td>
+                                <input type='text' className='form-control' value={this.state.country}
+                                       required onChange={this.onCountryChange}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CVR</td>
+                            <td>
+                                <input type='number' className='form-control' value={this.state.cvr}
+                                       required onChange={this.onCvrChange}/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button className='btn btn-primary' onClick={this.onSave}>Save Changes</button>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </form>
@@ -137,4 +199,4 @@ class CreateProductComponent extends React.Component {
     }
 }
 
-export default CreateProductComponent;
+export default CreateCustomerComponent;

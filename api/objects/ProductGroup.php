@@ -17,7 +17,7 @@ class ProductGroup {
         $this->conn = $db;
     }
 	
-	// read products
+	// read pgroup
 	function read() {
  
 		// select all query
@@ -32,7 +32,7 @@ class ProductGroup {
 		return $stmt;
 	}
 	
-	// create product
+	// create pgroup
 	function create() {
  
 		// query to insert record
@@ -64,7 +64,7 @@ class ProductGroup {
 		}
 	}
 	
-	// used when filling up the update product form
+	// used when filling up the update form
 	function readOne() {
  
 		// query to read single record
@@ -73,7 +73,7 @@ class ProductGroup {
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
  
-		// bind id of product to be updated
+		// bind number of pgroup to be updated
 		$stmt->bindParam(1, $this->number);
  
 		// execute query
@@ -87,7 +87,7 @@ class ProductGroup {
 		$this->noVatAcc = $row['noVatAcc'];
 	}
 	
-	// update the product
+	// update the pgroup
 	function update() {
  
 		// update query
@@ -116,7 +116,7 @@ class ProductGroup {
 		}
 	}
 	
-	// delete the product
+	// delete the pgroup
 	function delete() {
  
 		// delete query

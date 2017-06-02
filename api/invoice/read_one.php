@@ -12,13 +12,13 @@ include_once '../objects/Invoice.php';
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
+// prepare object
 $invoice = new Invoice($db);
  
-// set ID property of product to be edited
+// set ID property to be edited
 $invoice->id = isset($_GET['id']) ? $_GET['id'] : die();
  
-// read the details of product to be edited
+// read the details
 $name = $invoice->readOne();
  
 // create array

@@ -23,7 +23,7 @@ class InvoiceTableComponent extends React.Component {
                 <table className='table table-bordered table-hover'>
                     <thead>
                     <tr>
-                        <th>Number</th>
+                        <th>Id</th>
                         <th>Date</th>
                         <th>CustomerName</th>
                         <th>Amount</th>

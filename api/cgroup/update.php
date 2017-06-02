@@ -19,24 +19,22 @@ $ec = new Economic($agreementGrantToken, $appSecretToken);
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
 $cgroup = new CustomerGroup($db);
  
-// get id of product to be edited
 $data = json_decode(file_get_contents("php://input"));
  
-// set ID property of product to be edited
+// set property to be edited
 $cgroup->number = $data->number;
  
-// set product property values
+// set property values
 $cgroup->name = $data->name;
 $cgroup->account = $data->account;
 
-// update the product
+// update
 if($ec->updateDebtorGroup($cgroup->number, $cgroup->name, $cgroup->account)) {
     $cgroup->update();
 	echo '{';
-        echo '"message": "Customer Group was updated."';
+        echo '"message": "Customer group was updated."';
     echo '}';
 } else {
     echo '{';

@@ -20,6 +20,7 @@ class GroupTableComponent extends React.Component {
             !rows.length
                 ? <div className='alert alert-danger'>No product groups found.</div>
                 :
+                <div>
                 <table className='table table-bordered table-hover'>
                     <thead>
                     <tr>
@@ -34,6 +35,7 @@ class GroupTableComponent extends React.Component {
                         {rows}
                     </tbody>
                 </table>
+                </div>
         );
     }
 }

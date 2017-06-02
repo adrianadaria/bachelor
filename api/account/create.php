@@ -23,7 +23,7 @@ $account = new Account($db);
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
  
-// set product property values
+// set account property values
 $account->number = $data->number;
 $account->name = $data->name;
 $account->type = $data->type;
@@ -32,10 +32,7 @@ $account->vat = $data->vat;
 $account->balance = $data->balance;
 $account->created = date('Y-m-d H:i:s');
  
-$insert = $ec->addAccount($account->number, $account->name, $account->type, $account->card);
-// create the product	//$product->create() && 
-//$ec->addProduct($product->number, $product->name, $product->group, $product->price)
-if($insert){
+if($ec->addAccount($account->number, $account->name, $account->type, $account->card)){
 	$account->create();
     echo '{';
         echo '"message": "Account was created."';

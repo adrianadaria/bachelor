@@ -19,25 +19,25 @@ $ec = new Economic($agreementGrantToken, $appSecretToken);
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
+// prepare object
 $pgroup = new ProductGroup($db);
  
-// get id of product to be edited
+// get number to be edited
 $data = json_decode(file_get_contents("php://input"));
  
-// set ID property of product to be edited
+// set number
 $pgroup->number = $data->number;
 
-// set product property values
+// set property values
 $pgroup->name = $data->name;
 $pgroup->vatAcc = $data->vatAcc;
 $pgroup->noVatAcc = $data->noVatAcc;
 
-// update the product
+// update
 if($ec->updateProductGroup($pgroup->number, $pgroup->name, $pgroup->vatAcc, $pgroup->noVatAcc)) {
     $pgroup->update();
 	echo '{';
-        echo '"message": "Product Group was updated."';
+        echo '"message": "Product group was updated."';
     echo '}';
 } else {
     echo '{';

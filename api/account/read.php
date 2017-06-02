@@ -8,14 +8,13 @@ include_once '../config/Database.php';
 include_once '../objects/Account.php';
 include_once '../config/Economic.php';
  
-// instantiate database and product object
+// instantiate database and account object
 $database = new Database();
 $db = $database->getConnection();
  
 // initialize object
 $account = new Account($db);
  
-// query products
 $stmt = $account->read();
 $num = $stmt->rowCount();
  
@@ -34,7 +33,7 @@ if($num > 0) {
         $account_item = array(
             "number" => $number,
             "name" => $name,
-            "type" => $type, //html_entity_decode($description),
+            "type" => $type,
             "card" => $card,
 			"vat" => trim($vat),
 			"balance" => $balance

@@ -19,16 +19,16 @@ $ec = new Economic($agreementGrantToken, $appSecretToken);
 $database = new Database();
 $db = $database->getConnection();
  
-// prepare product object
+// prepare object
 $customer = new Customer($db);
  
-// get product id
+// get number
 $data = json_decode(file_get_contents("php://input"));
  
-// set product id to be deleted
+// set number to be deleted
 $customer->number = $data->number;
  
-// delete the product && $ec->deleteProduct($product->number)
+// delete 
 if($ec->deleteDebtor($customer->number)) {
 	$customer->delete();
     echo '{';

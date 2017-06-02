@@ -2,6 +2,8 @@ import React from 'react';
 import $ from 'jquery';
 
 import InvoiceTableComponent from './invoice_table.component.jsx';
+import ReadOneInvoiceComponent from './read_one_invoice.component.jsx';
+import DeleteInvoiceComponent from './delete_invoice.component.jsx';
 
 class ReadInvoicesComponent extends React.Component {
 
@@ -19,6 +21,10 @@ class ReadInvoicesComponent extends React.Component {
     }
 
     fetchInvoices() {
+        if(this.serverRequest) {
+            this.serverRequest.abort();
+        }
+
         this.serverRequest = $.get("http://localhost/api/invoice/read.php", (invoice) => {
             this.setState({
                 invoices: invoice.records
@@ -26,12 +32,10 @@ class ReadInvoicesComponent extends React.Component {
         });
     }
 
-    // on mount, fetch all products and stored them as this component's state
     componentDidMount() {
         this.fetchInvoices();
     }
 
-    // on unmount, kill product fetching in case the request is still pending
     componentWillUnmount() {
         this.serverRequest.abort();
     }
@@ -48,32 +52,34 @@ class ReadInvoicesComponent extends React.Component {
     render() {
         let filteredInvoices = this.state.invoices;
         let modeComponent = <InvoiceTableComponent invoices={filteredInvoices} changeInvoiceMode={this.changeInvoiceMode} />;
-        $('.page-header h1').text('Read Invoices');
+        let bar = null;
+
         switch(this.state.currentMode) {
             case 'read':
+                bar = (
+                    <a href='#' onClick={() => this.fetchInvoices()} className='btn btn-info m-r-1em'> refresh
+                    </a>
+                );
                 break;
             case 'readOne':
-                //modeComponent =
-                //    <ReadOneProductComponent productId={this.state.productId} changeProductMode={this.changeProductMode}/>;
-                break;
-            case 'create':
-                //modeComponent = <CreateProductComponent changeProductMode={this.changeProductMode}/>;
-                break;
-            case 'update':
-                //modeComponent =
-                //   <UpdateProductComponent productId={this.state.productId} changeProductMode={this.changeProductMode}/>;
+                modeComponent =
+                    <ReadOneInvoiceComponent invId={this.state.invoiceId} changeInvoiceMode={this.changeInvoiceMode}/>;
                 break;
             case 'delete':
-                //modeComponent =
-                //    <DeleteProductComponent productId={this.state.productId} changeProductMode={this.changeProductMode}/>;
+                modeComponent =
+                    <DeleteInvoiceComponent invId={this.state.invoiceId} changeInvoiceMode={this.changeInvoiceMode}/>;
                 break;
             default:
                 break;
         }
 
         return (
-            //if current mode read render tobar
             <div className='overflow-hidden'>
+                {
+                    bar !== null ?
+                        bar
+                        : null
+                }
                 {modeComponent}
             </div>
         );
