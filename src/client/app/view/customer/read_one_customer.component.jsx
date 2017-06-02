@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import style from '../sass/subpage.scss';
 
 class ReadOneCustomerComponent extends React.Component {
 

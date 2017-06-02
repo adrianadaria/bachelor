@@ -9,6 +9,46 @@
   color: $white;
 }
 
+.line_height_del{
+  line-height: 0.1em;
+}
+
+.btn_wrap {
+  text-align: center;
+}
+.btn_yes {
+  display: inline-block;
+  width: 10%;
+  border: 1px solid $red;
+  height: 45px;
+  line-height: 45px;
+  background-color: $red;
+  color: $white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: $size-m;
+  margin: 10px;
+}
+
+.btn_no {
+  @extend .btn_yes;
+  border: 1px solid $black;
+  background-color: $black;
+
+}
+.btn_yes:hover {
+  background-color: transparent;
+  text-transform: uppercase;
+  border: 2px solid $red;
+  color: $red;
+}
+
+.btn_no:hover {
+  @extend .btn_yes:hover;
+  border: 2px solid $black;
+  color: $black;
+}
 [type=text], [type=number] {
   display: block;
   margin: 0 auto;
