@@ -20,10 +20,10 @@ class GroupTableComponent extends React.Component {
             !rows.length
                 ? <h4>NO PRODUCT GROUPS FOUND</h4>
                 :
+                <div className="col-left bg-grey left-typo scroll">
                 <table className="table_list">
                     <caption><h4 className="table_title">LIST OF</h4>
                     <h4 className="table_title">PRODUCT GROUPS</h4></caption>
-                <div>
                     <thead>
                     <tr>
                         <th><h5>Number</h5></th>
@@ -36,9 +36,8 @@ class GroupTableComponent extends React.Component {
                     <tbody>
                         {rows}
                     </tbody>
-                
-                </div>
                 </table>
+                </div>
         );
     }
 }

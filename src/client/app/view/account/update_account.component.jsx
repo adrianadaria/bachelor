@@ -119,7 +119,7 @@ class UpdateAccountComponent extends React.Component {
                             <tr>
                                 <td>Number</td>
                                 <td>
-                                    <input type='text' className='form-control' value={this.state.number} readOnly/>
+                                    <input type='number' className='form-control' value={this.state.number} readOnly/>
                                 </td>
                             </tr>
                             <tr>
@@ -153,7 +153,7 @@ class UpdateAccountComponent extends React.Component {
                             <tr>
                                 <td>Balance</td>
                                 <td>
-                                    <input type='number' step='0.01' className='form-control' value={parseFloat(this.state.balance).toFixed(2)}
+                                    <input type='number' className='form-control' value={parseFloat(this.state.balance).toFixed(2)}
                                            required onChange={this.onBalanceChange} readOnly/>
                                 </td>
                             </tr>

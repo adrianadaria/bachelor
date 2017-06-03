@@ -23,6 +23,8 @@ class ReadCustomersComponent extends React.Component {
 
         this.changeCustomerMode = this.changeCustomerMode.bind(this);
         this.fetchCustomers = this.fetchCustomers.bind(this);
+        this.makeInvoices = this.makeInvoices.bind(this);
+        this.makeOrders = this.makeOrders.bind(this);
     }
 
     componentDidMount() {
@@ -44,6 +46,42 @@ class ReadCustomersComponent extends React.Component {
         });
     }
 
+    makeInvoices(e) {
+        let inv = 666;
+        // submit form data to api
+        $.ajax({
+            url: "http://localhost/api/detail/make_invoices.php",
+            type : "POST",
+            contentType : 'application/json',
+            data : JSON.stringify({'number' : inv}),
+            success : (response) => {
+                alert('Done');
+            },
+            error: (xhr, resp, text) => {
+                // show error in console
+                console.log(xhr, resp, text);
+            }
+        });
+    }
+
+    makeOrders(e) {
+        let order = 666;
+        // submit form data to api
+        $.ajax({
+            url: "http://localhost/api/detail/make_orders.php",
+            type : "POST",
+            contentType : 'application/json',
+            data : JSON.stringify({'number' : order}),
+            success : (response) => {
+                alert('Done');
+            },
+            error: (xhr, resp, text) => {
+                // show error in console
+                console.log(xhr, resp, text);
+            }
+        });
+    }
+
     changeCustomerMode(newMode, customerNo) {
         this.setState({currentMode: newMode});
 
@@ -60,10 +98,12 @@ class ReadCustomersComponent extends React.Component {
 
         switch(this.state.currentMode) {
             case 'detail':
-                topBar = <CustomerTopBarComponent changeCustomerMode={this.changeCustomerMode} refresh={this.fetchCustomers} />;
+                topBar = <CustomerTopBarComponent changeCustomerMode={this.changeCustomerMode}
+                   refresh={this.fetchCustomers} makeInvoices={this.makeInvoices} makeOrders={this.makeOrders} />;
                 break;
             case 'read':
-                topBar = <CustomerTopBarComponent changeCustomerMode={this.changeCustomerMode} refresh={this.fetchCustomers} />;
+                topBar = <CustomerTopBarComponent changeCustomerMode={this.changeCustomerMode}
+                   refresh={this.fetchCustomers} makeInvoices={this.makeInvoices} makeOrders={this.makeOrders} />;
                 modeComponent = <CustomerTableComponent customers={filteredProducts} changeCustomerMode={this.changeCustomerMode} />;
                 break;
             case 'readOne':
@@ -87,7 +127,7 @@ class ReadCustomersComponent extends React.Component {
         return (
 
             <div className="container equal">
-                <div className="col-left bg-grey left-typo scroll">
+
 
                     {
                         topBar !== null ?
@@ -95,10 +135,14 @@ class ReadCustomersComponent extends React.Component {
                             : null
                     }
                     {modeComponent}
-                </div>
+
+                {
+                    this.state.currentMode == 'read' ?
                 <div className="col-right bg-yellow">
                         <CreateCustomerComponent/>
-                </div>
+                </div> :
+                        null
+                }
             </div>
         );
     }

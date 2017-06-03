@@ -91,11 +91,11 @@ class ReadGroupsComponent extends React.Component {
                     <td>{cgroup.account}</td>
                     <td>
                         <a href='#'
-                           onClick={() => this.props.changeGroupMode('readOnec', '', cgroup.number)}>
+                           onClick={() => this.changeGroupMode('readOnec', '', cgroup.number)}>
                            <div className="action_btn view" />
                         </a>
                         <a href='#'
-                           onClick={() => this.props.changeGroupMode('updatec','', cgroup.number)}>
+                           onClick={() => this.changeGroupMode('updatec','', cgroup.number)}>
                            <div className="action_btn edit"/>
                         </a>
                     </td>
@@ -103,8 +103,7 @@ class ReadGroupsComponent extends React.Component {
             );
         });
         let cusTable = (
-            <div className="container equal">
-                    <div className="col-left bg-grey left-typo scroll col-fullwidth">
+                    <div className="col-left bg-grey left-typo scroll">
                         <table className="table_list">
                             <caption><h4 className="table_title">LIST OF</h4>
                             <h4 className="table_title">CUSTOMER GROUPS</h4></caption>
@@ -121,7 +120,6 @@ class ReadGroupsComponent extends React.Component {
                             </tbody>
                         </table>
                     </div>
-                </div>
         );
 
         switch(this.state.currentMode) {
@@ -167,20 +165,24 @@ class ReadGroupsComponent extends React.Component {
         return (
             <div>
                 <div className="container equal">
-                    <div className="col-left bg-grey left-typo scroll">
                          {
                     topBar !== null ?
                         topBar
                     : null
                 }
                         {modeComponent}
-                    </div>
-                    <div className="col-right bg-yellow">
-                        {createPC}
-                    </div>
+
+                    {
+                        this.state.currentMode == 'readp' || this.state.currentMode == 'readc' ?
+                            <div className="col-right bg-yellow">
+                                {createPC}
+                            </div> :
+                            null
+                    }
                 </div>
             </div>
         );
+
     }
 
 }

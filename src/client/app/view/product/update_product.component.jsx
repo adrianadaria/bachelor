@@ -15,7 +15,6 @@ class UpdateProductComponent extends React.Component {
             successCreation: null
         };
 
-        this.onNumberChange = this.onNumberChange.bind(this);
         this.onNameChange = this.onNameChange.bind(this);
         this.onPriceChange = this.onPriceChange.bind(this);
         this.onGroupChange = this.onGroupChange.bind(this);
@@ -38,10 +37,6 @@ class UpdateProductComponent extends React.Component {
         this.serverRequestProd.abort();
     }
 
-    // handle name change
-    onNumberChange(e){
-        this.setState({number: e.target.value});
-    }
     // handle description change
     onNameChange(e){
         this.setState({name: e.target.value});
@@ -73,9 +68,9 @@ class UpdateProductComponent extends React.Component {
             data : JSON.stringify(form_data),
             success : (response) => {
                 this.setState({successUpdate: response['message']});
-                setTimeout(() => {
-                    this.props.changeProductMode('read');
-                }, 1500);
+                //setTimeout(() => {
+                //    this.props.changeProductMode('read');
+                //}, 1500);
             },
             error: (xhr, resp, text) => {
                 // show error to console
@@ -110,15 +105,15 @@ class UpdateProductComponent extends React.Component {
                     <h4 className="title_right_col">THIS PRODUCT</h4>
                                 <label>Number</label>
                                     <input type="text" value={this.state.number}
-                                        required onChange={this.onNumberChange} />
+                                        required readOnly/>
                                  <label>Name</label>
-                                <textarea type="text" value={this.state.name}
-                                    required onChange={this.onNameChange}></textarea>
+                                <input type="text" value={this.state.name}
+                                    required onChange={this.onNameChange} />
                                  <label>Price (DKK)</label>
                                     <input type="number" step="0.01" value={this.state.price}
                                         required onChange={this.onPriceChange}/>
                                 <label>Group</label>
-                                    <input type="number" step="0.01" className='form-control' value={this.state.group}
+                                    <input type="number" className='form-control' value={this.state.group}
                                            required onChange={this.onGroupChange}/>
                                 <input type="submit" value="Update" onClick={this.onSave}/>
                 </form>
