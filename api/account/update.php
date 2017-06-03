@@ -34,7 +34,7 @@ $account->vat = $data->vat;
 $account->balance = $data->balance;
 
 // update the account
-if($ec->updateAccount($account->number, $account->name, $account->type, $account->card)) {
+if($ec->updateAccount($account->number, $account->name, $account->type, $account->card) == 'success') {
     $account->update();
 	echo '{';
         echo '"message": "Account was updated."';

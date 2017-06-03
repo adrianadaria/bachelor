@@ -34,7 +34,7 @@ $product->group = $data->group;
 $product->price = $data->price;
 
 // update the product
-if($ec->updateProduct($product->number, $product->name, $product->group, $product->price)) {
+if($ec->updateProduct($product->number, $product->name, $product->group, $product->price) == 'success') {
     $product->update();
 	echo '{';
         echo '"message": "Product was updated."';

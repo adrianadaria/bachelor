@@ -67,8 +67,8 @@ class Economic {
 					)
 				)
 			)->Debtor_CreateFromDataResult;
-			return $newDebtorFromData;
-			print("<p>A new debtor has been created.</p>");
+			return 'success';
+			//print("<p>A new debtor has been created.</p>");
 		} catch(Exception $e) {
 			print("<p><b>Could not create debtor.</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
@@ -108,8 +108,8 @@ class Economic {
 					)
 				)
 			)->Debtor_UpdateFromDataResult;
-			return $updateDebtorFromData;
-			print("<p>Debtor has been updated.</p>");
+			return 'success';
+			//print("<p>Debtor has been updated.</p>");
 		} catch(Exception $e) {
 			print("<p><b>Could not update debtor.</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
@@ -136,7 +136,7 @@ class Economic {
 		try {
 			$numberArr = array('Number' => $no);
 			$this->client->Debtor_Delete(array('debtorHandle' => $numberArr));
-			return true;
+			return 'success';
 		} catch(Exception $e) {
 			print("<p><b>Error occuried deleting</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
@@ -172,17 +172,13 @@ class Economic {
 				"value" => "true"
 				)
 			); 	
-		
-			print("<p><b>New product have been inserted!</b></p>");
+			return 'success';
+			//print("<p><b>New product have been inserted!</b></p>");
 
 		} catch(Exception $e) {
 			print("<p><b>Could not create product.</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
 		}	
-	}
-	public function aaa() {
-		$productGroupHandles = $this->client->ProductGroup_GetAll()->ProductGroup_GetAllResult->ProductGroupHandle;
-		return $productGroupHandles;
 	}
 	
 	public function updateProduct($number, $name, $group, $price) {
@@ -203,7 +199,7 @@ class Economic {
 					)
 				)
 			)->Product_UpdateFromDataResult->Number;
-			return true;//$updateProductObject;	
+			return 'success';//$updateProductObject;	
 		} catch(Exception $e) {
 			print("<p><b>Error occuried updating</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
@@ -215,7 +211,7 @@ class Economic {
 		try {
 			$numberArr = array('Number' => $number);
 			$this->client->Product_Delete(array('productHandle' => $numberArr));
-			return true;
+			return 'success';
 		} catch(Exception $e) {
 			print("<p><b>Error occuried deleting</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
@@ -250,7 +246,7 @@ class Economic {
 			foreach ($data as $i => $item) {
 
 				//getting info
-				$debtorNumberObj = (object) array('Number' => $ids[$i]['storeid']); 	//storeid = customer number in e-conomic
+				$debtorNumberObj = (object) array('Number' => $ids[$i]['cusNo']); 	//cusNo = customer number in e-conomic
 				$date = new DateTime($invDate);
 										
 				//creating invoice with some options
@@ -261,14 +257,15 @@ class Economic {
 			
 					//insert invoice line for each product with product information
 					$newCurrentInvoiceLineHandle = $this->client->CurrentInvoiceLine_Create(array('invoiceHandle' => $newCurrentInvoiceHandle))->CurrentInvoiceLine_CreateResult;
-					$productNumberObj = (object) array('Number' => $value['product']);
+					$productNumberObj = (object) array('Number' => $value['pNo']);
 					$productObject = $this->client->Product_GetData(array('entityHandle' => $productNumberObj))->Product_GetDataResult;
 					$this->client->CurrentInvoiceLine_SetProduct(array('currentInvoiceLineHandle' => $newCurrentInvoiceLineHandle, 'valueHandle' => $productNumberObj));
 					$this->client->CurrentInvoiceLine_SetDescription(array('currentInvoiceLineHandle' => $newCurrentInvoiceLineHandle, 'value' => $productObject->Name));
 					$this->client->CurrentInvoiceLine_SetUnitNetPrice(array('currentInvoiceLineHandle' => $newCurrentInvoiceLineHandle, 'value' => $value['price'])); //def $productObject->SalesPrice
 				}	
 			}
-			print("<p><b>The draft invoices were generated!</b></p>");
+			//print("<p><b>The draft invoices were generated!</b></p>");
+			return 'success';
 			
 		} catch(Exception $e) {
 			print("<p><b>Could not create invoice</b></p>");
@@ -301,7 +298,7 @@ class Economic {
 		try {
 			$numberArr = array('Id' => $number);
 			$this->client->CurrentInvoice_Delete (array('currentInvoiceHandle' => $numberArr));
-			return true;
+			return 'success';
 		} catch(Exception $e) {
 			print("<p><b>Error occuried deleting</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
@@ -376,8 +373,8 @@ class Economic {
 					)
 				)
 			)->Account_CreateFromDataResult;
-			return true;
-			print("<p><b>Account has been created!</b></p>");			
+			return 'success';
+			//print("<p><b>Account has been created!</b></p>");			
 			
 		} catch(Exception $e) {
 			print("<p><b>Error occuried creating account</b></p>");
@@ -402,8 +399,8 @@ class Economic {
 					)
 				)
 			)->Account_UpdateFromDataResult;
-			return $updateAccount;
-			print("<p><b>Account has been updated!</b></p>");			
+			return 'success';
+			//print("<p><b>Account has been updated!</b></p>");			
 			
 		} catch(Exception $e) {
 			print("<p><b>Error occuried updating account</b></p>");
@@ -416,7 +413,7 @@ class Economic {
 		try {
 			$numberArr = array('Number' => $number);
 			$this->client->Account_Delete(array('accountHandle' => $numberArr));
-			return true;
+			return 'success';
 		} catch(Exception $e) {
 			print("<p><b>Error occuried deleting</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
@@ -436,8 +433,8 @@ class Economic {
 					)
 				)
 			)->DebtorGroup_CreateFromDataResult;
-			return $newDebtorGroup;
-			print("<p><b>Customer group has been created!</b></p>");	
+			return 'success';
+			//print("<p><b>Customer group has been created!</b></p>");	
 			
 		} catch(Exception $e) {
 			print("<p><b>Error occuried creating customer group</b></p>");
@@ -458,8 +455,8 @@ class Economic {
 					)
 				)
 			)->DebtorGroup_UpdateFromDataResult;
-			return $updateDebtorGroup;
-			print("<p><b>Customer group has been updated!</b></p>");	
+			return 'success';
+			//print("<p><b>Customer group has been updated!</b></p>");	
 			
 		} catch(Exception $e) {
 			print("<p><b>Error occuried updating customer group</b></p>");
@@ -493,8 +490,8 @@ class Economic {
 					)
 				)
 			)->ProductGroup_CreateFromDataResult;
-			return $newProductGroup;
-			print("<p><b>Product group has been created!</b></p>");	
+			return 'success';
+			//print("<p><b>Product group has been created!</b></p>");	
 			
 		} catch(Exception $e) {
 			print("<p><b>Error occuried creating product group</b></p>");
@@ -515,8 +512,8 @@ class Economic {
 					)
 				)
 			)->ProductGroup_UpdateFromDataResult;
-			return $updatedProductGroup;
-			print("<p><b>Product group has been updated!</b></p>");	
+			return 'success';
+			//print("<p><b>Product group has been updated!</b></p>");	
 			
 		} catch(Exception $e) {
 			print("<p><b>Error occuried updating product group</b></p>");
@@ -529,7 +526,7 @@ class Economic {
 		try {
 			$numberArr = array('Number' => $number);
 			$this->client->ProductGroup_Delete(array('productGroupHandle' => $numberArr));
-			return true;
+			return 'success';
 		} catch(Exception $e) {
 			print("<p><b>Error occuried deleting</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
@@ -553,7 +550,7 @@ class Economic {
 		try {
 			$numberArr = array('Id' => $id);
 			$this->client->ProductGroup_Delete(array('orderHandle' => $numberArr));
-			return true;
+			return 'success';
 		} catch(Exception $e) {
 			print("<p><b>Error occuried deleting</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
@@ -568,6 +565,40 @@ class Economic {
 			return $orderDataObjects;	
 		} catch(Exception $e) {
 			print("<p><b>Error occuried getting order data</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		}
+	}
+	
+	public function makeOrders($data, $ids, $invDate) {	//generate orders for all debtors
+		
+		try {
+		
+			foreach ($data as $i => $item) {
+
+				//getting info
+				$debtorNumberObj = (object) array('Number' => $ids[$i]['cusNo']); 	//cusNo = customer number in e-conomic
+				$date = new DateTime($invDate);
+										
+				//creating invoice with some options
+				$newOrderHandle = $this->client->Order_Create(array('debtorHandle' => $debtorNumberObj))->Order_CreateResult;
+				$this->client->Order_SetDate(array('orderHandle' => $newOrderHandle, 'value' => $date->format('c')));
+										
+				foreach ($item as $key => $value) {
+			
+					//insert invoice line for each product with product information
+					$newOrderLineHandle = $this->client->OrderLine_Create(array('orderHandle' => $newOrderHandle))->OrderLine_CreateResult;
+					$productNumberObj = (object) array('Number' => $value['pNo']);
+					$productObject = $this->client->Product_GetData(array('entityHandle' => $productNumberObj))->Product_GetDataResult;
+					$this->client->OrderLine_SetProduct(array('orderLineHandle' => $newOrderLineHandle, 'valueHandle' => $productNumberObj));
+					$this->client->OrderLine_SetDescription(array('orderLineHandle' => $newOrderLineHandle, 'value' => $productObject->Name));
+					$this->client->OrderLine_SetUnitNetPrice(array('orderLineHandle' => $newOrderLineHandle, 'value' => $value['price'])); //def $productObject->SalesPrice
+				}	
+			}
+			//print("<p><b>The draft invoices were generated!</b></p>");
+			return 'success';
+			
+		} catch(Exception $e) {
+			print("<p><b>Could not create orders</b></p>");
 			print("<p><i>" . $e->getMessage() . "</i></p>");
 		}
 	}

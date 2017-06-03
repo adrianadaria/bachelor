@@ -20,9 +20,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 if (isset($_GET['test'])) {
-	//echo $ec->addAccount(1004, 'yolotest23', 'ProfitAndLoss', 'Debit', 100.00);
-	//print_r($ec->addProductGroup(9, 'lalalland', 1010, 1010));
-	print_r($ec->updateInvoiceDraft(17, 99999999, '2017-05-09', 0.00));
+	echo 'testing area';
 }
 
 if (isset($_GET['products'])) {
@@ -258,7 +256,7 @@ function importOrders($data, $db) {
 				<li>Invoices <a href='index.php?inv=true'>import</a></li>
 				<li>Accounts <a href='index.php?acc=true'>import</a></li>
 				<li>Orders <a href='index.php?orders=true'>import</a></li>
-				<li>create <a href='index.php?test=true'>start</a></li>
+				<li>test <a href='index.php?test=true'>start</a></li>
 			</ul>
 		</section>
 	</body>

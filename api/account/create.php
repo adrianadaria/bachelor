@@ -32,7 +32,7 @@ $account->vat = $data->vat;
 $account->balance = $data->balance;
 $account->created = date('Y-m-d H:i:s');
  
-if($ec->addAccount($account->number, $account->name, $account->type, $account->card)){
+if($ec->addAccount($account->number, $account->name, $account->type, $account->card) == 'success'){
 	$account->create();
     echo '{';
         echo '"message": "Account was created."';

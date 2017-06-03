@@ -29,7 +29,7 @@ $cgroup->account = $data->type;
 $cgroup->created = date('Y-m-d H:i:s');
  
 
-if($ec->addDebtorGroup($cgroup->number, $cgroup->name, $cgroup->account)) {
+if($ec->addDebtorGroup($cgroup->number, $cgroup->name, $cgroup->account) == 'success') {
 	$cgroup->create();
     echo '{';
         echo '"message": "Customer group was created."';

@@ -31,7 +31,7 @@ $cgroup->name = $data->name;
 $cgroup->account = $data->account;
 
 // update
-if($ec->updateDebtorGroup($cgroup->number, $cgroup->name, $cgroup->account)) {
+if($ec->updateDebtorGroup($cgroup->number, $cgroup->name, $cgroup->account) == 'success') {
     $cgroup->update();
 	echo '{';
         echo '"message": "Customer group was updated."';

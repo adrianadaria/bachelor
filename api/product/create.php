@@ -30,7 +30,7 @@ $product->group = $data->group;
 $product->price = $data->price;
 $product->created = date('Y-m-d H:i:s');
  
-if($ec->addProduct($product->number, $product->name, $product->group, $product->price)){
+if($ec->addProduct($product->number, $product->name, $product->group, $product->price) == 'success'){
 	$product->create();
     echo '{';
         echo '"message": "Product was created."';

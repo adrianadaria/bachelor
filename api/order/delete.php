@@ -29,7 +29,7 @@ $data = json_decode(file_get_contents("php://input"));
 $order->id = $data->id;
  
 // delete 
-if($ec->deleteOrder($order->id)) {
+if($ec->deleteOrder($order->id) == 'success') {
 	$order->delete();
     echo '{';
         echo '"message": "Order was deleted."';
