@@ -101,8 +101,8 @@ const bubb = {
       <div className="inside_content">
           <h1>Products</h1><div className="circle bg-yellow"/>
         <div>
-          <div className="left">
-            <div>
+          <div className="left mobile">
+            <div className="numbers">
               <div className="left">
                 <h2 className="yellow-color"><CountTo to={2234} speed={1000} /></h2>
               </div>
@@ -113,8 +113,8 @@ const bubb = {
             </div>
             <h3>ADDED</h3>
           </div>
-          <div className="right">
-            <div>
+          <div className="right mobile">
+            <div className="numbers">
               <div className="left">
                 <h2 className="yellow-color"><CountTo to={3788} speed={1000} /></h2>
               </div>
@@ -144,8 +144,8 @@ const bubb = {
       <div className="inside_content">
         <h1>Invoices</h1><div className="circle bg-blue"/>
         <div>
-          <div className="left">
-            <div>
+          <div className="left mobile">
+            <div className="numbers">
               <div className="left">
                 <h2 className="blue-color"><CountTo to={1782} speed={1000} /></h2>
               </div>
@@ -156,8 +156,8 @@ const bubb = {
             </div>
             <h3>PENDING</h3>
           </div>
-          <div className="right">
-            <div>
+          <div className="right mobile">
+            <div className="numbers">
               <div className="left">
                 <h2 className="blue-color"><CountTo to={1176} speed={1000} /></h2>
               </div>
@@ -177,14 +177,14 @@ const bubb = {
       <div className="inside_content">
         <h1>Accounts</h1><div className="circle bg-dark-purple"/>
         <div>
-          <div className="left">
+          <div className="left mobile">
             <h2 className="dark-purple-color special"><CountTo to={17843} speed={1000} /></h2>
           </div>
           <div className="right-active">
             <h4 className="dark-purple-color">Active</h4>
           </div>
         </div>
-        <div className="category">
+        <div>
           <h3 className="account_title">ACCOUNTS</h3>
         </div>
       </div>
