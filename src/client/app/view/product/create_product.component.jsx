@@ -104,7 +104,7 @@ class CreateProductComponent extends React.Component {
                         <input type="text" placeholder="Number" value={this.state.number} required onChange={this.onNumberChange} />
                         <input type="text" placeholder="Name" value={this.state.name} required onChange={this.onNameChange} />
                         <input type="number" placeholder="Price" min="0" max="99999" step="0.01" size="6" value={this.state.price} required onChange={this.onPriceChange}/>
-                        <input type="number" placeholder="Group" min="0" max="99999" step='0' value={this.state.group} required onChange={this.onGroupChange} />
+                        <input type="number" placeholder="Group" min="0" max="99999" value={this.state.group} required onChange={this.onGroupChange} />
                         <input type="submit" value="Save" onClick={this.onSave}/>
                     </form>
             </div>

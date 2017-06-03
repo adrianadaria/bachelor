@@ -64,7 +64,7 @@ class CreateCgroupComponent extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="col-left bg-grey left-typo">
                 {
 
                     this.state.successCreation == "Customer group was created." ?
@@ -83,38 +83,34 @@ class CreateCgroupComponent extends React.Component {
                         : null
                 }
 
-                <a href='#' onClick={() => this.props.changeGroupMode('readc')}
-                   className='btn btn-primary margin-bottom-1em'> Back
-                </a>
-
                 <form onSubmit={this.onSave}>
-                    <table className='table table-bordered table-hover'>
+                    <table className='table_list'>
                         <tbody>
                         <tr>
                             <td>Number</td>
                             <td>
-                                <input type='number' className='form-control' value={this.state.number}
+                                <input type='number' className='' value={this.state.number}
                                        required onChange={this.onNumberChange} />
                             </td>
                         </tr>
                         <tr>
                             <td>Name</td>
                             <td>
-                                <input type='text' className='form-control' value={this.state.name}
+                                <input type='text' className='' value={this.state.name}
                                        required onChange={this.onNameChange} />
                             </td>
                         </tr>
                         <tr>
                             <td>Account</td>
                             <td>
-                                <input type='number' className='form-control' value={this.state.account}
+                                <input type='number' className='' value={this.state.account}
                                        required onChange={this.onAccountChange}/>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <button className='btn btn-primary' onClick={this.onSave}>Save</button>
+                                <button className='' onClick={this.onSave}>Save</button>
                             </td>
                         </tr>
                         </tbody>

@@ -15,15 +15,19 @@ class CustomerTopBarComponent extends React.Component {
                 </a>
                 <a href='#'
                    onClick={() => this.props.changeCustomerMode('read')}
-                   className='btn btn-primary margin-bottom-1em'> Table
-                </a>
-                <a href='#'
-                   onClick={() => this.props.changeCustomerMode('create')}
-                   className='btn btn-primary margin-bottom-1em'> Create customer
+                   className='btn btn-primary margin-bottom-1em'> CusTable
                 </a>
                 <a href='#'
                    onClick={() => this.props.refresh()}
                    className='btn btn-primary margin-bottom-1em'> refresh
+                </a>
+                <a href='#'
+                   onClick={() => this.props.makeInvoices()}
+                   className='btn btn-primary margin-bottom-1em'> Generate Invoices
+                </a>
+                <a href='#'
+                   onClick={() => this.props.makeOrders()}
+                   className='btn btn-primary margin-bottom-1em'> Generate Orders
                 </a>
             </div>
         );

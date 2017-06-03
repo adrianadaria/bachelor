@@ -126,15 +126,33 @@ class CreateCustomerComponent extends React.Component {
                     <h4 className="title_right_col">CREATE A</h4>
                     <h4 className="title_right_col">NEW CUSTOMER</h4>
                 <form onSubmit={this.onSave}>
-                    <input type="text" placeholder="Name" value={this.state.name} required onChange={this.onNameChange} />
-                    <textarea type="text" placeholder="Description" value={this.state.description}
-                                            required onChange={this.onDescriptionChange}>
-                                    </textarea>
-                    <input type="number" placeholder="Price (DKK)" step='0.01' min="0" value={this.state.price} required onChange={this.onPriceChange} />
-                    <input type="submit" value="Save" onClick={this.onSave}/>
-
-                <a href='#' onClick={() => this.props.changeCustomerMode('read')}> Back
-                </a>
+                   
+                                <input type='number' placeholder="Number" className='' value={this.state.number}
+                                       required onChange={this.onNumberChange} />
+                         
+                                <input type='text' placeholder="Name" className='' value={this.state.name}
+                                          required onChange={this.onNameChange} />
+                      
+                                <input type='text'  placeholder="Email" className='' value={this.state.email}
+                                       required onChange={this.onEmailChange}/>
+                    
+                                <input type='text' placeholder="Address" className='' value={this.state.address}
+                                       required onChange={this.onAddressChange} />
+              
+                                <input type='text' placeholder="Zip" className='' value={this.state.postcode}
+                                          required onChange={this.onPostcodeChange} />
+                  
+                                <input type='text' placeholder="City" className='' value={this.state.city}
+                                       required onChange={this.onCityChange}/>
+                   
+                                <input type='text' placeholder="Country" className='' value={this.state.country}
+                                       required onChange={this.onCountryChange}/>
+                        
+                                <input type='number' placeholder="CVR" className='' value={this.state.cvr}
+                                       required onChange={this.onCvrChange}/>
+                            
+                                <button className='' onClick={this.onSave}>Save Changes</button>
+                  
                 </form>
             </div>
         );

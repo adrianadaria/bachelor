@@ -53,26 +53,19 @@ class CustomerDetailComponent extends React.Component {
                     <td>{productNames}</td>
                     <td>{productPrices}</td>
                     <td>
-                        <a href='#'
-                           onClick={() => this.changeGroupMode('readOnec', '', cgroup.number)}
-                           className='btn btn-info m-r-1em'> Read One
-                        </a>
-                        <a href='#'
-                           onClick={() => this.changeGroupMode('updatec','', cgroup.number)}
-                           className='btn btn-primary m-r-1em'> Edit
-                        </a>
-                        <a
-                            onClick={() => this.changeGroupMode('deletec','', cgroup.number)}
-                            className='btn btn-danger'> Delete
-                        </a>
+                        <a href='#' className=''> Read</a>
+                        <a href='#' className=''> Edit</a>
+                        <a href='#' className=''> Delete</a>
                     </td>
                 </tr>
             );
         });
 
         let detailTable = (
-            <div>
-                <table className='table table-bordered table-hover'>
+
+            <div className="">
+                <div className="col-left bg-grey left-typo scroll col-fullwidth">
+                <table className='table_list'>
                     <thead>
                     <tr>
                         <th>CusNo</th>
@@ -85,6 +78,7 @@ class CustomerDetailComponent extends React.Component {
                         {details}
                     </tbody>
                 </table>
+                </div>
             </div>
         );
 

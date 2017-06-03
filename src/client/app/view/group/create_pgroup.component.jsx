@@ -91,10 +91,6 @@ class CreatePgroupComponent extends React.Component {
                         : null
                 }
 
-                <a href='#' onClick={() => this.props.changeGroupMode('readp')}
-                   className='btn btn-primary margin-bottom-1em'> Back
-                </a>
-
                 <form onSubmit={this.onSave}>
                     <table className='table table-bordered table-hover'>
                         <tbody>

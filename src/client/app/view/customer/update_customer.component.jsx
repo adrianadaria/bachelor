@@ -110,84 +110,84 @@ class UpdateCustomerComponent extends React.Component {
             <div>
                 {
                     this.state.successUpdate == "Customer was updated." ?
-                        <div className='alert alert-success'>Customer was updated.</div>
+                        <div className=''>Customer was updated.</div>
                         : null
                 }
 
                 {
                     this.state.successUpdate == "Unable to update customer." ?
-                        <div className='alert alert-danger'>Unable to update customer. Please try again.</div>
+                        <div className=''>Unable to update customer. Please try again.</div>
                         : null
                 }
 
                 <a href='#'
-                   onClick={() => this.props.changeCustomerMode('read')} className='btn btn-primary margin-bottom-1em'>
+                   onClick={() => this.props.changeCustomerMode('read')} className=''>
                     Back
                 </a>
 
                 <form onSubmit={this.onSave}>
-                    <table className='table table-bordered table-hover'>
+                    <table className=''>
                         <tbody>
                             <tr>
                                 <td>Number</td>
                                 <td>
-                                    <input type='number' step="0.01" className='form-control' value={this.state.number}
+                                    <input type='number' className='' value={this.state.number}
                                            readOnly/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Name</td>
                                 <td>
-                                <textarea type='text' className='form-control' value={this.state.name}
-                                    required onChange={this.onNameChange}></textarea>
+                                <input type='text' className='' value={this.state.name}
+                                    required onChange={this.onNameChange} />
                                 </td>
                             </tr>
                             <tr>
                                 <td>Email</td>
                                 <td>
-                                    <input type='text' className='form-control' value={this.state.email}
+                                    <input type='text' className='' value={this.state.email}
                                         required onChange={this.onEmailChange}/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Address</td>
                                 <td>
-                                    <input type='text' className='form-control' value={this.state.address}
+                                    <input type='text' className='' value={this.state.address}
                                            required onChange={this.onAddressChange} />
                                 </td>
                             </tr>
                             <tr>
                                 <td>Zip</td>
                                 <td>
-                                <textarea type='text' className='form-control' value={this.state.postcode}
-                                          required onChange={this.onPostcodeChange}></textarea>
+                                <input type='text' className='' value={this.state.postcode}
+                                          required onChange={this.onPostcodeChange} />
                                 </td>
                             </tr>
                             <tr>
                                 <td>City</td>
                                 <td>
-                                    <input type='text' className='form-control' value={this.state.city}
+                                    <input type='text' className='' value={this.state.city}
                                            required onChange={this.onCityChange}/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Country</td>
                                 <td>
-                                    <input type='text' className='form-control' value={this.state.country}
+                                    <input type='text' className='' value={this.state.country}
                                            required onChange={this.onCountryChange}/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>CVR</td>
                                 <td>
-                                    <input type='number' className='form-control' value={this.state.cvr}
+                                    <input type='number' className='' value={this.state.cvr}
                                            required onChange={this.onCvrChange}/>
                                 </td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <button className='btn btn-primary' onClick={this.onSave}>Save Changes</button>
+                                    <button className='' onClick={this.onSave}>Save Changes</button>
                                 </td>
                             </tr>
                         </tbody>

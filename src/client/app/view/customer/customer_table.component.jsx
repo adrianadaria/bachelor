@@ -19,6 +19,7 @@ class CustomerTableComponent extends React.Component {
             !rows.length
                 ? <h4>NO CUSTOMERS FOUND</h4>
                 :
+                <div className="col-left bg-grey left-typo scroll">
                     <table className="table_list">
                     <caption><h4 className="table_title">LIST OF</h4>
                     <h4 className="table_title">CUSTOMERS</h4></caption>
@@ -39,7 +40,7 @@ class CustomerTableComponent extends React.Component {
                             {rows}
                         </tbody>
                     </table>
-
+                </div>
         );
     }
 }
