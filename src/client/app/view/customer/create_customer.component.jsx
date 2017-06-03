@@ -126,72 +126,33 @@ class CreateCustomerComponent extends React.Component {
                     <h4 className="title_right_col">CREATE A</h4>
                     <h4 className="title_right_col">NEW CUSTOMER</h4>
                 <form onSubmit={this.onSave}>
-                    <table className=''>
-                        <tbody>
-                        <tr>
-                            <td>Number</td>
-                            <td>
-                                <input type='number' className='' value={this.state.number}
+                   
+                                <input type='number' placeholder="Number" className='' value={this.state.number}
                                        required onChange={this.onNumberChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>
-                                <input type='text' className='' value={this.state.name}
+                         
+                                <input type='text' placeholder="Name" className='' value={this.state.name}
                                           required onChange={this.onNameChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>
-                                <input type='text' className='' value={this.state.email}
+                      
+                                <input type='text'  placeholder="Email" className='' value={this.state.email}
                                        required onChange={this.onEmailChange}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Address</td>
-                            <td>
-                                <input type='text' className='' value={this.state.address}
+                    
+                                <input type='text' placeholder="Address" className='' value={this.state.address}
                                        required onChange={this.onAddressChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Zip</td>
-                            <td>
-                                <input type='text' className='' value={this.state.postcode}
+              
+                                <input type='text' placeholder="Zip" className='' value={this.state.postcode}
                                           required onChange={this.onPostcodeChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>City</td>
-                            <td>
-                                <input type='text' className='' value={this.state.city}
+                  
+                                <input type='text' placeholder="City" className='' value={this.state.city}
                                        required onChange={this.onCityChange}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Country</td>
-                            <td>
-                                <input type='text' className='' value={this.state.country}
+                   
+                                <input type='text' placeholder="Country" className='' value={this.state.country}
                                        required onChange={this.onCountryChange}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>CVR</td>
-                            <td>
-                                <input type='number' className='' value={this.state.cvr}
+                        
+                                <input type='number' placeholder="CVR" className='' value={this.state.cvr}
                                        required onChange={this.onCvrChange}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
+                            
                                 <button className='' onClick={this.onSave}>Save Changes</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                  
                 </form>
             </div>
         );
