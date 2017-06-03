@@ -81,6 +81,7 @@ class ReadGroupsComponent extends React.Component {
         let filteredPgroups = this.state.pgroups;
         let filteredCgroups = this.state.cgroups;
         let topBar = null;
+        let createPC = null;
         let modeComponent = <GroupTableComponent pgroups={filteredPgroups}  changeGroupMode={this.changeGroupMode} />;
         let cdata = filteredCgroups.map((cgroup, i) => {
             return (
@@ -103,7 +104,7 @@ class ReadGroupsComponent extends React.Component {
         });
         let cusTable = (
             <div className="container equal">
-                    <div className="col-left bg-grey left-typo scroll">
+                    <div className="col-left bg-grey left-typo scroll col-fullwidth">
                         <table className="table_list">
                             <caption><h4 className="table_title">LIST OF</h4>
                             <h4 className="table_title">CUSTOMER GROUPS</h4></caption>
@@ -120,17 +121,17 @@ class ReadGroupsComponent extends React.Component {
                             </tbody>
                         </table>
                     </div>
-                        <div className="col-right bg-yellow">
-                        </div>
                 </div>
         );
 
         switch(this.state.currentMode) {
             case 'readp':
                 topBar = <GroupTopBarComponent changeGroupMode={this.changeGroupMode} refresh={this.refreshTables}/>;
+                createPC = <CreatePgroupComponent changeGroupMode={this.changeGroupMode}/>;
                 break;
             case 'readc':
                 topBar = <GroupTopBarComponent changeGroupMode={this.changeGroupMode}/>;
+                createPC = <CreateCgroupComponent changeGroupMode={this.changeGroupMode}/>;
                 modeComponent = cusTable;
                 break;
             case 'readOnep':
@@ -175,6 +176,7 @@ class ReadGroupsComponent extends React.Component {
                         {modeComponent}
                     </div>
                     <div className="col-right bg-yellow">
+                        {createPC}
                     </div>
                 </div>
             </div>
