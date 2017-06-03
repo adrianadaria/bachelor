@@ -53,6 +53,7 @@ class ReadAccountsComponent extends React.Component {
     render() {
         let filteredAccounts = this.state.accounts;
         let modeComponent = <AccountTableComponent accounts={filteredAccounts} changeAccountMode={this.changeAccountMode} />;
+        let createAccount = <CreateAccountComponent accountNo={this.state.accountNo} changeAccountMode={this.changeAccountMode} />;
         $('.page-header h1').text('Read Accounts');
         let topBar = null;
 
@@ -87,6 +88,7 @@ class ReadAccountsComponent extends React.Component {
                     {modeComponent}
                 </div>
                 <div className="col-right bg-yellow">
+                    {createAccount}
                 </div>
             </div>
 
