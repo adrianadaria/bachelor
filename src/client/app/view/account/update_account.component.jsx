@@ -119,27 +119,27 @@ class UpdateAccountComponent extends React.Component {
                             <tr>
                                 <td>Number</td>
                                 <td>
-                                    <input type='number' className='form-control' value={this.state.number} readOnly/>
+                                    <input type='number' value={this.state.number} readOnly/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Name</td>
                                 <td>
-                                <input type='text' className='form-control' value={this.state.name}
+                                <input type='text' value={this.state.name}
                                     required onChange={this.onNameChange}/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Type</td>
                                 <td>
-                                    <input type='text' className='form-control' value={this.state.type}
+                                    <input type='text' value={this.state.type}
                                         required onChange={this.onTypeChange}/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Card</td>
                                 <td>
-                                    <input type='text' className='form-control' value={this.state.card}
+                                    <input type='text' value={this.state.card}
                                            required onChange={this.onCardChange}/>
                                 </td>
                             </tr>
@@ -153,14 +153,14 @@ class UpdateAccountComponent extends React.Component {
                             <tr>
                                 <td>Balance</td>
                                 <td>
-                                    <input type='number' className='form-control' value={parseFloat(this.state.balance).toFixed(2)}
+                                    <input type='number' value={parseFloat(this.state.balance).toFixed(2)}
                                            required onChange={this.onBalanceChange} readOnly/>
                                 </td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>
-                                    <button className='btn btn-primary' onClick={this.onSave}>Save Changes</button>
+                                    <button onClick={this.onSave}>Save Changes</button>
                                 </td>
                             </tr>
                         </tbody>
