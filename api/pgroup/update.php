@@ -34,7 +34,7 @@ $pgroup->vatAcc = $data->vatAcc;
 $pgroup->noVatAcc = $data->noVatAcc;
 
 // update
-if($ec->updateProductGroup($pgroup->number, $pgroup->name, $pgroup->vatAcc, $pgroup->noVatAcc)) {
+if($ec->updateProductGroup($pgroup->number, $pgroup->name, $pgroup->vatAcc, $pgroup->noVatAcc) == 'success') {
     $pgroup->update();
 	echo '{';
         echo '"message": "Product group was updated."';

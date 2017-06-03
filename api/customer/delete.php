@@ -29,7 +29,7 @@ $data = json_decode(file_get_contents("php://input"));
 $customer->number = $data->number;
  
 // delete 
-if($ec->deleteDebtor($customer->number)) {
+if($ec->deleteDebtor($customer->number) == 'success') {
 	$customer->delete();
     echo '{';
         echo '"message": "Customer was deleted."';

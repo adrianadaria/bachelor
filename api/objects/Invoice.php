@@ -22,7 +22,7 @@ class Invoice {
  
 		// select all query
 		$query = "SELECT i.*, c.name, c.address, c.city, c.postcode, c.country, c.email FROM " . $this->table_name . 
-		" i JOIN customer c ON i.cusNo = c.number ORDER BY i.created DESC";
+		" i JOIN customer c ON i.cusNo = c.number ORDER BY i.id DESC";
  
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);

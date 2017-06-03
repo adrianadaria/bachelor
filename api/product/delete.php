@@ -29,7 +29,7 @@ $data = json_decode(file_get_contents("php://input"));
 $product->number = $data->number;
  
 // delete the product
-if($ec->deleteProduct($product->number)) {
+if($ec->deleteProduct($product->number) == 'success') {
 	$product->delete();
     echo '{';
         echo '"message": "Product was deleted."';
