@@ -19,6 +19,7 @@ h2 {
 	font-size: $size-xl;
 	line-height: 1px;
 	font-family: $font-family;
+	font-weight: 500;
 }
 h3 {
 	font-size: $size;
@@ -27,13 +28,13 @@ h3 {
 	display: inline;
 	text-transform: uppercase;
 	font-weight: 500;
-	letter-spacing: 0.5em;
+	letter-spacing: 0.3em;
 
 }
 h4 {
 	font-size: $size-l;
-	font-weight: 600;
 	text-align: center;
+	font-weight: 500;
 }
 
 h5 {
@@ -54,7 +55,7 @@ h6 {
 	font-size: $size-xxl;
 }
 @media only screen and (max-width: 480px) {
-		h1 {
+	h1 {
 	font-size: $size-m;
 	}
 	h2 {
@@ -72,15 +73,34 @@ h6 {
 
 }
 
-@media (min-width:480px) and (max-width: 1024px) {
+@media (min-width:480px) and (max-width: 678px) {
 	h1 {
 	font-size: $size-m;
 	}
 	h2 {
-		font-size: $size-l;
+		font-size: $size-ll;
 	}
 	h3 {
-		font-size: $size-ml;
+		font-size: $size-mm;
+	}
+	h4 {
+		font-size: $size-sm;
+	}
+	.special {
+	font-size: $size-l;
+	}
+
+}
+
+@media (min-width:678px) and (max-width: 1024px) {
+	h1 {
+	font-size: $size-m;
+	}
+	h2 {
+		font-size: $size-llx;
+	}
+	h3 {
+		font-size: $size-mm;
 	}
 	h4 {
 		font-size: $size-m;
@@ -91,3 +111,21 @@ h6 {
 	}
 }
 
+@media (min-width:1024px) and (max-width: 1600px) {
+	h1 {
+	font-size: $size-m;
+	}
+	h2 {
+		font-size: $size-lx;
+	}
+	h3 {
+		font-size: $size-mm;
+	}
+	h4 {
+		font-size: $size-m;
+	}
+
+		.special {
+	font-size: $size-lx;
+	}
+}
