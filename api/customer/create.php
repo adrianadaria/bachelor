@@ -37,7 +37,7 @@ $customer->created = date('Y-m-d H:i:s');
 $insert = $ec->addDebtor($customer->number, $customer->name, $customer->email, $customer->address,
 	$customer->postcode, $customer->city, $customer->country, $customer->cvr);
 
-if($insert){
+if($insert == 'success'){
 	$customer->create();
     echo '{';
         echo '"message": "Customer was created."';

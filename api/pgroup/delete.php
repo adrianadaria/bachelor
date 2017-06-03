@@ -29,7 +29,7 @@ $data = json_decode(file_get_contents("php://input"));
 $pgroup->number = $data->number;
  
 // delete
-if($ec->deleteProductGroup($pgroup->number)) {
+if($ec->deleteProductGroup($pgroup->number) == 'success') {
 	$pgroup->delete();
     echo '{';
         echo '"message": "Product Group was deleted."';

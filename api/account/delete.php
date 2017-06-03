@@ -28,7 +28,7 @@ $data = json_decode(file_get_contents("php://input"));
 // set account number to be deleted
 $account->number = $data->number;
  
-if($ec->deleteAccount($account->number)) {
+if($ec->deleteAccount($account->number) == 'success') {
 	$account->delete();
     echo '{';
         echo '"message": "Account was deleted."';

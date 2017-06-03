@@ -29,7 +29,7 @@ $data = json_decode(file_get_contents("php://input"));
 $invoice->id = $data->id;
  
 // delete 
-if($ec->deleteInvoiceDraft($invoice->id)) {
+if($ec->deleteInvoiceDraft($invoice->id) == 'success') {
 	$invoice->delete();
     echo '{';
         echo '"message": "Invoice was deleted."';

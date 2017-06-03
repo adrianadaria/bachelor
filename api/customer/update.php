@@ -42,7 +42,7 @@ $update = $ec->updateDebtor($customer->number, $customer->name, $customer->email
 	$customer->postcode, $customer->city, $customer->country, $customer->cvr);
 
 // update
-if($update) {
+if($update == 'success') {
     $customer->update();
 	echo '{';
         echo '"message": "Customer was updated."';

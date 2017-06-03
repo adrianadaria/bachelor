@@ -30,7 +30,7 @@ $pgroup->vatAcc = $data->vatAcc;
 $pgroup->noVatAcc = $data->noVatAcc;
 $pgroup->created = date('Y-m-d H:i:s');
 
-if($ec->addProductGroup($pgroup->number, $pgroup->name, $pgroup->vatAcc, $pgroup->noVatAcc)) {
+if($ec->addProductGroup($pgroup->number, $pgroup->name, $pgroup->vatAcc, $pgroup->noVatAcc) == 'success') {
 	$pgroup->create();
     echo '{';
         echo '"message": "Product group was created."';
