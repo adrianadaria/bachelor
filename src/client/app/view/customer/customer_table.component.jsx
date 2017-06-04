@@ -19,24 +19,24 @@ class CustomerTableComponent extends React.Component {
             !rows.length
                 ? <h4>NO CUSTOMERS FOUND</h4>
                 :
-                <div className="col-left bg-grey left-typo scroll">
+                <div className="col-left bg-grey left-typo scroll c_layout">
                     <table className="table_list">
                     <caption><h4 className="table_title">LIST OF</h4>
                     <h4 className="table_title">CUSTOMERS</h4></caption>
                         <thead>
                         <tr>
-                            <th><h5>Number</h5></th>
-                            <th><h5>Name</h5></th>
-                            <th><h5>Email</h5></th>
-                            <th><h5>Address</h5></th>
-                            <th className="smaller_width"><h5>Zip</h5></th>
-                            <th><h5>City</h5></th>
-                            <th><h5>Country</h5></th>
-                            <th><h5>CVR</h5></th>
-                            <th className="extra_width"><h5>Action</h5></th>
+                            <th><h5 className="smaller_title">Number</h5></th>
+                            <th><h5 className="smaller_title">Name</h5></th>
+                            <th><h5 className="smaller_title">Email</h5></th>
+                            <th><h5 className="smaller_title">Address</h5></th>
+                            <th className="smaller_width"><h5 className="smaller_title">Zip</h5></th>
+                            <th><h5 className="smaller_title">City</h5></th>
+                            <th><h5 className="smaller_title">Country</h5></th>
+                            <th><h5 className="smaller_title">CVR</h5></th>
+                            <th className="extra_width smaller_title"><h5>Action</h5></th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody className="table_customer">
                             {rows}
                         </tbody>
                     </table>

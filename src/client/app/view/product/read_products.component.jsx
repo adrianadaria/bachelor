@@ -84,15 +84,16 @@ class ReadProductsComponent extends React.Component {
                 <div className="col-left bg-grey left-typo scroll">
                     {
                         this.state.currentMode == 'read' ?
-                            <a href='#'
-                               onClick={() => this.fetchProducts()}> refresh
-                            </a> :
+                            <div className="refresh"><a href='#' 
+                               onClick={() => this.fetchProducts()}>
+                            </a>
+                            </div> :
                             null
                     }
                     {modeComponent}
                 </div>
                 <div className="col-right bg-yellow">
-                    <CreateProductComponent/>
+                    <CreateProductComponent />
                 </div>
             </div>
 

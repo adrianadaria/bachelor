@@ -50,20 +50,26 @@ th {
 	margin-right: 5px;
 }
 
-tr:nth-child(even) {background-color: $grey-highlight;}
+tr:nth-child(even) {
+	background-color: $grey-highlight;
+}
 table {
 	border-collapse: collapse;
+	background-color: $grey;
 }
-table tr td:last-child {
-    background-color: $grey;
-}
+
 .back {
 	background-image: url(../img/back-arrow.png);
 	background-repeat: no-repeat;
-	height: 40px;
-	width: 40px;
+	height: $size-ll;
+	width: $size-ll;
 	margin: 20px;
 	color: $black;
+}
+.refresh {
+	@extend .back;
+	background-image: url(../img/refresh.png);
+	float: right;
 }
 .view {
 	background-image: url(../img/read.png);
@@ -82,4 +88,85 @@ table tr td:last-child {
 }
 .delete:hover {
 	background-image: url(../img/delete-hover.png);
+}
+
+@media (max-width:1600px) {
+	.refresh {
+		background-size: 20px;
+	}
+}
+@media (min-width:1212px) {
+	caption {
+		margin-top: -90px;
+	}
+}
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1210px)  {
+
+	.table_list {
+		padding: 0px;
+	}
+
+	.action_btn {
+	width: $size-m;
+	height: $size-m;
+	padding: 2px;
+	background-size: 18px;
+	margin-right: 2px;
+	}
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	tr:nth-child(even) {
+		background-color: $grey-highlight;
+	}
+	
+	
+	td { 
+		border: none;
+		position: relative;
+		padding-left: 50%; 
+		
+	}
+	
+	td:before { 
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		
+	}
+
+	td:after{
+		content: "\a0";
+	}
+	
+	.table_product td:nth-of-type(1):before { content: "Number"; }
+	.table_product td:nth-of-type(2):before { content: "Name"; }
+	.table_product td:nth-of-type(3):before { content: "Price"; }
+	.table_product td:nth-of-type(4):before { content: "Group"; }
+	.table_product td:nth-of-type(5):before { content: "Action"; }
+
+	.table_customer td:nth-of-type(1):before { content: "Number"; }
+	.table_customer td:nth-of-type(2):before { content: "Name"; }
+	.table_customer td:nth-of-type(3):before { content: "Email"; }
+	.table_customer td:nth-of-type(4):before { content: "Address"; }
+	.table_customer td:nth-of-type(5):before { content: "Zip"; }
+	.table_customer td:nth-of-type(6):before { content: "City"; }
+	.table_customer td:nth-of-type(7):before { content: "Country"; }
+	.table_customer td:nth-of-type(8):before { content: "CVR"; }
+	.table_customer td:nth-of-type(8):before { content: "Action"; }
+
+
+
 }
