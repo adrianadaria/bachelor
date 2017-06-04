@@ -7,10 +7,10 @@ class CreatePgroupComponent extends React.Component {
         super(props);
 
         this.state = {
-            number: 0,
+            number: '',
             name: '',
-            vatAcc: 0,
-            noVatAcc: 0,
+            vatAcc: '',
+            noVatAcc: '',
             successCreation: null
         };
 
@@ -72,12 +72,12 @@ class CreatePgroupComponent extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="form_style">
                 {
 
                     this.state.successCreation == "Product group was created." ?
-                        <div className='alert alert-success'>
-                            Product group was saved.
+                        <div className="msg_success">
+                            <h4>Product group was saved</h4>
                         </div>
                         : null
                 }
@@ -85,51 +85,23 @@ class CreatePgroupComponent extends React.Component {
                 {
 
                     this.state.successCreation == "Unable to create product group." ?
-                        <div className='alert alert-danger'>
-                            Unable to save product group. Please try again.
+                        <div className="msg_fail">
+                            <h4>Unable to save product group. Please try again</h4>
                         </div>
                         : null
                 }
-
+                    <h4 className="title_right_col">CREATE A NEW</h4>
+                    <h4 className="title_right_col">PRODUCT GROUP</h4>
                 <form onSubmit={this.onSave}>
-                    <table className='table table-bordered table-hover'>
-                        <tbody>
-                            <tr>
-                                <td>Number</td>
-                                <td>
-                                    <input type='number' className='form-control' value={this.state.number}
+                    <input type='number' placeholder="Number" className='form-control' value={this.state.number}
                                            required onChange={this.onNumberChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>
-                                    <input type='text' className='form-control' value={this.state.name}
+                    <input type='text' placeholder="Name" className='form-control' value={this.state.name}
                                         required onChange={this.onNameChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>VatAcc</td>
-                                <td>
-                                    <input type='number' className='form-control' value={this.state.vatAcc}
+                    <input type='number' placeholder="VatAcc" className='form-control' value={this.state.vatAcc}
                                             required onChange={this.onVataccChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>NoVatAcc</td>
-                                <td>
-                                    <input type='number' className='form-control' value={this.state.noVatAcc}
+                    <input type='number' placeholder="NoVatAcc" className='form-control' value={this.state.noVatAcc}
                                            required onChange={this.onNovataccChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button className='btn btn-primary' onClick={this.onSave}>Save</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <input type="submit" value="Save" onClick={this.onSave}/>
                 </form>
             </div>
         );

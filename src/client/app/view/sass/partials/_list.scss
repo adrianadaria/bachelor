@@ -90,6 +90,14 @@ table {
 .delete:hover {
 	background-image: url(../img/delete-hover.png);
 }
+@media (min-width: 320px) {
+	.group {
+		width: 500px;
+	text-align: left;
+	margin-left: 2%;
+	line-height: 1px;
+	}
+}
 @media (max-width:480px) {
 	.line_height_del {
 		font-size: 20px;

@@ -56,7 +56,8 @@ class ReadOrdersComponent extends React.Component {
         switch(this.state.currentMode) {
             case 'read':
                 bar = (
-                    <a href='#' onClick={() => this.fetchOrders()} className='btn btn-info m-r-1em'> refresh
+                    <a href='#' onClick={() => this.fetchOrders()}>
+                        <div className="refresh"/>
                     </a>
                 );
                 break;
@@ -75,7 +76,7 @@ class ReadOrdersComponent extends React.Component {
         return (
 
             <div className="container equal">
-                <div className="col-left bg-grey left-typo scroll col-fullwidth">
+                <div className="col-left bg-light-grey left-typo scroll col-fullwidth">
                  {
                     bar !== null ?
                         bar

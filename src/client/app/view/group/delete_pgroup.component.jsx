@@ -33,21 +33,13 @@ class DeletePgroupComponent extends React.Component {
 
     render() {
         return (
-            <div className='row'>
-                <div className='col-md-3'></div>
-                <div className='col-md-6'>
-                    <div className='panel panel-default'>
-                        <div className='panel-body text-align-center'>Are you sure?</div>
-                        <div className='panel-footer clearfix'>
-                            <div className='text-align-center'>
-                                <button onClick={this.onDelete} className='btn btn-danger m-r-1em'>Yes</button>
-                                <button onClick={() => this.props.changeGroupMode('readp')} className='btn btn-primary'>No
-                                </button>
-                            </div>
-                        </div>
+            <div className="delete_section">
+                <h4 className="line_height_del">DO YOU WANT TO</h4>
+                <h4 className="line_height_del">DELETE THIS GROUP?</h4>
+                    <div className="btn_wrap">
+                        <button className="btn_yes" onClick={this.onDelete}>Yes</button>
+                        <button className="btn_no" onClick={() => this.props.changeGroupMode('readp')}>No</button>
                     </div>
-                </div>
-                <div className='col-md-3'></div>
             </div>
         );
     }

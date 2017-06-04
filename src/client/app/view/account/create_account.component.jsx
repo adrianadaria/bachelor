@@ -115,15 +115,15 @@ class CreateAccountComponent extends React.Component {
                 <form onSubmit={this.onSave}>
                     <input type='number' placeholder="Number" className='form-control' value={this.state.number}
                                            required onChange={this.onNumberChange} />
-                    <input type='text' placeholder="Name" className='form-control' value={this.state.name}
+                    <input type='text' placeholder="Name" value={this.state.name}
                                         required onChange={this.onNameChange} />
-                    <input type='text' placeholder="Type" className='form-control' value={this.state.type}
+                    <input type='text' placeholder="Type" value={this.state.type}
                                            required onChange={this.onTypeChange} readOnly/>
-                    <input type='text' placeholder="Card" className='form-control' value={this.state.card}
+                    <input type='text' placeholder="Card" value={this.state.card}
                                            required onChange={this.onCardChange}/>
-                    <input type='text' placeholder="Vat" className='form-control' value={this.state.vat}
+                    <input type='text' placeholder="Vat" value={this.state.vat}
                                            required onChange={this.onVatChange}/>
-                    <input type='number' placeholder="Balance (DKK)" step="0.01" className='form-control' value={parseFloat(this.state.balance).toFixed(2)}
+                    <input type='number' placeholder="Balance (DKK)" step="0.01" value={parseFloat(this.state.balance).toFixed(2)}
                                             required onChange={this.onBalanceChange} readOnly/>
                     <input type="submit" value="Save" onClick={this.onSave}/>  
                 </form>

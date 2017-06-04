@@ -35,11 +35,12 @@ class ReadOneCgroupComponent extends React.Component {
     render() {
         return (
             <div>
-                <a href='#' onClick={() => this.props.changeGroupMode('readc')}
-                   className='btn btn-primary margin-bottom-1em'>Back
+                <a href='#' onClick={() => this.props.changeGroupMode('readc')}>
+                    <div className="back"/>
                 </a>
-                <form>
-                    <table className='table table-bordered table-hover'>
+                <table className="table_list">
+                        <caption className="products_caption"><h4 className="group">DETAILS OF THE</h4>
+                        <h4 className="group">CUSTOMER GROUP</h4></caption>
                         <tbody>
                         <tr>
                             <td>Number</td>
@@ -55,7 +56,6 @@ class ReadOneCgroupComponent extends React.Component {
                         </tr>
                         </tbody>
                     </table>
-                </form>
             </div>
         );
     }
