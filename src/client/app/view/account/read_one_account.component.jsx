@@ -40,12 +40,12 @@ class ReadOneAccountComponent extends React.Component {
     render() {
         return (
             <div>
-                <a href='#' onClick={() => this.props.changeAccountMode('read')}
-                   className='btn btn-primary margin-bottom-1em'>Read Accounts
+                <a href='#' onClick={() => this.props.changeAccountMode('read')}>
+                  <div className="back"/>
                 </a>
                 <form onSubmit={this.onSave}>
                     <table className="table_list">
-                        <caption><h4 className="table_title">DETAILS OF</h4>
+                        <caption className="products_caption"><h4 className="table_title">DETAILS OF</h4>
                     <h4 className="table_title">THE ACCOUNT</h4></caption>
                         <tbody>
                         <tr>

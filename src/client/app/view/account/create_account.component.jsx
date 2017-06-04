@@ -7,12 +7,12 @@ class CreateAccountComponent extends React.Component {
         super(props);
 
         this.state = {
-            number: 0,
+            number: '',
             name: '',
-            type: 'ProfitAndLoss',
+            type: '',
             card: '',
             vat: '',
-            balance: 0.00,
+            balance: '',
             successCreation: null
         };
 
@@ -90,8 +90,8 @@ class CreateAccountComponent extends React.Component {
                 {
 
                     this.state.successCreation == "Account was created." ?
-                        <div className='alert alert-success'>
-                            Account was saved.
+                        <div className="msg_success">
+                            <h4>Account was saved</h4>
                         </div>
                         : null
                 }
@@ -99,69 +99,33 @@ class CreateAccountComponent extends React.Component {
                 {
 
                     this.state.successCreation == "Unable to create account." ?
-                        <div className='alert alert-danger'>
-                            Unable to save account. Please try again.
+                        <div className="msg_fail">
+                            <h4>Unable to save account. Please try again</h4>
                         </div>
                         : null
                 }
 
-                <a href='#' onClick={() => this.props.changeAccountMode('read')}
-                   className='btn btn-primary margin-bottom-1em'> Read Accounts
+                <a href='#' onClick={() => this.props.changeAccountMode('read')}>
+                    <div className="back"/>
                 </a>
 
+                <h4 className="title_right_col">CREATE A</h4>
+                <h4 className="title_right_col">NEW ACCOUNT</h4>
+
                 <form onSubmit={this.onSave}>
-                    <table className='table table-bordered table-hover'>
-                        <tbody>
-                            <tr>
-                                <td>Number</td>
-                                <td>
-                                    <input type='number' className='form-control' value={this.state.number}
+                    <input type='number' placeholder="Number" className='form-control' value={this.state.number}
                                            required onChange={this.onNumberChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>
-                                    <input type='text' className='form-control' value={this.state.name}
+                    <input type='text' placeholder="Name" className='form-control' value={this.state.name}
                                         required onChange={this.onNameChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Type</td>
-                                <td>
-                                    <input type='text' className='form-control' value={this.state.type}
+                    <input type='text' placeholder="Type" className='form-control' value={this.state.type}
                                            required onChange={this.onTypeChange} readOnly/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Card</td>
-                                <td>
-                                    <input type='text' className='form-control' value={this.state.card}
+                    <input type='text' placeholder="Card" className='form-control' value={this.state.card}
                                            required onChange={this.onCardChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Vat</td>
-                                <td>
-                                    <input type='text' className='form-control' value={this.state.vat}
+                    <input type='text' placeholder="Vat" className='form-control' value={this.state.vat}
                                            required onChange={this.onVatChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Balance (DKK)</td>
-                                <td>
-                                    <input type='number' step="0.01" className='form-control' value={parseFloat(this.state.balance).toFixed(2)}
+                    <input type='number' placeholder="Balance (DKK)" step="0.01" className='form-control' value={parseFloat(this.state.balance).toFixed(2)}
                                             required onChange={this.onBalanceChange} readOnly/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button className='btn btn-primary' onClick={this.onSave}>Save</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <input type="submit" value="Save" onClick={this.onSave}/>  
                 </form>
             </div>
         );

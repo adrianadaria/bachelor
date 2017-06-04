@@ -33,12 +33,14 @@ class ReadOneInvoiceComponent extends React.Component {
     render() {
         return (
             <div>
-                <a href='#' onClick={() => this.props.changeInvoiceMode('read')}
-                   className='btn btn-primary margin-bottom-1em'>Back
+                <a href='#' onClick={() => this.props.changeInvoiceMode('read')}>
+                    <div className="back"/>
                 </a>
-                <form>
-                    <table className='table table-bordered table-hover'>
+                <table className="table_list">
+                        <caption className="products_caption"><h4 className="table_title">DETAILS OF</h4>
+                        <h4 className="table_title">THE INVOICE</h4></caption>
                         <tbody>
+                        
                         <tr>
                             <td>Id</td>
                             <td>{this.state.id}</td>
@@ -56,8 +58,7 @@ class ReadOneInvoiceComponent extends React.Component {
                             <td>{parseFloat(this.state.total).toFixed(2)}</td>
                         </tr>
                         </tbody>
-                    </table>
-                </form>
+                </table>
             </div>
         );
     }

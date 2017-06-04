@@ -49,7 +49,6 @@ class ReadOneCustomerComponent extends React.Component {
                 <a href='#' onClick={() => this.props.changeCustomerMode('read')}>
                     <div className="back"/>
                 </a>
-                <form onSubmit={this.onSave}>
                     <table className="table_list">
                         <caption><h4 className="table_title">DETAILS OF</h4>
                         <h4 className="table_title">THE CUSTOMER</h4></caption>
@@ -88,7 +87,6 @@ class ReadOneCustomerComponent extends React.Component {
                         </tr>
                         </tbody>
                     </table>
-                </form>
             </div>
         );
     }

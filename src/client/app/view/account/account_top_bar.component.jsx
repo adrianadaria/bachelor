@@ -10,8 +10,8 @@ class AccountTopBarComponent extends React.Component {
         return (
             <div>
                 <a href='#'
-                   onClick={() => this.props.refresh()}
-                   className='btn btn-primary margin-bottom-1em'> refresh
+                   onClick={() => this.props.refresh()}>
+                   <div className="refresh"/>
                 </a>
             </div>
         );

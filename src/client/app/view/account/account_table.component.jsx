@@ -21,7 +21,7 @@ class AccountTableComponent extends React.Component {
                 ? <h4>NO ACCOUNTS FOUND</h4>
                 :
                 <table className="table_list">
-                    <caption><h4 className="table_title">LIST OF</h4>
+                    <caption className="products_caption"><h4 className="table_title">LIST OF</h4>
                     <h4 className="table_title">ACCOUNTS</h4></caption>
                     <thead>
                     <tr>

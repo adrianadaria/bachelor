@@ -79,7 +79,7 @@ class ReadAccountsComponent extends React.Component {
 
         return (
              <div className="container equal">
-                <div className="col-left bg-grey left-typo scroll">
+                <div className="col-left bg-light-grey left-typo scroll">
                  {
                     topBar !== null ?
                         topBar
@@ -87,7 +87,7 @@ class ReadAccountsComponent extends React.Component {
                 }
                     {modeComponent}
                 </div>
-                <div className="col-right bg-yellow">
+                <div className="col-right bg-dark-purple">
                     {createAccount}
                 </div>
             </div>
