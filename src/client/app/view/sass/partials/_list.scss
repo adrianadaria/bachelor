@@ -48,6 +48,7 @@ th {
 	background-position: center;
 	background-size: 24px;
 	margin-right: 5px;
+	cursor: pointer;
 }
 
 tr:nth-child(even) {
@@ -55,7 +56,7 @@ tr:nth-child(even) {
 }
 table {
 	border-collapse: collapse;
-	background-color: $grey;
+	background-color: $light-grey;
 }
 
 .back {
@@ -110,7 +111,7 @@ table {
 	}
 }
 @media (min-width:1212px) {
-	caption {
+	.products_caption {
 		margin-top: -90px;
 	}
 }
@@ -171,6 +172,49 @@ only screen and (max-width: 760px),
 	.table_product td:nth-of-type(4):before { content: "Group"; }
 	.table_product td:nth-of-type(5):before { content: "Action"; }
 
+	.table_cdetail td:nth-of-type(1):before { content: "Customer No"; }
+	.table_cdetail td:nth-of-type(2):before { content: "Product Name"; }
+	.table_cdetail td:nth-of-type(3):before { content: "Price"; }
+	.table_cdetail td:nth-of-type(4):before { content: "Action"; }
+
+
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1730px)  {
+
+	.table_customers table, .table_customers thead, .table_customers tbody, .table_customers th, .table_customers td, .table_customers tr { 
+		display: block; 
+	}
+	
+	.table_customers thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	.table_customers td { 
+		border: none;
+		position: relative;
+		padding-left: 50%; 
+		
+	}
+	
+	.table_customers td:before { 
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		
+	}
+
+	.table_customers td:after{
+		content: "\a0";
+	}
+
 	.table_customer td:nth-of-type(1):before { content: "Number"; }
 	.table_customer td:nth-of-type(2):before { content: "Name"; }
 	.table_customer td:nth-of-type(3):before { content: "Email"; }
@@ -180,7 +224,4 @@ only screen and (max-width: 760px),
 	.table_customer td:nth-of-type(7):before { content: "Country"; }
 	.table_customer td:nth-of-type(8):before { content: "CVR"; }
 	.table_customer td:nth-of-type(8):before { content: "Action"; }
-
-
-
 }

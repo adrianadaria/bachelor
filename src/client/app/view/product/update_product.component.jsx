@@ -87,7 +87,7 @@ class UpdateProductComponent extends React.Component {
 
                 <a href='#'
                    onClick={() => this.props.changeProductMode('read')} alt="Read Products">
-                    <div className="back"></div>
+                    <div className="back"/>
                 </a>
 
                 <form onSubmit={this.onSave} className="update_form">
@@ -108,13 +108,13 @@ class UpdateProductComponent extends React.Component {
                                 <input type="submit" value="Update" onClick={this.onSave}/>
                 {
                     this.state.successUpdate == "Product was updated." ?
-                        <div className="msg_success">Product was updated.</div>
+                        <div className="msg_success"><h4>Product was updated</h4></div>
                         : null
                 }
 
                 {
                     this.state.successUpdate == "Unable to update product." ?
-                        <div className="msg_fail">Unable to update product. Please try again.</div>
+                        <div className="msg_fail"><h4>Unable to update product. Please try again</h4></div>
                         : null
                 }
                 </form>

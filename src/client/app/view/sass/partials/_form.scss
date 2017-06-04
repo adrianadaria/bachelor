@@ -63,7 +63,15 @@
   @extend .btn_yes;
   border: 1px solid $black;
   background-color: $black;
-
+}
+.btn_default {
+  @extend .btn_no;
+  min-width: 5%;
+  text-align: center;
+  text-decoration: none;
+}
+.btn_default:hover {
+  text-transform: none;
 }
 .btn_yes:hover {
   background-color: transparent;
