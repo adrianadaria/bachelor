@@ -32,7 +32,7 @@ class GroupTableComponent extends React.Component {
                         <th className="extra_width"><h5>Action</h5></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table_pgroup">
                         {rows}
                     </tbody>
                 </table>

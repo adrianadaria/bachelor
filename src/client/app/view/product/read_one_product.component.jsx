@@ -37,7 +37,7 @@ class ReadOneProductComponent extends React.Component {
         return (
             <div>
                 <a href='#' onClick={() => this.props.changeProductMode('read')}>
-                    <div  className="back"/>
+                    <div className="back"/>
                 </a>
                 <form onSubmit={this.onSave}>
                     <table className="table_list">

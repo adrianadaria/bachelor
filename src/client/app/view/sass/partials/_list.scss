@@ -185,7 +185,42 @@ only screen and (max-width: 760px),
 	.table_cdetail td:nth-of-type(3):before { content: "Price"; }
 	.table_cdetail td:nth-of-type(4):before { content: "Action"; }
 
+	.table_order td:nth-of-type(1):before { content: "ID"; }
+	.table_order td:nth-of-type(2):before { content: "Name"; }
+	.table_order td:nth-of-type(3):before { content: "Date"; }
+	.table_order td:nth-of-type(4):before { content: "Delivery Address"; }
+	.table_order td:nth-of-type(5):before { content: "Delivery Zip"; }
+	.table_order td:nth-of-type(6):before { content: "Delivery City"; }
+	.table_order td:nth-of-type(7):before { content: "Delivery Country"; }
+	.table_order td:nth-of-type(8):before { content: "Delivery Terms"; }
+	.table_order td:nth-of-type(9):before { content: "Delivery Date"; }
+	.table_order td:nth-of-type(10):before { content: "Total (DKK)"; }
+	.table_order td:nth-of-type(10):before { content: "Action"; }
 
+	.table_invoice td:nth-of-type(1):before { content: "ID"; }
+	.table_invoice td:nth-of-type(2):before { content: "Date"; }
+	.table_invoice td:nth-of-type(3):before { content: "Customer Name"; }
+	.table_invoice td:nth-of-type(4):before { content: "Amount"; }
+	.table_invoice td:nth-of-type(5):before { content: "Action"; }
+
+	.table_account td:nth-of-type(1):before { content: "Number"; }
+	.table_account td:nth-of-type(2):before { content: "Name"; }
+	.table_account td:nth-of-type(3):before { content: "Type"; }
+	.table_account td:nth-of-type(4):before { content: "Card"; }
+	.table_account td:nth-of-type(5):before { content: "VAT"; }
+	.table_account td:nth-of-type(6):before { content: "Balance"; }
+	.table_account td:nth-of-type(7):before { content: "Action"; }
+
+	.table_table_pgroup td:nth-of-type(1):before { content: "Number"; }
+	.table_table_pgroup td:nth-of-type(2):before { content: "Name"; }
+	.table_table_pgroup td:nth-of-type(3):before { content: "VatAcc"; }
+	.table_table_pgroup td:nth-of-type(4):before { content: "NoVatAcc"; }
+	.table_table_pgroup td:nth-of-type(5):before { content: "Action"; }
+
+	.table_table_cgroup td:nth-of-type(1):before { content: "Number"; }
+	.table_table_cgroup td:nth-of-type(2):before { content: "Name"; }
+	.table_table_cgroup td:nth-of-type(3):before { content: "Account"; }
+	.table_table_cgroup td:nth-of-type(4):before { content: "Action"; }
 }
 
 @media 

@@ -29,12 +29,12 @@ class AccountTableComponent extends React.Component {
                         <th><h5>Name</h5></th>
                         <th><h5>Type</h5></th>
                         <th><h5>Card</h5></th>
-                        <th><h5>Vat</h5></th>
+                        <th><h5>VAT</h5></th>
                         <th><h5>Balance</h5></th>
                         <th className="extra_width"><h5>Action</h5></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table_account">
                         {rows}
                     </tbody>
                 </table>

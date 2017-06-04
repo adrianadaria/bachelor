@@ -25,14 +25,14 @@ class InvoiceTableComponent extends React.Component {
                     <h4 className="table_title">INVOICES</h4></caption>
                     <thead>
                     <tr>
-                        <th><h5>Id</h5></th>
+                        <th><h5>ID</h5></th>
                         <th><h5>Date</h5></th>
-                        <th><h5>CustomerName</h5></th>
+                        <th><h5>Customer Name</h5></th>
                         <th><h5>Amount</h5></th>
                         <th className="extra_width"><h5>Action</h5></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table_invoice">
                         {rows}
                     </tbody>
                 </table>
