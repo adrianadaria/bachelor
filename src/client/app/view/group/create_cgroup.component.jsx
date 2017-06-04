@@ -7,9 +7,9 @@ class CreateCgroupComponent extends React.Component {
         super(props);
 
         this.state = {
-            number: 0,
+            number: '',
             name: '',
-            account: 0,
+            account: '',
             successCreation: null
         };
 
@@ -64,12 +64,12 @@ class CreateCgroupComponent extends React.Component {
     render() {
 
         return (
-            <div className="col-left bg-grey left-typo">
+            <div className="form_style">
                 {
 
                     this.state.successCreation == "Customer group was created." ?
-                        <div className='alert alert-success'>
-                            Customer group was saved.
+                        <div className="msg_success">
+                            <h4>Customer group was saved</h4>
                         </div>
                         : null
                 }
@@ -77,44 +77,21 @@ class CreateCgroupComponent extends React.Component {
                 {
 
                     this.state.successCreation == "Unable to create customer group." ?
-                        <div className='alert alert-danger'>
-                            Unable to save customer group. Please try again.
+                        <div className="msg_fail">
+                            <h4>Unable to save customer group. Please try again</h4>
                         </div>
                         : null
                 }
-
+                    <h4 className="title_right_col">CREATE A NEW</h4>
+                    <h4 className="title_right_col">CUSTOMER GROUP</h4>
                 <form onSubmit={this.onSave}>
-                    <table className='table_list'>
-                        <tbody>
-                        <tr>
-                            <td>Number</td>
-                            <td>
-                                <input type='number' className='' value={this.state.number}
+                                <input type='number' placeholder="Number" className='' value={this.state.number}
                                        required onChange={this.onNumberChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>
-                                <input type='text' className='' value={this.state.name}
+                                <input type='text' placeholder="Name"  className='' value={this.state.name}
                                        required onChange={this.onNameChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Account</td>
-                            <td>
-                                <input type='number' className='' value={this.state.account}
+                                <input type='number' placeholder="Account"  className='' value={this.state.account}
                                        required onChange={this.onAccountChange}/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <button className='' onClick={this.onSave}>Save</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                                <input type="submit" value="Save" onClick={this.onSave}/>
                 </form>
             </div>
         );

@@ -53,9 +53,9 @@ class CustomerDetailComponent extends React.Component {
                     <td>{productNames}</td>
                     <td>{productPrices}</td>
                     <td>
-                        <a href='#' className=''> Read</a>
-                        <a href='#' className=''> Edit</a>
-                        <a href='#' className=''> Delete</a>
+                        <a href='#'> <div className="action_btn view" /></a>
+                        <a href='#'> <div className="action_btn edit" /></a>
+                        <a href='#'> <div className="action_btn delete" /></a>
                     </td>
                 </tr>
             );
@@ -68,13 +68,13 @@ class CustomerDetailComponent extends React.Component {
                 <table className='table_list'>
                     <thead>
                     <tr>
-                        <th>CusNo</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Action</th>
+                        <th><h5>Customer No</h5></th>
+                        <th><h5>Product Name</h5></th>
+                        <th><h5>Price</h5></th>
+                        <th><h5>Action</h5></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table_cdetail">
                         {details}
                     </tbody>
                 </table>

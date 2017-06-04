@@ -103,10 +103,9 @@ class ReadGroupsComponent extends React.Component {
             );
         });
         let cusTable = (
-                    <div className="col-left bg-grey left-typo scroll">
                         <table className="table_list">
-                            <caption><h4 className="table_title">LIST OF</h4>
-                            <h4 className="table_title">CUSTOMER GROUPS</h4></caption>
+                            <caption><h4 className="group">LIST OF</h4>
+                            <h4 className="group">CUSTOMER GROUPS</h4></caption>
                             <thead>
                                 <tr>
                                     <th><h5>Number</h5></th>
@@ -115,11 +114,10 @@ class ReadGroupsComponent extends React.Component {
                                     <th className="extra_width"><h5>Action</h5></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="table_cgroup">
                                 {cdata}
                             </tbody>
                         </table>
-                    </div>
         );
 
         switch(this.state.currentMode) {
@@ -133,10 +131,12 @@ class ReadGroupsComponent extends React.Component {
                 modeComponent = cusTable;
                 break;
             case 'readOnep':
+                createPC = <CreatePgroupComponent changeGroupMode={this.changeGroupMode}/>;
                 modeComponent =
                     <ReadOnePgroupComponent pgroupNo={this.state.pgroupNo} changeGroupMode={this.changeGroupMode}/>;
                 break;
             case 'readOnec':
+                createPC = <CreateCgroupComponent changeGroupMode={this.changeGroupMode}/>;
                 modeComponent =
                     <ReadOneCgroupComponent cgroupNo={this.state.cgroupNo} changeGroupMode={this.changeGroupMode}/>;
                 break;
@@ -147,14 +147,17 @@ class ReadGroupsComponent extends React.Component {
                 modeComponent = <CreateCgroupComponent changeGroupMode={this.changeGroupMode}/>;
                 break;
             case 'updatep':
+                createPC = <CreatePgroupComponent changeGroupMode={this.changeGroupMode}/>;
                 modeComponent =
                    <UpdatePgroupComponent pgroupNo={this.state.pgroupNo} changeGroupMode={this.changeGroupMode}/>;
                 break;
             case 'updatec':
+                createPC = <CreateCgroupComponent changeGroupMode={this.changeGroupMode}/>;
                 modeComponent =
                     <UpdateCgroupComponent cgroupNo={this.state.cgroupNo} changeGroupMode={this.changeGroupMode}/>;
                 break;
             case 'deletep':
+                createPC = <CreatePgroupComponent changeGroupMode={this.changeGroupMode}/>;
                 modeComponent =
                     <DeletePgroupComponent pgroupNo={this.state.pgroupNo} changeGroupMode={this.changeGroupMode}/>;
                 break;
@@ -163,24 +166,20 @@ class ReadGroupsComponent extends React.Component {
         }
 
         return (
-            <div>
-                <div className="container equal">
+            <div className="container equal">
+                <div className="col-left bg-light-grey left-typo scroll">
                          {
                     topBar !== null ?
                         topBar
                     : null
                 }
                         {modeComponent}
-
-                    {
-                        this.state.currentMode == 'readp' || this.state.currentMode == 'readc' ?
-                            <div className="col-right bg-yellow">
-                                {createPC}
-                            </div> :
-                            null
-                    }
                 </div>
+                <div className="col-right bg-light-red">
+                     {createPC}
+                </div> 
             </div>
+           
         );
 
     }

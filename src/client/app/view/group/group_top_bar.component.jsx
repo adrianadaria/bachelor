@@ -11,15 +11,15 @@ class GroupTopBarComponent extends React.Component {
             <div>
                 <a href='#'
                    onClick={() => this.props.changeGroupMode('readp')}
-                   className='btn btn-primary margin-bottom-1em'> ProductG
+                   className="btn_default"> Product Group
                 </a>
                 <a href='#'
                    onClick={() => this.props.changeGroupMode('readc')}
-                   className='btn btn-primary margin-bottom-1em'> CustomerG
+                   className="btn_default"> Customer Group
                 </a>
                 <a href='#'
-                   onClick={() => this.props.refresh()}
-                   className='btn btn-primary margin-bottom-1em'> refresh
+                   onClick={() => this.props.refresh()}>
+                   <div className="refresh"/>
                 </a>
             </div>
         );

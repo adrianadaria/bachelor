@@ -150,9 +150,7 @@ class CreateCustomerComponent extends React.Component {
                         
                                 <input type='number' placeholder="CVR" className='' value={this.state.cvr}
                                        required onChange={this.onCvrChange}/>
-                            
-                                <button className='' onClick={this.onSave}>Save Changes</button>
-                  
+                                <input type="submit" value="Save" onClick={this.onSave}/>                  
                 </form>
             </div>
         );

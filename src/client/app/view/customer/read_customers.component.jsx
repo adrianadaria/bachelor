@@ -127,21 +127,30 @@ class ReadCustomersComponent extends React.Component {
         return (
 
             <div className="container equal">
-
-
-                    {
-                        topBar !== null ?
-                            topBar
-                            : null
-                    }
-                    {modeComponent}
-
                 {
-                    this.state.currentMode == 'read' ?
-                <div className="col-right bg-yellow c_layout">
+                    this.state.currentMode == 'detail' ?
+                    <div className="col-left bg-light-grey left-typo scroll col-fullwidth">
+                        {
+                           topBar !== null ?
+                                topBar
+                                : null
+                        }
+                    {modeComponent}
+                    </div>
+                    :
+                    <div>
+                    <div className="col-left bg-light-grey left-typo scroll">
+                        {
+                           topBar !== null ?
+                                topBar
+                                : null
+                        }
+                    {modeComponent}
+                    </div>
+                    <div className="col-right bg-orange c_layout">
                         <CreateCustomerComponent/>
-                </div> :
-                        null
+                    </div>
+                    </div>
                 }
             </div>
         );

@@ -26,7 +26,7 @@ class CustomerTableRowComponent extends React.Component {
                        onClick={() => this.props.changeCustomerMode('update', this.props.customer.number)}>
                        <div className="action_btn edit"/>
                     </a>
-                    <a
+                    <a href='#'
                         onClick={() => this.props.changeCustomerMode('delete', this.props.customer.number)}>
                         <div className="action_btn delete"/>
                     </a>

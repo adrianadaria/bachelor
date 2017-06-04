@@ -51,11 +51,13 @@ class ReadOneOrderComponent extends React.Component {
     render() {
         return (
             <div>
-                <a href='#' onClick={() => this.props.changeOrderMode('read')}
-                   className='btn btn-primary margin-bottom-1em'>Read Orders
+                <a href='#' onClick={() => this.props.changeOrderMode('read')}>
+                    <div className="back"/>
                 </a>
                 <form>
-                    <table className='table table-bordered table-hover'>
+                    <table className="table_list">
+                    <caption className="products_caption"><h4 className="table_title">DETAILS OF</h4>
+                    <h4 className="table_title">THE ORDER</h4></caption>
                         <tbody>
                         <tr>
                             <td>Id</td>

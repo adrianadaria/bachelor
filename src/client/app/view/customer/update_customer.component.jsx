@@ -107,91 +107,44 @@ class UpdateCustomerComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="form_style">
                 {
                     this.state.successUpdate == "Customer was updated." ?
-                        <div className=''>Customer was updated.</div>
+                        <div className="msg_success"><h4>Customer was updated</h4></div>
                         : null
                 }
 
                 {
                     this.state.successUpdate == "Unable to update customer." ?
-                        <div className=''>Unable to update customer. Please try again.</div>
+                        <div className="msg_fail"><h4>Unable to update customer. Please try again</h4></div>
                         : null
                 }
 
                 <a href='#'
-                   onClick={() => this.props.changeCustomerMode('read')} className=''>
-                    Back
+                   onClick={() => this.props.changeCustomerMode('read')}>
+                    <div className="back"/>
                 </a>
 
-                <form onSubmit={this.onSave}>
-                    <table className=''>
-                        <tbody>
-                            <tr>
-                                <td>Number</td>
-                                <td>
-                                    <input type='number' className='' value={this.state.number}
-                                           readOnly/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>
-                                <input type='text' className='' value={this.state.name}
-                                    required onChange={this.onNameChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Email</td>
-                                <td>
-                                    <input type='text' className='' value={this.state.email}
-                                        required onChange={this.onEmailChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Address</td>
-                                <td>
-                                    <input type='text' className='' value={this.state.address}
-                                           required onChange={this.onAddressChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Zip</td>
-                                <td>
-                                <input type='text' className='' value={this.state.postcode}
-                                          required onChange={this.onPostcodeChange} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>City</td>
-                                <td>
-                                    <input type='text' className='' value={this.state.city}
-                                           required onChange={this.onCityChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Country</td>
-                                <td>
-                                    <input type='text' className='' value={this.state.country}
-                                           required onChange={this.onCountryChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>CVR</td>
-                                <td>
-                                    <input type='number' className='' value={this.state.cvr}
-                                           required onChange={this.onCvrChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button className='' onClick={this.onSave}>Save Changes</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <form onSubmit={this.onSave} className="update_form">
+                    <h4 className="table_title">UPDATE</h4>
+                    <h4 className="table_title">THIS CUSTOMER</h4>
+                        <label><h5>Number</h5></label>
+                        <input type='number' className='' value={this.state.number} readOnly/>
+                        <label><h5>Name</h5></label>
+                        <input type='text' className='' value={this.state.name} required onChange={this.onNameChange} />
+                        <label><h5>Email</h5></label>
+                        <input type='text' className='' value={this.state.email} required onChange={this.onEmailChange}/>
+                        <label><h5>Address</h5></label>
+                        <input type='text' className='' value={this.state.address} required onChange={this.onAddressChange} />
+                        <label><h5>Zip</h5></label>
+                        <input type='text' className='' value={this.state.postcode} required onChange={this.onPostcodeChange} />
+                        <label><h5>City</h5></label>
+                        <input type='text' className='' value={this.state.city} required onChange={this.onCityChange}/>
+                        <label><h5>Country</h5></label>
+                        <input type='text' className='' value={this.state.country} required onChange={this.onCountryChange}/>
+                        <label><h5>CVR</h5></label>
+                        <input type='number' className='' value={this.state.cvr} required onChange={this.onCvrChange}/>
+                        <input type="submit" value="Update" onClick={this.onSave}/>
                 </form>
             </div>
         );

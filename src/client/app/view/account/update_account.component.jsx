@@ -98,73 +98,42 @@ class UpdateAccountComponent extends React.Component {
             <div>
                 {
                     this.state.successUpdate == "Account was updated." ?
-                        <div className='alert alert-success'>Account was updated.</div>
+                        <div className="msg_success"><h4>Account was updated</h4></div>
                         : null
                 }
 
                 {
                     this.state.successUpdate == "Unable to update account." ?
-                        <div className='alert alert-danger'>Unable to update account. Please try again.</div>
+                        <div className="msg_fail"><h4>Unable to update account. Please try again</h4></div>
                         : null
                 }
 
                 <a href='#'
-                   onClick={() => this.props.changeAccountMode('read')} className='btn btn-primary margin-bottom-1em'>
-                    Read Accounts
+                   onClick={() => this.props.changeAccountMode('read')}>
+                   <div className="back"/>
                 </a>
 
-                <form onSubmit={this.onSave}>
-                    <table className='table table-bordered table-hover'>
-                        <tbody>
-                            <tr>
-                                <td>Number</td>
-                                <td>
-                                    <input type='number' value={this.state.number} readOnly/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Name</td>
-                                <td>
+                <form onSubmit={this.onSave} className="update_form">
+                    <h4 className="table_title">UPDATE</h4>
+                    <h4 className="table_title">THIS ACCOUNT</h4>
+                                <label><h5>Number</h5></label>
+                                <input type='number' value={this.state.number} readOnly/>
+                                <label><h5>Name</h5></label>
                                 <input type='text' value={this.state.name}
                                     required onChange={this.onNameChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Type</td>
-                                <td>
-                                    <input type='text' value={this.state.type}
+                                <label><h5>Type</h5></label>
+                                <input type='text' value={this.state.type}
                                         required onChange={this.onTypeChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Card</td>
-                                <td>
-                                    <input type='text' value={this.state.card}
+                                <label><h5>Card</h5></label>
+                                <input type='text' value={this.state.card}
                                            required onChange={this.onCardChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Vat</td>
-                                <td>
-                                    <input type='text' className='form-control' value={this.state.vat}
+                                <label><h5>Vat</h5></label>
+                                <input type='text' className='form-control' value={this.state.vat}
                                            required onChange={this.onVatChange}/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Balance</td>
-                                <td>
-                                    <input type='number' value={parseFloat(this.state.balance).toFixed(2)}
+                                <label><h5>Balance</h5></label>
+                                <input type='number' value={parseFloat(this.state.balance).toFixed(2)}
                                            required onChange={this.onBalanceChange} readOnly/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button onClick={this.onSave}>Save Changes</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                <input type="submit" value="Update" onClick={this.onSave}/>
                 </form>
             </div>
         );

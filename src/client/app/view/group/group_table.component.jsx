@@ -20,10 +20,9 @@ class GroupTableComponent extends React.Component {
             !rows.length
                 ? <h4>NO PRODUCT GROUPS FOUND</h4>
                 :
-                <div className="col-left bg-grey left-typo scroll">
                 <table className="table_list">
-                    <caption><h4 className="table_title">LIST OF</h4>
-                    <h4 className="table_title">PRODUCT GROUPS</h4></caption>
+                    <caption><h4 className="group">LIST OF</h4>
+                    <h4 className="group">PRODUCT GROUPS</h4></caption>
                     <thead>
                     <tr>
                         <th><h5>Number</h5></th>
@@ -33,11 +32,10 @@ class GroupTableComponent extends React.Component {
                         <th className="extra_width"><h5>Action</h5></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table_pgroup">
                         {rows}
                     </tbody>
                 </table>
-                </div>
         );
     }
 }
