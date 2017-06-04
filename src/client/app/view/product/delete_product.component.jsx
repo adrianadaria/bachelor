@@ -34,7 +34,7 @@ class DeleteProductComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="delete_section">
                 <h4 className="line_height_del">DO YOU WANT TO</h4>
                 <h4 className="line_height_del">DELETE THIS PRODUCT?</h4>
                             <div className="btn_wrap">

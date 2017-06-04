@@ -65,11 +65,11 @@ table {
 	width: $size-ll;
 	margin: 20px;
 	color: $black;
+	float: right;
 }
 .refresh {
 	@extend .back;
 	background-image: url(../img/refresh.png);
-	float: right;
 }
 .view {
 	background-image: url(../img/read.png);
@@ -89,7 +89,21 @@ table {
 .delete:hover {
 	background-image: url(../img/delete-hover.png);
 }
-
+@media (max-width:480px) {
+	.line_height_del {
+		font-size: 20px;
+	}
+}
+@media (max-width:687px) {
+	.table_title{
+		width: 200px;
+	}
+}
+@media (min-width:687px) {
+	.table_title{
+		width: 300px;
+	}
+}
 @media (max-width:1600px) {
 	.refresh {
 		background-size: 20px;

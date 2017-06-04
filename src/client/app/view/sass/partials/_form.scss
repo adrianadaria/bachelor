@@ -9,8 +9,36 @@
   color: $white;
 }
 
+.update_form {
+  color: $dark-grey;
+}
+
+.update_form h5 {
+  margin-left: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.update_form [type=text], .update_form [type=number] {
+  margin-left: 20px;
+  color: $dark-grey;
+  border-bottom: 1px solid $black;
+}
 .line_height_del{
   line-height: 0.1em;
+}
+
+.msg_success {
+  color: $green;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: -50px;
+  margin-left: 200px;
+}
+
+.msg_fail {
+  @extend .msg_success;
+  color: $red;
 }
 
 .btn_wrap {
@@ -18,7 +46,7 @@
 }
 .btn_yes {
   display: inline-block;
-  width: 10%;
+  width: 20%;
   border: 1px solid $red;
   height: 45px;
   line-height: 45px;
@@ -81,6 +109,17 @@
   margin-top: 8%;
 }
 
+.update_form [type=submit] {
+  margin-left: 3%;
+  margin-top: 5%;
+}
+
+.update_form [type=submit]:hover {
+  border: 1px solid $black;
+  background-color: transparent;
+  color: $black;
+}
+
 [type=submit]:hover {
   border: 1px solid $white;
   background-color: transparent;
@@ -99,4 +138,21 @@ input[required], textarea[required]{
     background-size: 0.5em 0.5em;
     background-position: right top;
     background-repeat: no-repeat;
+}
+
+@media (max-width:480px) {
+  .msg_success {
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+  .update_form h5 {
+  margin-left: 10px;
+}
+  .update_form [type=text], .update_form [type=number], .update_form [type=submit] {
+    margin-left: 10px;
+  }
+
+  .update_form [type=submit]{
+    width: 30%;
+  }
 }

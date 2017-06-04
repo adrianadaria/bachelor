@@ -83,39 +83,40 @@ class UpdateProductComponent extends React.Component {
     render() {
         return (
             <div className="form_style">
-                {
-                    this.state.successUpdate == "Product was updated." ?
-                        <div className='alert alert-success'>Product was updated.</div>
-                        : null
-                }
 
-                {
-                    this.state.successUpdate == "Unable to update product." ?
-                        <div className='alert alert-danger'>Unable to update product. Please try again.</div>
-                        : null
-                }
 
                 <a href='#'
                    onClick={() => this.props.changeProductMode('read')} alt="Read Products">
                     <div className="back"></div>
                 </a>
 
-                <form onSubmit={this.onSave}>
-                    <h4 className="title_right_col">UPDATE</h4>
-                    <h4 className="title_right_col">THIS PRODUCT</h4>
-                                <label>Number</label>
+                <form onSubmit={this.onSave} className="update_form">
+                    <h4 className="table_title">UPDATE</h4>
+                    <h4 className="table_title">THIS PRODUCT</h4>
+                                <label><h5>Number</h5></label>
                                     <input type="text" value={this.state.number}
                                         required readOnly/>
-                                 <label>Name</label>
+                                 <label><h5>Name</h5></label>
                                 <input type="text" value={this.state.name}
                                     required onChange={this.onNameChange} />
-                                 <label>Price (DKK)</label>
+                                 <label><h5>Price (DKK)</h5></label>
                                     <input type="number" step="0.01" value={this.state.price}
                                         required onChange={this.onPriceChange}/>
-                                <label>Group</label>
+                                <label><h5>Group</h5></label>
                                     <input type="number" className='form-control' value={this.state.group}
                                            required onChange={this.onGroupChange}/>
                                 <input type="submit" value="Update" onClick={this.onSave}/>
+                {
+                    this.state.successUpdate == "Product was updated." ?
+                        <div className="msg_success">Product was updated.</div>
+                        : null
+                }
+
+                {
+                    this.state.successUpdate == "Unable to update product." ?
+                        <div className="msg_fail">Unable to update product. Please try again.</div>
+                        : null
+                }
                 </form>
             </div>
         );
