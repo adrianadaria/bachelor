@@ -138,7 +138,7 @@ class ReadCustomersComponent extends React.Component {
 
                 {
                     this.state.currentMode == 'read' ?
-                <div className="col-right bg-yellow">
+                <div className="col-right bg-yellow c_layout">
                         <CreateCustomerComponent/>
                 </div> :
                         null
