@@ -9,10 +9,8 @@ class DeletePgroupComponent extends React.Component {
         this.onDelete = this.onDelete.bind(this);
     }
 
-    // handle single row deletion
     onDelete(e) {
         let pgroupNo = this.props.pgroupNo;
-        // submit form data to api
         let data = {
           number: pgroupNo
         };
@@ -25,7 +23,6 @@ class DeletePgroupComponent extends React.Component {
                 this.props.changeGroupMode('readp');
             },
             error: (xhr, resp, text) => {
-                // show error in console
                 console.log(xhr, resp, text);
             }
         });

@@ -10,11 +10,8 @@ class DeleteAccountComponent extends React.Component {
         this.onDelete = this.onDelete.bind(this);
     }
 
-    // handle single row deletion
     onDelete(e) {
-        // product to delete
         let accountNo = this.props.accountNo;
-        // submit form data to api
         let data = {
           number: accountNo
         };
@@ -27,7 +24,6 @@ class DeleteAccountComponent extends React.Component {
                 this.props.changeAccountMode('read');
             },
             error: (xhr, resp, text) => {
-                // show error in console
                 console.log(xhr, resp, text);
             }
         });
@@ -38,11 +34,10 @@ class DeleteAccountComponent extends React.Component {
             <div>
                 <h4 className="line_height_del">DO YOU WANT TO</h4>
                 <h4 className="line_height_del">DELETE THIS ACCOUNT?</h4>
-                            <div className="btn_wrap">
-                                <button className="btn_yes" onClick={this.onDelete}>Yes</button>
-                                <button className="btn_no" onClick={() => this.props.changeAccountMode('read')}>No
-                                </button>
-                            </div>
+                <div className="btn_wrap">
+                    <button className="btn_yes" onClick={this.onDelete}>Yes</button>
+                    <button className="btn_no" onClick={() => this.props.changeAccountMode('read')}>No</button>
+                </div>
             </div>
         );
     }

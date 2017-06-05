@@ -5,7 +5,7 @@
 	color: $dark-grey;
 }
 .scroll {
-   overflow-y: scroll;
+	overflow-y: scroll;
 }
 td {
     padding: 0px 20px;
@@ -13,14 +13,14 @@ td {
     font-size: $size-sm;
 }
 th {
-  padding: 0px 20px;
-  max-width: 200px;
+	padding: 0px 20px;
+	max-width: 200px;
 }
 .smaller_width {
-  width: 70px;
+	width: 70px;
 }
 .extra_width {
-  width: 140px;
+	width: 140px;
 }
 .table_list {
 	padding: 5%;
@@ -132,34 +132,29 @@ only screen and (max-width: 760px),
 	}
 
 	.action_btn {
-	width: $size-m;
-	height: $size-m;
-	padding: 2px;
-	background-size: 18px;
-	margin-right: 2px;
+		width: $size-m;
+		height: $size-m;
+		padding: 2px;
+		background-size: 18px;
+		margin-right: 2px;
 	}
 	table, thead, tbody, th, td, tr { 
 		display: block; 
 	}
-	
 	thead tr { 
 		position: absolute;
 		top: -9999px;
 		left: -9999px;
 	}
-
 	tr:nth-child(even) {
 		background-color: $grey-highlight;
 	}
-	
-	
 	td { 
 		border: none;
 		position: relative;
 		padding-left: 50%; 
 		
 	}
-	
 	td:before { 
 		position: absolute;
 		top: 6px;
@@ -169,7 +164,6 @@ only screen and (max-width: 760px),
 		white-space: nowrap;
 		
 	}
-
 	td:after{
 		content: "\a0";
 	}

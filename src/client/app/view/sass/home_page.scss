@@ -8,12 +8,11 @@
 html{ 
 	height:100%; 
 }
-
 body {
-font-family: $font-family;
-color: $secondrary-color;
-margin: 0px;
-min-height: 100%;
+	font-family: $font-family;
+	color: $secondrary-color;
+	margin: 0px;
+	min-height: 100%;
 }
 #container {
     min-height: 100%;
@@ -27,7 +26,6 @@ min-height: 100%;
 #body {
    padding-bottom:60px;
 }
-
 #footer {
     bottom: 0;
     height: 60px;
@@ -42,7 +40,6 @@ min-height: 100%;
 	display: inline-block;
 	margin-left: 15px;
 }
-
 .logo {
 	padding: 10px 40px;
 }
@@ -52,11 +49,9 @@ ul {
     padding: 0;
     overflow: hidden;
 }
-
 li {
     float: left;
 }
-
 li a {
     display: block;
     color: $dark-grey;
@@ -64,22 +59,16 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
 }
-
 li a:hover {
     color: $grey;
 }
-
 .inside_content {
 	padding: 40px;
 }
-
 .container {
 	display: inline-block;
 	vertical-align: middle;
 	width: 100%;
-}
-.title {
-	padding: 30px;
 }
 .mobile {
 	width: 50%;
@@ -96,23 +85,21 @@ li a:hover {
 	border-bottom: 0px;
 	border-top: 30px solid $red;
 }
-
 .margin-top {
 	margin-top: 30px;
 }
-
 .margin-zero {
 	margin-top: 0px;
 }
 .box {
 	position: relative;
-  background-color: $light-grey;
-  color: $font-color;
-  width: 33.13%;
-  margin: 0.1%;
-  float: left;
-  min-height: 250px;
-  max-height: 600px;
+ 	background-color: $light-grey;
+ 	color: $font-color;
+ 	width: 33.13%;
+	margin: 0.1%;
+	float: left;
+	min-height: 250px;
+	max-height: 600px;
 }
 .box:hover {
 	box-shadow: 0 6px 6px;
@@ -129,9 +116,6 @@ li a:hover {
 }
 .right-active{
 	float: right;
-}
-.category{
-	margin-left: 80px;
 }
 .account_title{
 	letter-spacing: 1em;
@@ -170,47 +154,36 @@ li a:hover {
 		width: 100%;
 		margin-bottom: 0.1%;
 	}
-
 	body {
 		margin: 0px;
 	}
-
 	.container-data{
-	width: 80%;
-
+		width: 80%;
 	}
 	.circle{
-	height: 20px;
-	width: 20px;
+		height: 20px;
+		width: 20px;
 	}
-
 	.margin-top{
 		margin-top: 0px;
 	}
-
-	.category{
-	margin-left: 40px;
-}
-
-.logo {
-	padding: 15px 0px;
-	width: 200px;
-}
-
-.nav-header {
-	text-align: center;
-}
-
-.mobile {
-	width: 100px;
-	margin: 40px 0px;
-}
-.numbers {
-	height: 60px;
-}
-.account_title{
-	letter-spacing: 0.5em;
-}
+	.logo {
+		padding: 15px 0px;
+		width: 200px;
+	}
+	.nav-header {
+		text-align: center;
+	}
+	.mobile {
+		width: 100px;
+		margin: 40px 0px;
+	}
+	.numbers {
+		height: 60px;
+	}
+	.account_title{
+		letter-spacing: 0.5em;
+	}
 }
 
 @media (min-width:480px) and (max-width: 678px) {
@@ -239,15 +212,10 @@ li a:hover {
 	body {
 		margin: 0px;
 	}
-
 	.margin-top{
 		margin-top: 10px;
 		margin-left: 5px;
 	}
-
-	.category{
-	margin-left: 40px;
-}
 	.account_title{
 		letter-spacing: 0.5em;
 	}
@@ -264,9 +232,9 @@ li a:hover {
 		height: 400px;
 	}
 	.right-active {
-	float: left;
-	margin-left: 20px;
-	margin-top: 10px;
+		float: left;
+		margin-left: 20px;
+		margin-top: 10px;
 	}
 }
 @media (min-width:1600px) {
@@ -278,9 +246,9 @@ li a:hover {
 		height: 600px;
 	}
 	.right-active {
-	float: left;
-	margin-left: 20px;
-	margin-top: 10px;
+		float: left;
+		margin-left: 20px;
+		margin-top: 10px;
 	}
 }
 @media (min-width:1600px) {
@@ -295,16 +263,16 @@ li a:hover {
 
 @media only screen and (max-width: 1600px) {
 	.triangle-up {
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
-	border-bottom: 15px solid $logo-blue;
+		border-left: 10px solid transparent;
+		border-right: 10px solid transparent;
+		border-bottom: 15px solid $logo-blue;
 	}
 	.triangle-down {
 		border-bottom: 0px;
 		border-top: 15px solid $red;
 	}
-		.circle{
-	height: 20px;
-	width: 20px;
+	.circle{
+		height: 20px;
+		width: 20px;
 	}
 }

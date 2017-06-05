@@ -17,17 +17,13 @@ class ProductTableRowComponent extends React.Component {
                 <td>{parseFloat(this.props.product.price).toFixed(2)}</td>
                 <td>{this.props.product.group}</td>
                 <td>
-                    <a href='#'
-                       onClick={() => this.props.changeProductMode('readOne', this.props.product.number)}> 
+                    <a href='#' onClick={() => this.props.changeProductMode('readOne', this.props.product.number)}> 
                        <div className="action_btn view" />
                     </a>
-                    <a href='#'
-                       onClick={() => this.props.changeProductMode('update', this.props.product.number)}
-                       >
+                    <a href='#' onClick={() => this.props.changeProductMode('update', this.props.product.number)}>
                         <div className="action_btn edit"/>
                     </a>
-                    <a href="#"
-                        onClick={() => this.props.changeProductMode('delete', this.props.product.number)}> 
+                    <a href="#" onClick={() => this.props.changeProductMode('delete', this.props.product.number)}> 
                         <div className="action_btn delete"/>
                     </a>
                 </td>

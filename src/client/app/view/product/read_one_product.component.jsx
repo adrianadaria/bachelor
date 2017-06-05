@@ -15,7 +15,6 @@ class ReadOneProductComponent extends React.Component {
         };
     }
 
-    // on mount, read product data and them as this component's state
     componentDidMount() {
         let productNo = this.props.productNo;
 
@@ -28,7 +27,6 @@ class ReadOneProductComponent extends React.Component {
              });
     }
 
-    // on unmount, kill categories fetching in case the request is still pending
     componentWillUnmount() {
         this.serverRequestProd.abort();
     }

@@ -8,11 +8,8 @@ class DeleteOrderComponent extends React.Component {
 
         this.onDelete = this.onDelete.bind(this);
     }
-
-    // handle single row deletion
     onDelete(e) {
         let orderId = this.props.orderId;
-        // submit form data to api
         let data = {
           id: orderId
         };
@@ -25,7 +22,6 @@ class DeleteOrderComponent extends React.Component {
                 this.props.changeOrderMode('read');
             },
             error: (xhr, resp, text) => {
-                // show error in console
                 console.log(xhr, resp, text);
             }
         });

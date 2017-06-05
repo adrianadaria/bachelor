@@ -8,7 +8,7 @@ class CreateCustomerComponent extends React.Component {
         super(props);
 
         this.state = {
-            number: 0,
+            number: '',
             name: '',
             description: '',
             price: '',
@@ -17,7 +17,7 @@ class CreateCustomerComponent extends React.Component {
             postcode: '',
             city: '',
             country: '',
-            cvr: 0,
+            cvr: '',
             successCreation: null
         };
 

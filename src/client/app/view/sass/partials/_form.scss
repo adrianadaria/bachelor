@@ -8,17 +8,14 @@
 .form_style {
   color: $white;
 }
-
 .update_form {
   color: $dark-grey;
 }
-
 .update_form h5 {
   margin-left: 20px;
   margin-bottom: 10px;
   font-size: 20px;
 }
-
 .update_form [type=text], .update_form [type=number] {
   margin-left: 20px;
   color: $dark-grey;
@@ -27,7 +24,6 @@
 .line_height_del{
   line-height: 0.1em;
 }
-
 .msg_success {
   color: $green;
   font-weight: 600;
@@ -35,12 +31,10 @@
   margin-top: -50px;
   margin-left: 200px;
 }
-
 .msg_fail {
   @extend .msg_success;
   color: $red;
 }
-
 .btn_wrap {
   text-align: center;
 }
@@ -58,7 +52,6 @@
   font-size: $size-m;
   margin: 10px;
 }
-
 .btn_no {
   @extend .btn_yes;
   border: 1px solid $black;
@@ -98,7 +91,6 @@
   background-color: transparent;
   color: $white;
 }
-
 [type=submit] {
   display: block;
   width: 20%;
@@ -116,30 +108,25 @@
   margin-left: 10%;
   margin-top: 8%;
 }
-
 .update_form [type=submit] {
   margin-left: 3%;
   margin-top: 5%;
 }
-
 .update_form [type=submit]:hover {
   border: 1px solid $black;
   background-color: transparent;
   color: $black;
 }
-
 [type=submit]:hover {
   border: 1px solid $white;
   background-color: transparent;
   color: $white;
 }
-
 textarea[type="text"]{
   line-height: 1.5em;
   height: 100px;
   margin-top: 30px;
 }
-
 input[required], textarea[required]{
     box-shadow: none;
     background-image: url("../img/asterisk.png");;
@@ -155,11 +142,10 @@ input[required], textarea[required]{
   }
   .update_form h5 {
   margin-left: 10px;
-}
+  }
   .update_form [type=text], .update_form [type=number], .update_form [type=submit] {
     margin-left: 10px;
   }
-
   .update_form [type=submit]{
     width: 30%;
   }

@@ -23,7 +23,6 @@ class CreateCgroupComponent extends React.Component {
         this.setState({number: e.target.value});
     }
 
-    // handle name change
     onNameChange(e){
         this.setState({name: e.target.value});
     }
@@ -33,28 +32,24 @@ class CreateCgroupComponent extends React.Component {
     }
 
     onSave(e) {
-        // data in the form
         let form_data = {
             number: this.state.number,
             name: this.state.name,
             account: this.state.account
         };
-        // submit form data to api
+
         $.ajax({
             url: "http://localhost/api/cgroup/create.php",
             type : "POST",
             contentType : 'application/json',
             data : JSON.stringify(form_data),
             success : (response) => {
-                // api message
                 this.setState({successCreation: response['message']});
-                // empty form
                 this.setState({number: 0});
                 this.setState({name: ""});
                 this.setState({account: 0});
             },
             error: (xhr, resp, text) => {
-                // show error to console
                 console.log(xhr, resp, text);
             }
         });
@@ -66,7 +61,6 @@ class CreateCgroupComponent extends React.Component {
         return (
             <div className="form_style">
                 {
-
                     this.state.successCreation == "Customer group was created." ?
                         <div className="msg_success">
                             <h4>Customer group was saved</h4>
@@ -82,16 +76,16 @@ class CreateCgroupComponent extends React.Component {
                         </div>
                         : null
                 }
-                    <h4 className="title_right_col">CREATE A NEW</h4>
-                    <h4 className="title_right_col">CUSTOMER GROUP</h4>
+                <h4 className="title_right_col">CREATE A NEW</h4>
+                <h4 className="title_right_col">CUSTOMER GROUP</h4>
                 <form onSubmit={this.onSave}>
-                                <input type='number' placeholder="Number" className='' value={this.state.number}
+                    <input type='number' placeholder="Number" value={this.state.number}
                                        required onChange={this.onNumberChange} />
-                                <input type='text' placeholder="Name"  className='' value={this.state.name}
+                    <input type='text' placeholder="Name" value={this.state.name}
                                        required onChange={this.onNameChange} />
-                                <input type='number' placeholder="Account"  className='' value={this.state.account}
+                    <input type='number' placeholder="Account" value={this.state.account}
                                        required onChange={this.onAccountChange}/>
-                                <input type="submit" value="Save" onClick={this.onSave}/>
+                    <input type="submit" value="Save" onClick={this.onSave}/>
                 </form>
             </div>
         );

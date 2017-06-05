@@ -9,10 +9,8 @@ class DeleteInvoiceComponent extends React.Component {
         this.onDelete = this.onDelete.bind(this);
     }
 
-    // handle single row deletion
     onDelete(e) {
         let invId = this.props.invId;
-        // submit form data to api
         let data = {
           id: invId
         };
@@ -25,7 +23,6 @@ class DeleteInvoiceComponent extends React.Component {
                 this.props.changeInvoiceMode('read');
             },
             error: (xhr, resp, text) => {
-                // show error in console
                 console.log(xhr, resp, text);
             }
         });

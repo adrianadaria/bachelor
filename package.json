@@ -2,7 +2,7 @@
   "name": "bachelor",
   "version": "1.0.0",
   "description": "The Bachelor Project",
-  "main": "index.js",
+  "main": "index.html",
   "directories": {
     "test": "test"
   },

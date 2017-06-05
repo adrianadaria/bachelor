@@ -9,11 +9,8 @@ class DeleteProductComponent extends React.Component {
         this.onDelete = this.onDelete.bind(this);
     }
 
-    // handle single row deletion
     onDelete(e) {
-        // product to delete
         let productNo = this.props.productNo;
-        // submit form data to api
         let data = {
           number: productNo
         };
@@ -26,7 +23,6 @@ class DeleteProductComponent extends React.Component {
                 this.props.changeProductMode('read');
             },
             error: (xhr, resp, text) => {
-                // show error in console
                 console.log(xhr, resp, text);
             }
         });

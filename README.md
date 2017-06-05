@@ -2,7 +2,8 @@
  frontend: Adriana Debowska
  backend: Konstatin Arescenko
 
- Frontend documentation
+ This repository contains the script of Thrift application build with React and PHP.
+ The application was built for final project of Bachelor Degree in Web Development.
 
  To watch constantly the project:
  npm run dev
