@@ -47,7 +47,6 @@ class ReadOrdersComponent extends React.Component {
         }
     }
 
-    // render component on the page
     render() {
         let filteredOrders = this.state.orders;
         let modeComponent = <OrderTableComponent orders={filteredOrders} changeOrderMode={this.changeOrderMode} />;

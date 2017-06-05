@@ -50,7 +50,6 @@ class CreateAccountComponent extends React.Component {
     }
 
     onSave(e) {
-        // data in the form
         let form_data = {
             number: this.state.number,
             name: this.state.name,
@@ -59,16 +58,13 @@ class CreateAccountComponent extends React.Component {
             vat: this.state.vat,
             balance: this.state.balance,
         };
-        // submit form data to api
         $.ajax({
             url: "http://localhost/api/account/create.php",
             type : "POST",
             contentType : 'application/json',
             data : JSON.stringify(form_data),
             success : (response) => {
-                // api message
                 this.setState({successCreation: response['message']});
-                // empty form
                 this.setState({number: 0});
                 this.setState({name: ""});
                 this.setState({type: "ProfitAndLoss"});
@@ -77,7 +73,6 @@ class CreateAccountComponent extends React.Component {
                 this.setState({balance: 0.00});
             },
             error: (xhr, resp, text) => {
-                // show error to console
                 console.log(xhr, resp, text);
             }
         });
@@ -113,7 +108,7 @@ class CreateAccountComponent extends React.Component {
                 <h4 className="title_right_col">NEW ACCOUNT</h4>
 
                 <form onSubmit={this.onSave}>
-                    <input type='number' placeholder="Number" className='form-control' value={this.state.number}
+                    <input type='number' placeholder="Number" value={this.state.number}
                                            required onChange={this.onNumberChange} />
                     <input type='text' placeholder="Name" value={this.state.name}
                                         required onChange={this.onNameChange} />

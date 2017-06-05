@@ -31,12 +31,10 @@ class ReadAccountsComponent extends React.Component {
         });
     }
 
-    // on mount, fetch all accounts and stored them as this component's state
     componentDidMount() {
         this.fetchAccounts();
     }
 
-    // on unmount, kill account fetching in case the request is still pending
     componentWillUnmount() {
         this.serverRequest.abort();
     }
@@ -49,7 +47,6 @@ class ReadAccountsComponent extends React.Component {
         }
     }
 
-    // render component on the page
     render() {
         let filteredAccounts = this.state.accounts;
         let modeComponent = <AccountTableComponent accounts={filteredAccounts} changeAccountMode={this.changeAccountMode} />;

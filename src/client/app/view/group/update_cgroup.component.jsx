@@ -97,12 +97,12 @@ class UpdateCgroupComponent extends React.Component {
                    <h4 className="group">UPDATE</h4>
                     <h4 className="group">THIS GROUP</h4>
                         <label><h5>Number</h5></label>
-                            <input type='number' className='form-control' value={this.state.number} readOnly/>
+                            <input type='number' value={this.state.number} readOnly/>
                         <label><h5>Name</h5></label>
-                            <input type='text' className='form-control' value={this.state.name}
+                            <input type='text' value={this.state.name}
                                        required onChange={this.onNameChange}/>
                         <label><h5>Account</h5></label>
-                            <input type='number' className='form-control' value={this.state.account}
+                            <input type='number' value={this.state.account}
                                        required onChange={this.onAccountChange}/>
                          <input type="submit" value="Update" onClick={this.onSave}/>
                 </form>

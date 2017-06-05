@@ -105,15 +105,15 @@ class UpdatePgroupComponent extends React.Component {
                    <h4 className="group">UPDATE</h4>
                     <h4 className="group">THIS GROUP</h4>
                         <label><h5>Number</h5></label>
-                            <input type='number' className='form-control' value={this.state.number} readOnly/>
+                            <input type='number' value={this.state.number} readOnly/>
                         <label><h5>Name</h5></label>
-                            <input type='text' className='form-control' value={this.state.name}
+                            <input type='text' value={this.state.name}
                                            required onChange={this.onNameChange}/>
                         <label><h5>VatAcc</h5></label>
-                            <input type='number' className='form-control' value={this.state.vatAcc}
+                            <input type='number' value={this.state.vatAcc}
                                     required onChange={this.onVataccChange}/>
                         <label><h5>NoVatAcc</h5></label>
-                            <input type='number' className='form-control' value={this.state.noVatAcc}
+                            <input type='number' value={this.state.noVatAcc}
                                         required onChange={this.onNovataccChange}/>
                         <input type="submit" value="Update" onClick={this.onSave}/>
                 </form>

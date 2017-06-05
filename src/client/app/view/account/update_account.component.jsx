@@ -25,7 +25,6 @@ class UpdateAccountComponent extends React.Component {
     }
 
     componentDidMount() {
-        // read one account data
         let accountNo = this.props.accountNo;
         this.serverRequestProd = $.get("http://localhost/api/account/read_one.php?number=" + accountNo,
             (account) => {
@@ -62,9 +61,7 @@ class UpdateAccountComponent extends React.Component {
         this.setState({balance: e.target.value});
     }
 
-    // handle save changes button clicked
     onSave(e){
-        // data in the form
         let form_data = {
             number: this.state.number,
             name: this.state.name,
@@ -73,7 +70,6 @@ class UpdateAccountComponent extends React.Component {
             vat: this.state.vat,
             balance: this.state.balance
         };
-        // submit form data to api
         $.ajax({
             url: "http://localhost/api/account/update.php",
             type : "POST",
@@ -86,7 +82,6 @@ class UpdateAccountComponent extends React.Component {
                 }, 1500);
             },
             error: (xhr, resp, text) => {
-                // show error to console
                 console.log(xhr, resp, text);
             }
         });
@@ -116,24 +111,19 @@ class UpdateAccountComponent extends React.Component {
                 <form onSubmit={this.onSave} className="update_form">
                     <h4 className="table_title">UPDATE</h4>
                     <h4 className="table_title">THIS ACCOUNT</h4>
-                                <label><h5>Number</h5></label>
-                                <input type='number' value={this.state.number} readOnly/>
-                                <label><h5>Name</h5></label>
-                                <input type='text' value={this.state.name}
-                                    required onChange={this.onNameChange}/>
-                                <label><h5>Type</h5></label>
-                                <input type='text' value={this.state.type}
-                                        required onChange={this.onTypeChange}/>
-                                <label><h5>Card</h5></label>
-                                <input type='text' value={this.state.card}
-                                           required onChange={this.onCardChange}/>
-                                <label><h5>Vat</h5></label>
-                                <input type='text' className='form-control' value={this.state.vat}
-                                           required onChange={this.onVatChange}/>
-                                <label><h5>Balance</h5></label>
-                                <input type='number' value={parseFloat(this.state.balance).toFixed(2)}
-                                           required onChange={this.onBalanceChange} readOnly/>
-                                <input type="submit" value="Update" onClick={this.onSave}/>
+                    <label><h5>Number</h5></label>
+                        <input type='number' value={this.state.number} readOnly/>
+                    <label><h5>Name</h5></label>
+                        <input type='text' value={this.state.name} required onChange={this.onNameChange}/>
+                    <label><h5>Type</h5></label>
+                        <input type='text' value={this.state.type} required onChange={this.onTypeChange}/>
+                    <label><h5>Card</h5></label>
+                        <input type='text' value={this.state.card} required onChange={this.onCardChange}/>
+                    <label><h5>Vat</h5></label>
+                        <input type='text' className='form-control' value={this.state.vat} required onChange={this.onVatChange}/>
+                    <label><h5>Balance</h5></label>
+                        <input type='number' value={parseFloat(this.state.balance).toFixed(2)} required onChange={this.onBalanceChange} readOnly/>
+                    <input type="submit" value="Update" onClick={this.onSave}/>
                 </form>
             </div>
         );

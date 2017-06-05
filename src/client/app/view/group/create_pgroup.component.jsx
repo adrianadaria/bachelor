@@ -25,7 +25,6 @@ class CreatePgroupComponent extends React.Component {
         this.setState({number: e.target.value});
     }
 
-    // handle name change
     onNameChange(e){
         this.setState({name: e.target.value});
     }
@@ -39,30 +38,25 @@ class CreatePgroupComponent extends React.Component {
     }
 
     onSave(e) {
-        // data in the form
         let form_data = {
             number: this.state.number,
             name: this.state.name,
             vatAcc: this.state.vatAcc,
             noVatAcc: this.state.noVatAcc
         };
-        // submit form data to api
         $.ajax({
             url: "http://localhost/api/pgroup/create.php",
             type : "POST",
             contentType : 'application/json',
             data : JSON.stringify(form_data),
             success : (response) => {
-                // api message
                 this.setState({successCreation: response['message']});
-                // empty form
                 this.setState({number: 0});
                 this.setState({name: ""});
                 this.setState({vatAcc: 0});
                 this.setState({noVatAcc: 0});
             },
             error: (xhr, resp, text) => {
-                // show error to console
                 console.log(xhr, resp, text);
             }
         });
@@ -93,13 +87,13 @@ class CreatePgroupComponent extends React.Component {
                     <h4 className="title_right_col">CREATE A NEW</h4>
                     <h4 className="title_right_col">PRODUCT GROUP</h4>
                 <form onSubmit={this.onSave}>
-                    <input type='number' placeholder="Number" className='form-control' value={this.state.number}
+                    <input type='number' placeholder="Number" value={this.state.number}
                                            required onChange={this.onNumberChange} />
-                    <input type='text' placeholder="Name" className='form-control' value={this.state.name}
+                    <input type='text' placeholder="Name" value={this.state.name}
                                         required onChange={this.onNameChange} />
-                    <input type='number' placeholder="VatAcc" className='form-control' value={this.state.vatAcc}
+                    <input type='number' placeholder="VatAcc" value={this.state.vatAcc}
                                             required onChange={this.onVataccChange}/>
-                    <input type='number' placeholder="NoVatAcc" className='form-control' value={this.state.noVatAcc}
+                    <input type='number' placeholder="NoVatAcc" value={this.state.noVatAcc}
                                            required onChange={this.onNovataccChange} />
                     <input type="submit" value="Save" onClick={this.onSave}/>
                 </form>
