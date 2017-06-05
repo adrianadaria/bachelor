@@ -4,15 +4,15 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
  
 // include database and object files
+$configs = require_once('../config/config.php'); 
 include_once '../config/Database.php';
 include_once '../objects/Detail.php';
 include_once '../objects/Order.php';
 include_once '../config/Economic.php';
 
 //economic
-
-$agreementGrantToken = "SI3xOLaIzbSWH1embrkNYSWWIKBK09bd8efEvZRvKwo1";
-$appSecretToken = "7tVtBFEIEBPre0Fq3NWlNds54AXF76xA4NIe8vMsKx41";
+$agreementGrantToken = $configs['agreementGrantToken'];
+$appSecretToken = $configs['appSecretToken'];
 $ec = new Economic($agreementGrantToken, $appSecretToken);   
  
 // instantiate database and object

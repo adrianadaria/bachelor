@@ -10,18 +10,12 @@ require_once('./objects/ProductGroup.php');
 require_once('./objects/CustomerGroup.php');
 require_once('./objects/Order.php');
 require_once('./objects/Detail.php');
+$configs = require_once('./config/config.php');
 
-$agreementGrantToken = "SI3xOLaIzbSWH1embrkNYSWWIKBK09bd8efEvZRvKwo1";
-$appSecretToken = "7tVtBFEIEBPre0Fq3NWlNds54AXF76xA4NIe8vMsKx41";
-
-$ec = new Economic($agreementGrantToken, $appSecretToken);
+$ec = new Economic($configs['agreementGrantToken'], $configs['appSecretToken']);
 
 $database = new Database();
 $db = $database->getConnection();
-
-if (isset($_GET['test'])) {
-	echo 'testing area';
-}
 
 if (isset($_GET['products'])) {
 	$productDataObjects = $ec->getAllproducts();
@@ -256,7 +250,6 @@ function importOrders($data, $db) {
 				<li>Invoices <a href='index.php?inv=true'>import</a></li>
 				<li>Accounts <a href='index.php?acc=true'>import</a></li>
 				<li>Orders <a href='index.php?orders=true'>import</a></li>
-				<li>test <a href='index.php?test=true'>start</a></li>
 			</ul>
 		</section>
 	</body>

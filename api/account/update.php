@@ -5,13 +5,14 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
- 
+
+$configs = require_once('../config/config.php');  
 include_once '../config/database.php';
 include_once '../config/Economic.php';
 include_once '../objects/Account.php';
  
-$agreementGrantToken = "SI3xOLaIzbSWH1embrkNYSWWIKBK09bd8efEvZRvKwo1";
-$appSecretToken = "7tVtBFEIEBPre0Fq3NWlNds54AXF76xA4NIe8vMsKx41";
+$agreementGrantToken = $configs['agreementGrantToken'];
+$appSecretToken = $configs['appSecretToken'];
 
 $ec = new Economic($agreementGrantToken, $appSecretToken); 
  
