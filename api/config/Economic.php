@@ -557,6 +557,17 @@ class Economic {
 		} 
 	}
 	
+	public function orderGetInvoice($id) {
+		try {
+			$numberArr = array('Id' => $id);
+			$this->client->Order_UpgradeToInvoice(array('orderHandle' => $numberArr));
+			return 'success';
+		} catch(Exception $e) {
+			print("<p><b>Error occuried deleting</b></p>");
+			print("<p><i>" . $e->getMessage() . "</i></p>");
+		} 
+	}
+	
 	public function getAllOrders() {
 		try {
 			$orderHandles = $this->client->Order_GetAll()->Order_GetAllResult->OrderHandle;
