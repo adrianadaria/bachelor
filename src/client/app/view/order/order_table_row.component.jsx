@@ -25,8 +25,7 @@ class OrderTableRowComponent extends React.Component {
                        <div className="action_btn view" />
                     </a>
 
-                    <a
-                        onClick={() => this.props.changeOrderMode('delete', this.props.order.id)}>
+                    <a href='#' onClick={() => this.props.changeOrderMode('delete', this.props.order.id)}>
                        <div className="action_btn delete" />
                     </a>
                 </td>

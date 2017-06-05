@@ -3,7 +3,6 @@ import $ from 'jquery';
 import style from '../sass/subpage.scss';
 
 import ProductTableComponent from './product_table.component.jsx';
-
 import ReadOneProductComponent from './read_one_product.component.jsx';
 import CreateProductComponent  from './create_product.component.jsx';
 import UpdateProductComponent  from './update_product.component.jsx';
@@ -32,12 +31,10 @@ class ReadProductsComponent extends React.Component {
         });
     }
 
-    // on mount, fetch all products and stored them as this component's state
     componentDidMount() {
         this.fetchProducts();
     }
 
-    // on unmount, kill product fetching in case the request is still pending
     componentWillUnmount() {
         this.serverRequest.abort();
     }
@@ -50,7 +47,6 @@ class ReadProductsComponent extends React.Component {
         }
     }
 
-    // render component on the page
     render() {
         let filteredProducts = this.state.products;
         let modeComponent = <ProductTableComponent products={filteredProducts} changeProductMode={this.changeProductMode} />;

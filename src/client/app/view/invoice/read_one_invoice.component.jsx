@@ -40,23 +40,22 @@ class ReadOneInvoiceComponent extends React.Component {
                         <caption className="products_caption"><h4 className="table_title">DETAILS OF</h4>
                         <h4 className="table_title">THE INVOICE</h4></caption>
                         <tbody>
-                        
-                        <tr>
-                            <td>Id</td>
-                            <td>{this.state.id}</td>
-                        </tr>
-                        <tr>
-                            <td>Date</td>
-                            <td>{this.state.date}</td>
-                        </tr>
-                        <tr>
-                            <td>Name</td>
-                            <td>{this.state.name}</td>
-                        </tr>
-                        <tr>
-                            <td>Amount (DKK)</td>
-                            <td>{parseFloat(this.state.total).toFixed(2)}</td>
-                        </tr>
+                            <tr>
+                                <td>Id</td>
+                                <td>{this.state.id}</td>
+                            </tr>
+                            <tr>
+                                <td>Date</td>
+                                <td>{this.state.date}</td>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td>{this.state.name}</td>
+                            </tr>
+                            <tr>
+                                <td>Amount (DKK)</td>
+                                <td>{parseFloat(this.state.total).toFixed(2)}</td>
+                            </tr>
                         </tbody>
                 </table>
             </div>

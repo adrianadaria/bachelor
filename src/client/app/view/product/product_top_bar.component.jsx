@@ -9,11 +9,11 @@ class ProductTopBarComponent extends React.Component {
     render() {
         return (
             <div>
-                <a href='#'
-                   onClick={() => this.props.changeProductMode('create')}> Create product
+                <a href='#' onClick={() => this.props.changeProductMode('create')}>
+                    Create product
                 </a>
-                <a href='#'
-                   onClick={() => this.props.refresh()}> refresh
+                <a href='#' onClick={() => this.props.refresh()}>
+                    <div className="back"/>
                 </a>
             </div>
         );

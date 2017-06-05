@@ -3,8 +3,6 @@ import { render } from 'react-dom';
 import HomePageComponent from './home_page.component.jsx';
 import style from './sass/home_page.scss';
 
-
-// navigation imports
 import ReadProductsComponent   from './product/read_products.component.jsx';
 import ReadCustomersComponent from './customer/read_customers.component.jsx';
 import ReadInvoicesComponent from './invoice/read_invoices.component.jsx';
@@ -13,8 +11,7 @@ import ReadOrdersComponent from './order/read_orders.component.jsx';
 import ReadGroupsComponent from './group/read_groups.component.jsx';
 
 class AppComponent extends React.Component {
-	
-	// es6 way of initiating state. Initial mode is 'home' mode
+
 	constructor(props, context) {
 		super(props, context);
 
@@ -26,7 +23,6 @@ class AppComponent extends React.Component {
 		this.changeAppMode = this.changeAppMode.bind(this);
 	}
 	
-	// used when use clicks something that changes the current mode
     changeAppMode(newMode, productId) {
         this.setState({currentMode: newMode});
 		
@@ -63,25 +59,21 @@ class AppComponent extends React.Component {
 				break;
 		}
 	return (
-		<div id="container">
-   			<div id="header">
-
-   					<div className="nav-header">
-					<a href='#'  onClick={() => this.changeAppMode('home')} >
-						<img className="logo" alt="home" src={require('./img/logo.png')}/>
-					</a>
-				</div>
-   			</div>
-   			<div id="body">
-   						{modeComponent}
-   			</div>
-   			<div id="footer">
-   				<h6>Copyrights 2017 - THRIFT</h6>
-   			</div>
-		</div>
-				
-
-
+			<div id="container">
+	   			<div id="header">
+					<div className="nav-header">
+						<a href='#'  onClick={() => this.changeAppMode('home')} >
+							<img className="logo" alt="home" src={require('./img/logo.png')}/>
+						</a>
+					</div>
+	   			</div>
+	   			<div id="body">
+	   				{modeComponent}
+	   			</div>
+	   			<div id="footer">
+	   				<h6>Copyrights 2017 - THRIFT</h6>
+	   			</div>
+			</div>
 		);
 	}
 }
